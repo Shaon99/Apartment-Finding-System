@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="content-wrapper">
-        <h2 style="text-align: center; background-color: #ffffff">Details for, {{$details[0]->ID }} :</h2>
+        <h2 style="text-align: center; background-color: #ffffff">Details for, {{$details[0]->apartment_ID }} :</h2>
         <center>
             <table class="table table-striped table-bordered">
                 <tr>
@@ -56,7 +56,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <p style="color: black; font-size:35px">Owner's details</p>
+                        <p style="color: black; font-size:35px; text-align:center">Owner's details</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Full name :</td>
+                    <td>
+                        <p>{{ $details[0]->First_name }} {{ $details[0]->Last_name }}</p>
                     </td>
                 </tr>
                 <tr>

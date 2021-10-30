@@ -39,7 +39,7 @@ class ApartmentController extends Controller
 
     public function details($ID)
     {
-        $details = DB::select('SELECT * FROM apartment a, apartment_owner o WHERE a.Owner_ID = o.ID AND a.ID = ?', [$ID]);
+        $details = DB::select('SELECT * FROM apartment a, apartment_owner o WHERE a.Owner_ID = o.ID AND a.apartment_ID = ?', [$ID]);
         return view('Apartment.details')->with('details', $details);
     }
 }

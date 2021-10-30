@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\ApartmentOwner;
+use App\Models\Apartment;
 use App\Http\Requests\UpdateOwnerRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ApartmentOwnerController extends Controller
 {
-public function show(){
-    $OwnerList = ApartmentOwner::all();
-    return view('ApartmentOwner.list')->with('list', $OwnerList);   
-}
+    public function show()
+    {
+        $OwnerList = ApartmentOwner::all();
+        return view('ApartmentOwner.list')->with('list', $OwnerList);
+    }
 
     public function edit($ID)
     {
@@ -64,7 +66,25 @@ public function show(){
 
     public function details($ID)
     {
-        $details = DB::select('SELECT * FROM apartment a, apartment_owner o WHERE o.Apartment_ID = a.ID AND o.ID = ?', [$ID]);
+        $details = DB::select('SELECT * FROM apartment a, apartment_owner o WHERE o.ID = a.Owner_ID AND a.Owner_ID = ?', [$ID]);
         return view('ApartmentOwner.details')->with('details', $details);
+    }
+
+    public function delete($ID, Request $req)
+    {
+        $a_ID = DB::select('SELECT a.apartment_ID FROM apartment a, apartment_owner o WHERE o.ID = a.Owner_ID AND a.Owner_ID = ?', [$ID]);
+        //var_dump($a_ID[0]->apartment_ID);
+        if (ApartmentOwner::destroy($ID)) {
+            if (Apartment::destroy($a_ID[0]->apartment_ID)) {
+                $req->session()->flash('msg', 'Congratulations! Deleted Successfully!!...');
+                return redirect()->route('ApartmentOwner.All');
+            } else {
+                $req->session()->flash('msg', 'Error Ouuured, Delete failed!!...');
+                return redirect()->route('ApartmentOwner.All');
+            }
+        } else {
+            $req->session()->flash('msg', 'Error Ouuured!!...');
+            return redirect()->route('ApartmentOwner.All');
+        }
     }
 }

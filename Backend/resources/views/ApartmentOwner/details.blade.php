@@ -61,31 +61,28 @@
                 </tr>
             </table><br>
             <table class="table table-striped table-bordered">
-                <tr style="text-align: center">
-                    <th>Apartment ID</th>
-                    <th></th>
-                    <th></th>
-                    <th>Picture</th>
-                    <th>Details</th>
-                </tr>
-                <td>{{$details[0]->ID}}</td>
-                <td> <a class="btn btn-warning" href="{{ route('Apartment.Details', [$details[0]->ID]) }}">Details</a></td>
-                <td> <a class="btn btn-danger" href="{{ route('Apartment.Block', [$details[0]->ID]) }}">Block</a></td>
-                <td style="width:300px">
-                    <div>
-                        <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[0]->Picture1}}">
-                        <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[0]->Picture2}}">
-                    </div>
-                    <div>
-                        <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[0]->Picture3}}">
-                        <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[0]->Picture4}}">
-                    </div>
-                </td>
-                <td style="text-align: left">
-                    <p style="color: black; font-size:30px">Rent : {{$details[0]->Rent}} Tk. </p>
-                    Home Address : <p style="color: blue; font-size:20px"> {{$details[0]->Apartment_Address}}</p>
-                </td>
-                </tr>
+                @for($i=0; $i < count($details); $i++) <tr style="text-align: center">
+                    @if($details[$i]->Status == 'Open')
+                    <td>{{$details[$i]->apartment_ID}}</td>
+                    <td> <a class="btn btn-warning" href="{{ route('Apartment.Details', [$details[$i]->ID]) }}">Details</a></td>
+                    <td> <a class="btn btn-danger" href="{{ route('Apartment.Block', [$details[$i]->ID]) }}">Block</a></td>
+                    <td style="width:300px">
+                        <div>
+                            <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[$i]->Picture1}}">
+                            <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[$i]->Picture2}}">
+                        </div>
+                        <div>
+                            <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[$i]->Picture3}}">
+                            <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[$i]->Picture4}}">
+                        </div>
+                    </td>
+                    <td style="text-align: left">
+                        <p style="color: black; font-size:30px">Rent : {{$details[$i]->Rent}} Tk. </p>
+                        Home Address : <p style="color: blue; font-size:20px"> {{$details[$i]->Apartment_Address}}</p>
+                    </td>
+                    </tr>
+                    @endif
+                    @endfor
             </table>
         </center>
     </div>

@@ -9,5 +9,5 @@ class Apartment extends Model
 {
     protected $table = 'apartment';
     public $timestamps = false;
-    protected $primaryKey = 'ID';
+    protected $primaryKey = 'apartment_ID';
 }
