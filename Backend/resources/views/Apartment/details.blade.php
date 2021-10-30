@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="content-wrapper">
-        <h2 style="text-align: center; background-color: #ffffff">Details for, {{$details[0]->apartment_ID }} :</h2>
+        <h2 style="text-align: center; background-color: #ffffff">Details for, {{ $details[0]->apartment_ID }} :</h2>
         <center>
             <table class="table table-striped table-bordered">
                 <tr>

@@ -22,8 +22,8 @@
                     @for($i=0; $i < count($list); $i++) <tr style="text-align: center">
                         @if($list[$i]['Status'] == 'Open')
                         <td>{{$list[$i]['apartment_ID']}}</td>
-                        <td> <a class="btn btn-warning" href="{{ route('Apartment.Details', [$list[$i]['ID']]) }}">Details</a></td>
-                        <td> <a class="btn btn-danger" href="{{ route('Apartment.Block', [$list[$i]['ID']]) }}">Block</a></td>
+                        <td> <a class="btn btn-warning" href="{{ route('Apartment.Details', [$list[$i]['apartment_ID']]) }}">Details</a></td>
+                        <td> <a class="btn btn-danger" href="{{ route('Apartment.Block', [$list[$i]['apartment_ID']]) }}">Block</a></td>
                         <td style="width:300px">
                             <div>
                                 <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$list[$i]['Picture1']}}">

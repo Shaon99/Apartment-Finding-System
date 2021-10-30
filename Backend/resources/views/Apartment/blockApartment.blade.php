@@ -21,9 +21,9 @@
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr style="text-align: center">
                         @if($list[$i]['Status'] == 'Blocked')
-                        <td>{{$list[$i]['ID']}}</td>
-                        <td> <a class="btn btn-warning" href="{{ route('Admin.Delete', [$list[$i]['ID']]) }}">Details</a></td>
-                        <td> <a class="btn btn-success" href="{{ route('Apartment.Block', [$list[$i]['ID']]) }}">Unblock</a></td>
+                        <td>{{$list[$i]['apartment_ID']}}</td>
+                        <td> <a class="btn btn-warning" href="{{ route('Admin.Delete', [$list[$i]['apartment_ID']]) }}">Details</a></td>
+                        <td> <a class="btn btn-success" href="{{ route('Apartment.Block', [$list[$i]['apartment_ID']]) }}">Unblock</a></td>
                         <td style="width:300px">
                             <div>
                                 <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$list[$i]['Picture1']}}">

@@ -64,8 +64,8 @@
                 @for($i=0; $i < count($details); $i++) <tr style="text-align: center">
                     @if($details[$i]->Status == 'Open')
                     <td>{{$details[$i]->apartment_ID}}</td>
-                    <td> <a class="btn btn-warning" href="{{ route('Apartment.Details', [$details[$i]->ID]) }}">Details</a></td>
-                    <td> <a class="btn btn-danger" href="{{ route('Apartment.Block', [$details[$i]->ID]) }}">Block</a></td>
+                    <td> <a class="btn btn-warning" href="{{ route('Apartment.Details', [$details[$i]->apartment_ID]) }}">Details</a></td>
+                    <td> <a class="btn btn-danger" href="{{ route('Apartment.Block', [$details[$i]->apartment_ID]) }}">Block</a></td>
                     <td style="width:300px">
                         <div>
                             <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[$i]->Picture1}}">
