@@ -37,7 +37,7 @@ class frontloginController extends Controller
         $customer->password = Hash::make($request->password);
 
         $customer->save();
-        return redirect()->route('customer-login')->with('success', 'Registration Success! Please Login');
+        return redirect()->route('customer.login')->with('success', 'Registration Success! Please Login');
 
           
 

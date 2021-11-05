@@ -3,7 +3,7 @@
 @section('main-content')
 
 <!-- BREADCRUMB AREA START -->
-<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image "  data-bs-bg="{{url('frontend/img/bg/14.jpg')}}">
+<div class="ltn__breadcrumb-area text-left">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -39,7 +39,7 @@
                                         <a data-bs-toggle="tab" href="#liton_tab_1_3">Downloads <i class="fas fa-arrow-down"></i></a>
                                         <a data-bs-toggle="tab" href="#liton_tab_1_4">address <i class="fas fa-map-marker-alt"></i></a>
                                         <a data-bs-toggle="tab" href="#liton_tab_1_5">Account Details <i class="fas fa-user"></i></a>
-                                        <a href="login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
+                                        <a href="{{route("customer-logout")}}">Logout <i class="fas fa-sign-out-alt"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                 <div class="tab-content">
                                     <div class="tab-pane fade active show" id="liton_tab_1_1">
                                         <div class="ltn__myaccount-tab-content-inner">
-                                            <p>Hello <strong>UserName</strong> (not <strong>UserName</strong>? <small><a href="login-register.html">Log out</a></small> )</p>
+                                            <p>Hello <strong>UserName</strong> (not <strong>UserName</strong>? <small><a href="{{route('customer-logout')}}">Log out</a></small> )</p>
                                             <p>From your account dashboard you can view your <span>recent orders</span>, manage your <span>shipping and billing addresses</span>, and <span>edit your password and account details</span>.</p>
                                         </div>
                                     </div>

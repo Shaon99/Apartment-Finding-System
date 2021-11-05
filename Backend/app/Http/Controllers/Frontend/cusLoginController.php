@@ -29,7 +29,7 @@ class cusLoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/customer/updatefirstinfo';
+     protected $redirectTo = '/customer/profile';
 
     /**
      * Create a new controller instance.
@@ -65,6 +65,6 @@ class cusLoginController extends Controller
 
         $this->guard('customer')->logout();
 
-        // return Redirect()->route('user-login')->with('success', 'You are Logged out');
+     return Redirect()->route('customer.login')->with('success', 'You are Logged out');
     }
 }

@@ -33,7 +33,7 @@ use App\Http\Controllers\Frontend\cusLoginController;
 |
 */
 
-
+Auth::routes();
 
 //Login
 Route::get('/login', [LoginController::class, 'index']);
@@ -79,23 +79,30 @@ Route::group(['middleware' => 'Admin'], function () {
 
 Route::get('/', [homeController::class, 'index'])->name('home');
 Route::get('/customer/login', [cusLoginController::class, 'index'])->name('customer.login');
-
-// Route::post('/login', [cusLoginController::class, 'index'])->name('customer-login');
+Route::post('/login', [cusLoginController::class, 'login'])->name('customer-login');
 Route::get('/customer/register', [frontloginController::class, 'register'])->name('register');
 Route::post('/storeregister', [frontloginController::class, 'registerStore'])->name('store.customer');
 
 // Route::get('/sell', [homeController::class, 'sell'])->name('sell');
 
-// Route::prefix('customer')->middleware('auth')->group(function () {
-//     Route::get('/profile', [profileUserController::class, 'profile'])->name('profile');
-
-
-// });
+ Route::prefix('customer')->middleware('auth:customer')->group(function () {
+    Route::get('/profile', [profileUserController::class, 'profile'])->name('profile');
 
 
 
 
 
 
-Auth::routes();
+    Route::get('/logout', [cusLoginController::class, 'logout'])->name('customer-logout');
+
+
+
+});
+
+
+
+
+
+
+
 

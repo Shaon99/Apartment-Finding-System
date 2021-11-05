@@ -6,7 +6,7 @@
 <div class="ltn__utilize-overlay"></div>
 
     <!-- BREADCRUMB AREA START -->
-    <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image "  data-bs-bg="img/bg/14.jpg">
+    <div class="ltn__breadcrumb-area text-left">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -26,12 +26,12 @@
     <!-- BREADCRUMB AREA END -->
 
     <!-- LOGIN AREA START -->
-    <div class="ltn__login-area pb-65">
+    <div class="ltn__login-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area text-center">
-                        <h1 class="section-title">Sign In <br>To  Your Account</h1>
+                        <h5 class="section-title">Sign In To  Your Account</h5>
                         
                     </div>
                 </div>
@@ -45,16 +45,39 @@
                             <strong>{{ $message }}</strong>
                         </div>
                     @endif
-                        <form action="" class="ltn__form-box contact-form-box" method="POST">
+                        <form action="{{route('customer-login')}}" method="POST" class="ltn__form-box contact-form-box" method="POST">
                            @csrf
-                            <input type="text" name="email" placeholder="Email*">
-                            <input type="password" name="password" placeholder="Password*">
-                            <div class="btn-wrapper mt-0">
+                           
+                           <div class="form-group mb-5">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" name="email" value="{{ old('email') }}"
+                                class="form-control @error('email') is-invalid @enderror"
+                                placeholder="Enter Your Email">
+                            @error('email')
+                                <spam class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <spam />
+                                @enderror
+                        </div>
+                          
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" name="password"
+                                class="form-control @error('password') is-invalid @enderror"
+                                placeholder="Enter Password">
+                            @error('password')
+                                <spam class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <spam />
+                                @enderror
+                        </div>
+                           
+                            <div class="btn-wrapper mt-5">
                                 <button class="theme-btn-1 btn btn-block" type="submit">SIGN IN</button>
                             </div>
-                            <div class="go-to-btn mt-20">
+                            {{-- <div class="go-to-btn mt-20">
                                 <a href="#"><small>FORGOTTEN YOUR PASSWORD?</small></a>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
                 </div>
@@ -62,7 +85,7 @@
                     <div class="account-create text-center pt-50">
                         <h4>DON'T HAVE AN ACCOUNT?</h4>                    
                         <div class="btn-wrapper">
-                            <a href="/customer/register" class="theme-btn-1 btn black-btn">CREATE ACCOUNT</a>
+                           <h5><a href="/customer/register" class="theme-btn-1 btn black-btn">CREATE ACCOUNT</a></h5> 
                         </div>
                     </div>
                 </div>

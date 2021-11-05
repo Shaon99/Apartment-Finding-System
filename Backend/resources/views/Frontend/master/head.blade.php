@@ -144,10 +144,16 @@
                             <li>
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
+                                    @guest                                   
                                     <li><a href="/customer/login">Sign in</a></li>
                                     <li><a href="/customer/register">Register</a></li>
-                                    <li><a href="">My Account</a></li>
+                                    @else
+                                    <li><a href="/customer/profile">My Account</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
+                                    <li><a href="{{route("customer-logout")}}">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+                                    
+                                    @endguest
+                                   
                                 </ul>
                             </li>
                         </ul>
