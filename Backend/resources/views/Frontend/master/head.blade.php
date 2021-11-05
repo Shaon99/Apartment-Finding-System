@@ -144,8 +144,8 @@
                             <li>
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
-                                    <li><a href="">Sign in</a></li>
-                                    <li><a href="">Register</a></li>
+                                    <li><a href="/customer/login">Sign in</a></li>
+                                    <li><a href="/customer/register">Register</a></li>
                                     <li><a href="">My Account</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
                                 </ul>
