@@ -9,6 +9,19 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 
+use App\Http\Controllers\Frontend\homeController;
+use App\Http\Controllers\Frontend\frontloginController;
+use App\Http\Controllers\Frontend\profileUserController;
+use App\Http\Controllers\Frontend\cusLoginController;
+
+
+
+
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +33,7 @@ use App\Http\Controllers\LogoutController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 //Login
 Route::get('/login', [LoginController::class, 'index']);
@@ -61,3 +72,30 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('/Admin/Apartment/Blocked/{ID}', [ApartmentController::class, 'block'])->name('Apartment.Block');
     Route::get('/Apartment/Details/{ID}', [ApartmentController::class, 'details'])->name('Apartment.Details');
 });
+
+
+
+// Frontend Route start here %%%%%%%%%%%%%%%%%%%%%%%%%-----------------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Route::get('/', [homeController::class, 'index'])->name('home');
+Route::get('/customer/login', [cusLoginController::class, 'index'])->name('customer.login');
+
+// Route::post('/login', [cusLoginController::class, 'index'])->name('customer-login');
+Route::get('/customer/register', [frontloginController::class, 'register'])->name('register');
+Route::post('/storeregister', [frontloginController::class, 'registerStore'])->name('store.customer');
+
+// Route::get('/sell', [homeController::class, 'sell'])->name('sell');
+
+// Route::prefix('customer')->middleware('auth')->group(function () {
+//     Route::get('/profile', [profileUserController::class, 'profile'])->name('profile');
+
+
+// });
+
+
+
+
+
+
+Auth::routes();
+
