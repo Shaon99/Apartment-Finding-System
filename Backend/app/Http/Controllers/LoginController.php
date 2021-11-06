@@ -19,7 +19,7 @@ class LoginController extends Controller
 
         $admin = DB::table('admin')
                 ->where('Username', $req->Username)
-                ->where('Password',$req->Password)
+                ->where('Password',md5($req->Password))
                 ->get();
 
         if($req->Username == " " || $req->Password == " "){

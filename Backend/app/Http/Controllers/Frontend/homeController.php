@@ -14,4 +14,18 @@ class homeController extends Controller
     public function sell(){
         return view('Frontend.sell.index');
     }
+
+    public function Interior(){
+        return view('Frontend.interior_service.index');
+
+    }
+
+    public function residentialInterior(){
+        return view('Frontend.interior_service.residential');
+
+    }
+    public function commercialInterior(){
+        return view('Frontend.interior_service.commercial');
+
+    }
 }

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.png in the root directory -->
-    <link rel="shortcut icon" href="frontend/img/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{asset('/frontend/img/favicon.png')}}" type="image/x-icon" />
     <!-- Font Icons css -->
     <link rel="stylesheet" href="{{asset('/frontend/css/font-icons.css')}}">
     <!-- plugins css -->
@@ -119,9 +119,17 @@
                                        
                                     </li>
                                     
-                                    <li><a href="#">Contact</a></li>
+                                    <li class="menu-icon"><a href="#">Services</a>
+                                        <ul>
+                                            <li><a href="{{route('interior')}}">Interior</a></li>
+                                         
+                                        </ul>
+                                    </li>
+
                                 </ul>
+                                
                             </div>
+                            
                         </nav>
                     </div>
                 </div>

@@ -1,6 +1,8 @@
 @extends('Frontend.master.master')
 
 @section('main-content')
+
+
 <!-- BREADCRUMB AREA START -->
 <div class="ltn__breadcrumb-area text-left">
     <div class="container">
