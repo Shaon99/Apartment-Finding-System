@@ -7,7 +7,7 @@
                     <div class="footer-widget footer-about-widget">
                         <div class="footer-logo">
                             <div class="site-logo">
-                                <img src="{{url('frontend/img/logo-2.png')}}" alt="Logo">
+                                <i style="font-size:50px;" class="fas fa-home"></i> <a href="/"><h5>Home Solution BD</h5></a>
                             </div>
                         </div>
                         <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
@@ -339,7 +339,44 @@
 <script src="{{asset('frontend/js/plugins.js')}}"></script>
 <!-- Main JS -->
 <script src="{{asset('frontend/js/main.js')}}"></script>
-
+<script>
+    @if(Session::has('message'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true,
+        
+    }
+            toastr.success("{{ session('message') }}");
+    @endif
+  
+    @if(Session::has('error'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.error("{{ session('error') }}");
+    @endif
+  
+    @if(Session::has('info'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.info("{{ session('info') }}");
+    @endif
+  
+    @if(Session::has('warning'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.warning("{{ session('warning') }}");
+    @endif
+  </script>
 
 </body>
 

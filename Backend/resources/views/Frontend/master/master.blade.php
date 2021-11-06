@@ -1,6 +1,5 @@
 @include('Frontend.master.head')
 
-
 @yield('main-content')
 
 

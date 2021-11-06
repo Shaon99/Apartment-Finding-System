@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area text-center">
-                    <h1 class="section-title">Register <br>Your Account</h1>
+                    <h1 class="section-title">Register Your Account</h1>
                     
                 </div>
             </div>
@@ -114,7 +114,7 @@
                         </div>
                     </form>
                     <div class="by-agree text-center">                       
-                        <div class="go-to-btn">
+                        <div class="go-to-btn mt-25">
                             <h5><a href="{{route('customer.login')}}">ALREADY HAVE AN ACCOUNT ?</a></h5>
                         </div>
                     </div>

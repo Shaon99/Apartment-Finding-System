@@ -15,6 +15,8 @@ class LoginController extends Controller
     }
     public function verify(LoginRequest $req){
 
+    
+
         $admin = DB::table('admin')
                 ->where('Username', $req->Username)
                 ->where('Password',$req->Password)
@@ -22,7 +24,7 @@ class LoginController extends Controller
 
         if($req->Username == " " || $req->Password == " "){
             $req->session()->flash('msg', 'Null username or password...!!!');
-            return redirect('/login');
+            return redirect('/admin/login');
 
         }
         elseif(count($admin) > 0){
@@ -34,15 +36,15 @@ class LoginController extends Controller
             return redirect()->route('Admin.Dashboard'); 
             }else if($admin[0]->Status == 'Blocked'){
             $req->session()->flash('msg', 'Your account has blocked. Contact super admin for further assistance..!!');
-            return redirect('/login'); 
+            return redirect('/admin/login'); 
             }else{
             $req->session()->flash('msg', 'Invalid req ... at first logged in as an Admin !!');
-            return redirect('/login');                
+            return redirect('/admin/login');                
             }             
         }
         else{
             $req->session()->flash('msg', 'Invalid username or password...!!!');
-            return redirect('/login');
+            return redirect('/admin/login');
         }
     }
 }

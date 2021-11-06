@@ -13,6 +13,9 @@ use App\Http\Controllers\Frontend\homeController;
 use App\Http\Controllers\Frontend\frontloginController;
 use App\Http\Controllers\Frontend\profileUserController;
 use App\Http\Controllers\Frontend\cusLoginController;
+use App\Http\Controllers\Seller\sellerController;
+use App\Http\Controllers\Seller\sellerLoginController;
+
 
 
 
@@ -36,8 +39,8 @@ use App\Http\Controllers\Frontend\cusLoginController;
 Auth::routes();
 
 //Login
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'verify']);
+Route::get('/admin/login', [LoginController::class, 'index']);
+Route::post('/admin/login', [LoginController::class, 'verify']);
 
 //Logout
 Route::get('/logout', [LogoutController::class, 'index']);
@@ -83,15 +86,11 @@ Route::post('/login', [cusLoginController::class, 'login'])->name('customer-logi
 Route::get('/customer/register', [frontloginController::class, 'register'])->name('register');
 Route::post('/storeregister', [frontloginController::class, 'registerStore'])->name('store.customer');
 
-// Route::get('/sell', [homeController::class, 'sell'])->name('sell');
 
  Route::prefix('customer')->middleware('auth:customer')->group(function () {
     Route::get('/profile', [profileUserController::class, 'profile'])->name('profile');
 
-
-
-
-
+    Route::post('/update', [profileUserController::class, 'updateProfile'])->name('update.Customer');
 
     Route::get('/logout', [cusLoginController::class, 'logout'])->name('customer-logout');
 
@@ -100,9 +99,24 @@ Route::post('/storeregister', [frontloginController::class, 'registerStore'])->n
 });
 
 
+//Seller Route Start&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&______________________________
+Route::prefix('Seller')->group(function () {
+
+Route::get('/login', [sellerLoginController::class, 'index'])->name('seller.login');
+Route::get('/register', [sellerController::class, 'Register'])->name('seller.signup');
+Route::post('/login', [sellerLoginController::class, 'login'])->name('seller_login');
+
+Route::post('/store', [sellerController::class, 'registerStore'])->name('store.seller');
+
+Route::middleware('auth:seller')->group(function () {
+    Route::get('/dashboard', [sellerController::class, 'dashboard'])->name('seller.dashboard');
 
 
+    Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
+    Route::get('/sell', [homeController::class, 'sell'])->name('sell');
 
 
+});
+});
 
 
