@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2021 at 08:18 PM
+-- Generation Time: Oct 31, 2021 at 06:41 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -67,7 +67,7 @@ INSERT INTO `admin` (`ID`, `First_name`, `Last_name`, `Username`, `Password`, `S
 --
 
 CREATE TABLE `apartment` (
-  `ID` int(10) NOT NULL,
+  `apartment_ID` int(10) NOT NULL,
   `Apartment_Address` text NOT NULL,
   `Rent` int(15) NOT NULL,
   `Picture1` varchar(50) NOT NULL,
@@ -84,18 +84,23 @@ CREATE TABLE `apartment` (
   `Total_room` int(2) NOT NULL,
   `Status` varchar(10) NOT NULL,
   `Lift` varchar(3) NOT NULL,
-  `Owner_ID` int(10) DEFAULT NULL
+  `Created_at` date NOT NULL,
+  `Updated_at` datetime DEFAULT NULL,
+  `Owner_ID` int(10) DEFAULT NULL,
+  `Customer_ID` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `apartment`
 --
 
-INSERT INTO `apartment` (`ID`, `Apartment_Address`, `Rent`, `Picture1`, `Picture2`, `Picture3`, `Picture4`, `Picture5`, `Picture6`, `Picture7`, `Kitchen`, `Dining_space`, `Details`, `Bathroom`, `Total_room`, `Status`, `Lift`, `Owner_ID`) VALUES
-(1, '	\r\nJamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 3, 5, 'Open', 'Yes', 1),
-(2, '	\r\nJamuna Future park, Dhaka 1211', 20000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 3, 5, 'Open', 'No', 2),
-(3, '	\r\nJamuna Future park, Dhaka 1211', 25000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 3, 5, 'Open', 'Yes', 1),
-(4, '	\r\nJamuna Future park, Dhaka 1211', 50000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 3, 5, 'Open', 'No', 3);
+INSERT INTO `apartment` (`apartment_ID`, `Apartment_Address`, `Rent`, `Picture1`, `Picture2`, `Picture3`, `Picture4`, `Picture5`, `Picture6`, `Picture7`, `Kitchen`, `Dining_space`, `Details`, `Bathroom`, `Total_room`, `Status`, `Lift`, `Created_at`, `Updated_at`, `Owner_ID`, `Customer_ID`) VALUES
+(1, '	\r\nJamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 3, 5, 'Open', 'Yes', '2021-10-31', NULL, 1, NULL),
+(3, '	\r\nJamuna Future park, Dhaka 1211', 25000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 3, 5, 'Open', 'Yes', '2021-10-31', NULL, 1, NULL),
+(7, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-10-25', NULL, 7, NULL),
+(8, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-09-13', NULL, 8, NULL),
+(9, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-09-28', NULL, 5, NULL),
+(12, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-09-21', NULL, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -117,18 +122,18 @@ CREATE TABLE `apartment_owner` (
   `Address` text NOT NULL,
   `Created_at` datetime DEFAULT NULL,
   `Updated_at` datetime DEFAULT NULL,
-  `Payment_id` int(10) DEFAULT NULL,
-  `Apartment_ID` int(10) DEFAULT NULL
+  `Payment_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `apartment_owner`
 --
 
-INSERT INTO `apartment_owner` (`ID`, `First_name`, `Last_name`, `Username`, `Password`, `Phone`, `Email`, `Status`, `Picture`, `Gender`, `Address`, `Created_at`, `Updated_at`, `Payment_id`, `Apartment_ID`) VALUES
-(1, 'manik', 'saha', 'manik3v33', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manikr@gmail.com', 'Open', '11111.jpg', 'Male', 'ffffffffffffffff', '2021-10-19 04:13:18', '2021-10-29 18:18:02', NULL, 1),
-(2, 'manik', 'saha', 'mangik3333', '96e79218965eb72c92a549dd5a330112', '55555555555', 'maniddk@gmail.com', 'Open', '1635343641.jpg', 'Male', 'fefewffffffffffffffffffffffffffffffffffffffff', '2021-10-19 04:13:18', '2021-10-29 14:27:42', NULL, 2),
-(3, 'manik', 'saha', 'ffmanik333', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manik@gmail.com', 'Open', '1635343641.jpg', 'Male', 'ffffffffffffffff', '2021-10-19 04:13:18', NULL, NULL, 4);
+INSERT INTO `apartment_owner` (`ID`, `First_name`, `Last_name`, `Username`, `Password`, `Phone`, `Email`, `Status`, `Picture`, `Gender`, `Address`, `Created_at`, `Updated_at`, `Payment_id`) VALUES
+(1, 'manik', 'saha', 'manik3v33', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manikr@gmail.com', 'Open', '11111.jpg', 'Male', 'ffffffffffffffff', '2021-10-19 04:13:18', '2021-10-29 18:18:02', NULL),
+(5, 'manik', 'saha', 'manikf333g', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manir3wf54rk@gmail.com', 'Open', '1635343641.jpg', 'Male', 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '2021-10-26 07:00:00', '2021-10-30 05:42:23', NULL),
+(7, 'manik', 'saha', 'manik333g', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manir3w54rk@gmail.com', 'Open', '1635343641.jpg', 'Male', 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '2021-10-26 07:00:00', NULL, NULL),
+(8, 'manik', 'saha', 'manik333g', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manir3w54rk@gmail.com', 'Open', '1635343641.jpg', 'Male', 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '2021-10-26 07:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -141,14 +146,29 @@ CREATE TABLE `customer` (
   `First_name` varchar(20) NOT NULL,
   `Last_name` varchar(20) NOT NULL,
   `Username` varchar(50) NOT NULL,
-  `Password` varchar(30) NOT NULL,
+  `Password` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Phone` varchar(15) NOT NULL,
   `Gender` varchar(7) NOT NULL,
+  `Status` varchar(7) NOT NULL,
   `Address` text NOT NULL,
-  `Picture` varchar(100) NOT NULL,
+  `Picture` varchar(100) DEFAULT NULL,
+  `Created_at` datetime NOT NULL,
+  `Updated_at` datetime DEFAULT NULL,
   `Payment_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`ID`, `First_name`, `Last_name`, `Username`, `Password`, `Email`, `Phone`, `Gender`, `Status`, `Address`, `Picture`, `Created_at`, `Updated_at`, `Payment_id`) VALUES
+(1, 'manik', 'saha', 'manik', 'ea16f6597913ed751d4bd8f503ec4ff1', 'manik@gmail.com', '55555555555', 'Male', 'Open', 'gsgsdfgsdgfgdfgdfgfdb', NULL, '2021-10-31 00:00:00', NULL, NULL),
+(2, 'manik', 'saha', 'manik', 'ea16f6597913ed751d4bd8f503ec4ff1', 'manik@gmail.com', '55555555555', 'Male', 'Open', 'gsgsdfgsdgfgdfgdfgfdb', NULL, '2021-10-31 00:00:00', NULL, NULL),
+(3, 'manik', 'saha', 'manik', 'ea16f6597913ed751d4bd8f503ec4ff1', 'manik@gmail.com', '55555555555', 'Male', 'Open', 'gsgsdfgsdgfgdfgdfgfdb', NULL, '2021-10-31 00:00:00', NULL, NULL),
+(4, 'manik', 'saha', 'manik', 'ea16f6597913ed751d4bd8f503ec4ff1', 'manik@gmail.com', '55555555555', 'Male', 'Open', 'gsgsdfgsdgfgdfgdfgfdb', NULL, '2021-10-31 00:00:00', NULL, NULL),
+(5, 'manik', 'saha', 'manik', 'ea16f6597913ed751d4bd8f503ec4ff1', 'manik@gmail.com', '55555555555', 'Male', 'Open', 'gsgsdfgsdgfgdfgdfgfdb', NULL, '2021-10-31 00:00:00', NULL, NULL),
+(6, 'manik', 'saha', 'manik', 'ea16f6597913ed751d4bd8f503ec4ff1', 'manik@gmail.com', '55555555555', 'Male', 'Open', 'gsgsdfgsdgfgdfgdfgfdb', NULL, '2021-10-31 00:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -181,7 +201,7 @@ ALTER TABLE `admin`
 -- Indexes for table `apartment`
 --
 ALTER TABLE `apartment`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`apartment_ID`);
 
 --
 -- Indexes for table `apartment_owner`
@@ -215,19 +235,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `apartment`
 --
 ALTER TABLE `apartment`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `apartment_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `apartment_owner`
 --
 ALTER TABLE `apartment_owner`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `payment`
