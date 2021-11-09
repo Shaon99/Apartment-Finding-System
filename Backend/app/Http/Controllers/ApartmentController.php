@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
 {
-    public function show()
+    public function show(Request $req)
     {
         $apartmentList = Apartment::all();
         return view('Apartment.list')->with('list', $apartmentList);

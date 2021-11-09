@@ -74,6 +74,9 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('/Admin/BlockedApartment', [ApartmentController::class, 'blockAll'])->name('Apartment.blockAll');
     Route::get('/Admin/Apartment/Blocked/{ID}', [ApartmentController::class, 'block'])->name('Apartment.Block');
     Route::get('/Apartment/Details/{ID}', [ApartmentController::class, 'details'])->name('Apartment.Details');
+
+    Route::get('/Customer/All', [CustomerController::class, 'show'])->name('Customer.All');
+
 });
 
 
