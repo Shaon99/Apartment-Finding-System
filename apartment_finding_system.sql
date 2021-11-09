@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2021 at 06:41 PM
+-- Generation Time: Nov 09, 2021 at 06:24 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `apartment`
+-- Database: `apartment_finding_system`
 --
 
 -- --------------------------------------------------------
@@ -97,10 +97,12 @@ CREATE TABLE `apartment` (
 INSERT INTO `apartment` (`apartment_ID`, `Apartment_Address`, `Rent`, `Picture1`, `Picture2`, `Picture3`, `Picture4`, `Picture5`, `Picture6`, `Picture7`, `Kitchen`, `Dining_space`, `Details`, `Bathroom`, `Total_room`, `Status`, `Lift`, `Created_at`, `Updated_at`, `Owner_ID`, `Customer_ID`) VALUES
 (1, '	\r\nJamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 3, 5, 'Open', 'Yes', '2021-10-31', NULL, 1, NULL),
 (3, '	\r\nJamuna Future park, Dhaka 1211', 25000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 3, 5, 'Open', 'Yes', '2021-10-31', NULL, 1, NULL),
-(7, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-10-25', NULL, 7, NULL),
 (8, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-09-13', NULL, 8, NULL),
 (9, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-09-28', NULL, 5, NULL),
-(12, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-09-21', NULL, 5, NULL);
+(12, 'Jamuna Future park,Basundhara, Dhaka 1211', 10000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'gsrggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 3, 5, 'Open', 'Yes', '2021-11-07', NULL, 5, NULL),
+(13, 'dvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvdvdf', 20000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'dvfdgvfvfbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 3, 5, 'Open', 'Yes', '2021-11-03', NULL, NULL, NULL),
+(14, 'grergergergerg', 25000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'tgertgergtergergre', 3, 5, 'Open', 'Yes', '2021-11-04', NULL, NULL, NULL),
+(15, 'hjghggggggggggggggggggg', 25000, '11111.jpg', '22222.jpg', '33333.jpg', '44444.jpg', NULL, NULL, NULL, 1, 1, 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhjgjkgjhghjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', 3, 5, 'Open', 'Yes', '2021-11-09', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -130,9 +132,8 @@ CREATE TABLE `apartment_owner` (
 --
 
 INSERT INTO `apartment_owner` (`ID`, `First_name`, `Last_name`, `Username`, `Password`, `Phone`, `Email`, `Status`, `Picture`, `Gender`, `Address`, `Created_at`, `Updated_at`, `Payment_id`) VALUES
-(1, 'manik', 'saha', 'manik3v33', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manikr@gmail.com', 'Open', '11111.jpg', 'Male', 'ffffffffffffffff', '2021-10-19 04:13:18', '2021-10-29 18:18:02', NULL),
+(1, 'manik', 'saha', 'manik3vdf33', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manikffr@gmail.com', 'Open', '11111.jpg', 'Male', 'ffffffffffffffff', '2021-10-19 04:13:18', '2021-11-04 09:27:45', NULL),
 (5, 'manik', 'saha', 'manikf333g', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manir3wf54rk@gmail.com', 'Open', '1635343641.jpg', 'Male', 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '2021-10-26 07:00:00', '2021-10-30 05:42:23', NULL),
-(7, 'manik', 'saha', 'manik333g', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manir3w54rk@gmail.com', 'Open', '1635343641.jpg', 'Male', 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '2021-10-26 07:00:00', NULL, NULL),
 (8, 'manik', 'saha', 'manik333g', '96e79218965eb72c92a549dd5a330112', '55555555555', 'manir3w54rk@gmail.com', 'Open', '1635343641.jpg', 'Male', 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '2021-10-26 07:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -173,6 +174,84 @@ INSERT INTO `customer` (`ID`, `First_name`, `Last_name`, `Username`, `Password`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `address`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'ABC', 'abc@gmail.com', '01623649343', '665 shainbag tajgon dhaka', '$2y$10$Mh.0jq7hTmOZEZytxPoFu.h9fKRqdW0NrgsUDqL03Ih4nj30BID3a', '2021-11-05 10:48:12', '2021-11-06 04:35:07'),
+(2, 'Shaon Ahmed', 'abcd@gmail.com', '01623649342', 'E block 2 number road,16 number home.Mirpur 1 Dhaka 1216', '$2y$10$ZUhxelKYRD9Szzcl6o7MYOqK.AThrO2GfwfrkO9fns1P5.EOID9Am', '2021-11-05 14:19:55', '2021-11-05 14:19:55'),
+(3, 'Shaon', 'abcde@gmail.com', '01303552819', '665 shainbag tajgon dhaka', '$2y$10$UmgH/gIP1XNQSNGl6Dg1W.PNGdzc1dwpBeAU6.4.tAW0L2/nflm0O', '2021-11-05 14:20:37', '2021-11-05 14:20:37'),
+(4, 'Manik Saha', 'manik@gmail.com', '01952309730', 'Jamuna Future park, Dhaka 1211', '$2y$10$GdZypu4bGyjPin9.lyYREecsuyre8yW/2rtdkn5tvajIahURovlSa', '2021-11-08 12:04:14', '2021-11-08 12:05:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2021_11_05_134714_create_customers_table', 2),
+(5, '2021_11_06_113746_create_sellers_table', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payment`
 --
 
@@ -185,6 +264,50 @@ CREATE TABLE `payment` (
   `Payment_date` date NOT NULL,
   `Due_amount` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sellers`
+--
+
+CREATE TABLE `sellers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sellers`
+--
+
+INSERT INTO `sellers` (`id`, `name`, `email`, `phone`, `address`, `city`, `image`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'Shaon Ahmed', 'shaon@gmail.com', '01623649341', '665 shainbag tajgon dhaka', 'dhaka', NULL, '$2y$10$yt/fPVLZvRSndxZZHpRea.2S2NaLyTAlvE8I3zlopOvJ/rvDeTCq2', '2021-11-06 05:45:25', '2021-11-06 05:45:25'),
+(2, 'Shaon', 'abcf@gmail.com', '01505667781', '665 shainbag tajgon dhaka', 'dhaka', '746971636202278.jpg', '$2y$10$6FS1pARPkSEUnQmnUUGqZefu4mIgk.P17SQEaIPDgGtRkcb3QgMu2', '2021-11-06 06:37:59', '2021-11-06 06:37:59');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -216,10 +339,48 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `sellers`
+--
+ALTER TABLE `sellers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -235,7 +396,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `apartment`
 --
 ALTER TABLE `apartment`
-  MODIFY `apartment_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `apartment_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `apartment_owner`
@@ -250,10 +411,40 @@ ALTER TABLE `customer`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sellers`
+--
+ALTER TABLE `sellers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
