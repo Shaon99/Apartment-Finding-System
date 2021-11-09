@@ -88,6 +88,10 @@ Route::get('/customer/login', [cusLoginController::class, 'index'])->name('custo
 Route::post('/login', [cusLoginController::class, 'login'])->name('customer-login');
 Route::get('/customer/register', [frontloginController::class, 'register'])->name('register');
 Route::post('/storeregister', [frontloginController::class, 'registerStore'])->name('store.customer');
+Route::get('/interior', [homeController::class, 'Interior'])->name('interior');
+Route::get('/residential/interior', [homeController::class, 'residentialInterior'])->name('residential.interior');
+Route::get('/commercial/interior', [homeController::class, 'commercialInterior'])->name('commercial.interior');
+
 
 
  Route::prefix('customer')->middleware('auth:customer')->group(function () {
