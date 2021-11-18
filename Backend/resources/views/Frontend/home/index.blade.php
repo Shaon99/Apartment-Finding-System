@@ -88,7 +88,7 @@
                         <li><a href="index-2.html">Home Style 02</a></li>
                         <li><a href="index-3.html">Home Style 03</a></li>
                         <li><a href="index-4.html">Home Style 04</a></li>
-                        <li><a href="index-5.html">Home Style 05  <span class="menu-item-badge">video</span></a></li>
+                        <li><a href="index-5.html">Home Style 05 <span class="menu-item-badge">video</span></a></li>
                         <li><a href="index-6.html">Home Style 06</a></li>
                         <li><a href="index-7.html">Home Style 07</a></li>
                         <li><a href="index-8.html">Home Style 08</a></li>
@@ -309,7 +309,7 @@
                                             <option>New York</option>
                                             <option>New Jersey</option>
                                         </select>
-                                    </div> 
+                                    </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
                                         <select class="nice-select">
                                             <option>Property Status</option>
@@ -318,7 +318,7 @@
                                             <option>Sale</option>
                                             <option>Sold</option>
                                         </select>
-                                    </div> 
+                                    </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
                                         <select class="nice-select">
                                             <option>Property Type</option>
@@ -349,7 +349,7 @@
                                             <option>New York</option>
                                             <option>New Jersey</option>
                                         </select>
-                                    </div> 
+                                    </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
                                         <select class="nice-select">
                                             <option>Property Status</option>
@@ -358,7 +358,7 @@
                                             <option>Sale</option>
                                             <option>Sold</option>
                                         </select>
-                                    </div> 
+                                    </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
                                         <select class="nice-select">
                                             <option>Property Type</option>
@@ -639,7 +639,7 @@
             <div class="col-lg-4">
                 <div class="ltn__testimonial-item ltn__testimonial-item-7">
                     <div class="ltn__testimoni-info">
-                        <p><i class="flaticon-left-quote-1"></i> 
+                        <p><i class="flaticon-left-quote-1"></i>
                             Precious ipsum dolor sit amet
                             consectetur adipisicing elit, sed dos
                             mod tempor incididunt ut labore et

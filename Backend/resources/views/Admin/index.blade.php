@@ -16,50 +16,42 @@
               <div class="statistics-item">
                 <p>
                   <i class="icon-sm fa fa-user mr-2"></i>
-                  New users
+                  New registered apartment
                 </p>
-                <h2>54000</h2>
+                <h2> {{ DB::table('Apartment')->where('Created_at', date("Y-m-d"))->count() }}</h2>
                 <label class="badge badge-outline-success badge-pill">2.7% increase</label>
               </div>
               <div class="statistics-item">
                 <p>
                   <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                  Avg Time
+                  Last week
                 </p>
-                <h2>123.50</h2>
+                <h2> {{ DB::table('Apartment')->whereBetween('Created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
                 <label class="badge badge-outline-danger badge-pill">30% decrease</label>
               </div>
               <div class="statistics-item">
                 <p>
                   <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                  Downloads
+                  Last month
                 </p>
-                <h2>3500</h2>
+                <h2> {{ DB::table('Apartment')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
                 <label class="badge badge-outline-success badge-pill">12% increase</label>
               </div>
               <div class="statistics-item">
                 <p>
                   <i class="icon-sm fas fa-check-circle mr-2"></i>
-                  Update
+                  Blocked apartment
                 </p>
-                <h2>7500</h2>
+                <h2> {{ DB::table('Apartment')->where('Status', 'Blocked')->count() }} </h2>
                 <label class="badge badge-outline-success badge-pill">57% increase</label>
               </div>
               <div class="statistics-item">
                 <p>
                   <i class="icon-sm fas fa-chart-line mr-2"></i>
-                  Sales
+                  Total number of apartment
                 </p>
-                <h2>9000</h2>
+                <h2> {{ DB::table('Apartment')->count() }} </h2>
                 <label class="badge badge-outline-success badge-pill">10% increase</label>
-              </div>
-              <div class="statistics-item">
-                <p>
-                  <i class="icon-sm fas fa-circle-notch mr-2"></i>
-                  Pending
-                </p>
-                <h2>7500</h2>
-                <label class="badge badge-outline-danger badge-pill">16% decrease</label>
               </div>
             </div>
           </div>
@@ -190,7 +182,7 @@
                       </div>
                     </td>
                     <td class="py-1">
-                      <img src="images/faces/face13.jpg" alt="profile" class="img-sm rounded-circle" />
+                      <img src="{{asset('images/faces/face13.jpg')}}" alt="profile" class="img-sm rounded-circle" />
                     </td>
                     <td class="font-weight-bold">
                       Andrew Bowen
@@ -214,7 +206,7 @@
                       </div>
                     </td>
                     <td class="py-1">
-                      <img src="images/faces/face2.jpg" alt="profile" class="img-sm rounded-circle" />
+                      <img src="{{asset('images/faces/face2.jpg')}}" alt="profile" class="img-sm rounded-circle" />
                     </td>
                     <td class="font-weight-bold">
                       Mae Saunders
@@ -262,7 +254,7 @@
                       </div>
                     </td>
                     <td class="py-1">
-                      <img src="images/faces/face11.html" alt="profile" class="img-sm rounded-circle" />
+                      <img src="{{asset('images/faces/face11.html')}}" alt="profile" class="img-sm rounded-circle" />
                     </td>
                     <td class="font-weight-bold">
                       Marguerite Phillips
