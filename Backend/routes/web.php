@@ -15,6 +15,8 @@ use App\Http\Controllers\Frontend\profileUserController;
 use App\Http\Controllers\Frontend\cusLoginController;
 use App\Http\Controllers\Seller\sellerController;
 use App\Http\Controllers\Seller\sellerLoginController;
+use App\Http\Controllers\Seller\sellerApartMentController;
+
 
 
 
@@ -88,6 +90,7 @@ Route::post('/storeregister', [frontloginController::class, 'registerStore'])->n
 Route::get('/interior', [homeController::class, 'Interior'])->name('interior');
 Route::get('/residential/interior', [homeController::class, 'residentialInterior'])->name('residential.interior');
 Route::get('/commercial/interior', [homeController::class, 'commercialInterior'])->name('commercial.interior');
+Route::get('/apartment/details/{id}', [homeController::class, 'detailsApartment'])->name('details.apartment');
 
 
 
@@ -117,8 +120,17 @@ Route::middleware('auth:seller')->group(function () {
 
 
     Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
-    Route::get('/sell', [homeController::class, 'sell'])->name('sell');
+//add_apartment
+    Route::get('/view/apartment/', [sellerApartMentController::class, 'viewApartment'])->name('seller.apartmentView');
 
+    Route::get('/add/apartment', [sellerApartMentController::class, 'Apartment'])->name('seller.apartment');
+    Route::post('/store/apartment', [sellerApartMentController::class, 'storeApartment'])->name('seller.storeApartment');
+    Route::get('/edit/apartment/{id}', [sellerApartMentController::class, 'apartmentEdit'])->name('seller.apartmentEdit');
+
+    Route::post('/update/apartment/{id}', [sellerApartMentController::class, 'updateApartment'])->name('seller.updateApartment');
+
+    Route::get('/view/apartment/{id}', [sellerApartMentController::class, 'detailsApartment'])->name('seller.viewApartment');
+    Route::get('/status/{id}', [sellerApartMentController::class, 'statusUpdate']);
 
 });
 });
