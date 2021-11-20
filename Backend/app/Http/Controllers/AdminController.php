@@ -177,4 +177,57 @@ class AdminController extends Controller
             return redirect()->route('Admin.Create');
         }
     }
+    public function search(Request $req) {
+        if ($req->ajax()) {
+            $data = Admin::where('ID','like',$req->search.'%')
+                        ->orwhere('First_name', 'like', $req->search . '%')
+                        ->orwhere('Username', 'like', $req->search . '%')
+                        ->orwhere('Email', 'like', $req->search . '%')
+                        ->orwhere('Address', 'like', $req->search . '%')
+                        ->orwhere('Joining_date', 'like', $req->search . '%')
+                        ->orwhere('Gender', 'like', $req->search . '%')
+                        ->get();
+            $output = '';
+            if(count($data)>0){
+                $output = '
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>User ID</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Profile picture</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Status</th>
+                            <th>Salary</th>
+                            <th>E-mail</th>
+                            <th>Contact no.</th>
+                        </tr>
+                            ';
+                foreach($data as $list){
+                    $output .= '
+                        <tr>
+                        <td>'.$list->ID.'</td>
+                        <td> <a class="btn btn-inverse-success" href="/Admin/Edit/'.$list->ID. '">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="/Admin/Delete/' . $list->ID . '">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="/Admin/Details/' . $list->ID . '">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="/Admin/Block/' . $list->ID . '">Block</a></td>
+                        <td><img cl->mg-rounded-circle" src="../../public/'.$list->Picture.'" width="100px" height="100px"></td>
+                        <td>'.$list->First_name.'</td>
+                        <td>'.$list->Last_name.'</td>
+                        <td>'.$list->Status.'</td>
+                        <td>'.$list->Salary.'</td>
+                        <td>'.$list->Email.'</td>
+                        <td>'.$list->Phone.'</td>
+                    ->
+                    ';
+                }
+                $output .= '</table>';
+            }else{
+                $output .= 'No results found!!';
+            }
+        }
+    }
 }

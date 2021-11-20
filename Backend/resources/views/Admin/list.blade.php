@@ -8,8 +8,9 @@
             <form>
                 @csrf
                 <p style="color: red; font-size: 15px;">{{ session('msg') }}</p>
-                <input class="form-control" type="text" placeholder="enter employee ID"><br>
-                <button>Search</button> <br>
+                <input class="form-control" type="text" name="search" id='search' placeholder="enter employee ID, name, E-mail etc" onekeyup="document()"><br>
+                <button class="btn btn-inverse-dark btn-fw" onclick="">Search</button> <br>
+                <div id="search_list"></div>
                 <p style="padding-left:1050px"><a class="btn btn-primary" href="/Admin/BlockedUser">All Blocked User</a></p>
                 <table class="table table-striped table-bordered">
                     <tr>
@@ -29,10 +30,10 @@
                     @for($i=0; $i < count($list); $i++) <tr>
                         @if($list[$i]['Status'] == 'Open')
                         <td>{{$list[$i]['ID']}}</td>
-                        <td> <a class="btn btn-success" href="{{ route('Admin.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
-                        <td> <a class="btn btn-warning" href="{{ route('Admin.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-primary" href="{{ route('Admin.Details', [$list[$i]['ID']]) }}">Details</a></td>
-                        <td> <a class="btn btn-danger" href="{{ route('Admin.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]['ID']]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
                         <td><img class="img-rounded-circle" src="{{asset('/upload')}}/{{$list[$i]['Picture']}}" width="100px" height="100px"></td>
                         <td>{{$list[$i]['First_name']}}</td>
                         <td>{{$list[$i]['Last_name']}}</td>
@@ -48,4 +49,22 @@
         </div>
     </div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "search",
+                type: "GET",
+                data: {
+                    'search': query
+                },
+                success: function(data) {
+                    $('#search_list').html(data);
+                }
+            });
+        });
+    });
+</script>
 @endsection

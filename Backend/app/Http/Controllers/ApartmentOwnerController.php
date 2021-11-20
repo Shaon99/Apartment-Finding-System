@@ -73,7 +73,6 @@ class ApartmentOwnerController extends Controller
     public function delete($ID, Request $req)
     {
         $a_ID = DB::select('SELECT a.apartment_ID FROM apartment a, apartment_owner o WHERE o.ID = a.Owner_ID AND a.Owner_ID = ?', [$ID]);
-        //var_dump($a_ID[0]->apartment_ID);
         if (ApartmentOwner::destroy($ID)) {
             if (Apartment::destroy($a_ID[0]->apartment_ID)) {
                 $req->session()->flash('msg', 'Congratulations! Deleted Successfully!!...');

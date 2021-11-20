@@ -59,7 +59,7 @@
                 @csrf
                 <p style="color: red; font-size: 15px;">{{ session('msg') }}</p>
                 <input class="form-control" type="text" placeholder="enter owner ID"><br>
-                <button>Search</button> <br>
+                <button class="btn btn-inverse-dark btn-fw">Search</button> <br>
                 <p style="padding-left:1050px"><a class="btn btn-primary" href="/ApartmentOwner/BlockedUser">All Blocked User</a></p>
                 <table class="table table-striped table-bordered">
                     <tr>
@@ -78,10 +78,10 @@
                     @for($i=0; $i < count($list); $i++) <tr>
                         @if($list[$i]['Status'] == 'Open')
                         <td>{{$list[$i]['ID']}}</td>
-                        <td> <a class="btn btn-success" href="{{ route('ApartmentOwner.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
-                        <td> <a class="btn btn-warning" href="{{ route('ApartmentOwner.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-primary" href="{{ route('ApartmentOwner.Details', [$list[$i]['ID']]) }}">Details</a></td>
-                        <td> <a class="btn btn-danger" href="{{ route('ApartmentOwner.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('ApartmentOwner.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('ApartmentOwner.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('ApartmentOwner.Details', [$list[$i]['ID']]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('ApartmentOwner.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
                         <td><img class="img-rounded-circle" src="{{asset('/upload')}}/{{$list[$i]['Picture']}}" width="100px" height="100px">
                         </td>
                         <td>{{$list[$i]['First_name']}}</td>

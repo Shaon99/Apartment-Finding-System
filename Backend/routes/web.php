@@ -56,6 +56,7 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('Admin/Delete/{ID}', [AdminController::class, 'delete'])->name('Admin.Delete');
     Route::get('Admin/Details/{ID}', [AdminController::class, 'details'])->name('Admin.Details');
     Route::get('Admin/MyProfile', [AdminController::class, 'profile']);
+    Route::get('search', [AdminController::class, 'search']);
     Route::get('Admin/ChangePassword', [AdminController::class, 'changePassword'])->name('Admin.changePassword');
     Route::post('Admin/ChangePassword', [AdminController::class, 'storePassword']);
     Route::get('Admin/Block/{ID}', [AdminController::class, 'block'])->name('Admin.Block');

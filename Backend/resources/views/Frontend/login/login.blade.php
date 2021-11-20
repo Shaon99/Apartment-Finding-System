@@ -84,8 +84,8 @@
                         <h5><a href="/customer/register" class="theme-btn-1 btn black-btn">CREATE ACCOUNT</a></h5>
                     </div>
                 </div>
-                <h6>Super admin Login? <a href="/admin/login" class="btn btn-warning">CLICK HERE</a></h6>
-            </div>>
+                <h6 style="padding-left: 130px; padding-top:20px">Super admin Login? <a href="/admin/login" class="btn btn-info">CLICK HERE</a></h6>
+            </div>
         </div>
     </div>
 </div>
