@@ -6,6 +6,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <title>Seller-Dashboard</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('vendors/iconfonts/font-awesome/css/all.min.css')}}">
@@ -18,6 +20,12 @@
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="http://www.urbanui.com/" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body>
@@ -33,11 +41,11 @@
         </button>
        
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item d-none d-lg-flex">
+          {{-- <li class="nav-item d-none d-lg-flex">
             <a class="nav-link" href="#">
               <span class="btn btn-primary">+ Create new</span>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item d-none d-lg-flex">
             <a class="nav-link" href="{{route('seller-logout')}}">
               <span class="btn btn-danger">Logout</span>
@@ -172,15 +180,9 @@
               </a>
             </div>
           </li>
-          <li class="nav-item nav-settings d-none d-lg-block">
-            <a class="nav-link" href="#">
-              <i class="fas fa-ellipsis-h"></i>
-            </a>
-          </li>
+         
         </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="fas fa-bars"></span>
-        </button>
+        
       </div>
     </nav>
     <!-- partial -->
@@ -209,7 +211,7 @@
           </div>
         </div>
       </div>
-      <div id="right-sidebar" class="settings-panel">
+      {{-- <div id="right-sidebar" class="settings-panel">
         <i class="settings-close fa fa-times"></i>
         <ul class="nav nav-tabs" id="setting-panel" role="tablist">
           <li class="nav-item">
@@ -357,7 +359,7 @@
           </div>
           <!-- chat tab ends -->
         </div>
-      </div>
+      </div> --}}
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -372,16 +374,16 @@
             @endif              </div>
               <div class="profile-name">
                 <p class="name">
-                  Welcome <?php echo session('First_name') ?>
+                  Welcome 
                 </p>
                 <p class="designation">
-                  Seller Panel
+                  {{Auth::user()->name}}
                 </p>
               </div>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('seller.dashboard')}}}">
+            <a class="nav-link" href="{{route('seller.dashboard')}}">
               <i class="fa fa-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -389,13 +391,20 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
               <i class=""></i>
-              <span class="menu-title">Management</span>
+              <span class="menu-title">Manage Apartment</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="page-layouts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{asset('/Admin/Create')}}">+ Create New</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">ALL</a></li>
+              <ul class="nav flex-column sub-menu"> 
+                <li class="nav-item">
+                  
+                  <a class="nav-link" href="{{route('seller.apartment')}}"><i class="fa fa-plus"> </i>&nbsp ADD Apartment</a>
+                </li>      
+                
+                <li class="nav-item">
+                  
+                  <a class="nav-link" href="{{route('seller.apartmentView')}}"><i class="fa fa-eye"> </i>&nbsp View Apartment</a>
+                </li> 
               </ul>
             </div>
           </li>
@@ -434,7 +443,48 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{asset('js/dashboard.js')}}"></script>
+  <script src="{{asset('js/data-table.js')}}"></script>
+
   <!-- End custom js for this page-->
+
+  <script>
+    @if(Session::has('message'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true,
+        
+    }
+            toastr.success("{{ session('message') }}");
+    @endif
+  
+    @if(Session::has('error'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.error("{{ session('error') }}");
+    @endif
+  
+    @if(Session::has('info'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.info("{{ session('info') }}");
+    @endif
+  
+    @if(Session::has('warning'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.warning("{{ session('warning') }}");
+    @endif
+  </script>
 </body>
 
 

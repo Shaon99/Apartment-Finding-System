@@ -22,6 +22,8 @@ class CreateSellersTable extends Migration
             $table->string('city')->nullable();
             $table->string('image')->nullable();
             $table->string('password')->nullable();
+            $table->tinyInteger('status')->default(0);
+
             $table->timestamps();
         });
     }
