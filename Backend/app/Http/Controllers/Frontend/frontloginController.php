@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Footer;
 use App\Models\Customer;
 use Hash;
 
@@ -12,8 +13,8 @@ class frontloginController extends Controller
    
 
     public function register(){
-        return view('Frontend.login.register');
-
+        $footer = Footer::find(1);
+        return view('Frontend.login.register')->with('footer', $footer);
     }
 
 
@@ -31,6 +32,7 @@ class frontloginController extends Controller
 
         $customer = new Customer();
         $customer->name = $request->name;
+        $customer->status = "Open";
         $customer->phone = $request->phone;
         $customer->email = $request->email;
         $customer->address = $request->address;
@@ -38,8 +40,5 @@ class frontloginController extends Controller
 
         $customer->save();
         return redirect()->route('customer.login')->with('success', 'Registration Success! Please Login');
-
-          
-
     }
 }

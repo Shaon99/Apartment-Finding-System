@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ApartmentOwner;
 use App\Models\Apartment;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateOwnerRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;

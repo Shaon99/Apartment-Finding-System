@@ -76,18 +76,18 @@
                         <th>Contact no.</th>
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr>
-                        @if($list[$i]['Status'] == 'Open')
-                        <td>{{$list[$i]['ID']}}</td>
-                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
-                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]['ID']]) }}">Details</a></td>
-                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
+                        @if($list[$i]['status'] == 'Open')
+                        <td>{{$list[$i]['id']}}</td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]['id']]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]['id']]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]['id']]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]['id']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
                         <td><img class="img-rounded-circle" src="{{asset('/upload')}}/{{$list[$i]['Picture']}}" width="100px" height="100px"></td>
-                        <td>{{$list[$i]['First_name']}}</td>
-                        <td>{{$list[$i]['Last_name']}}</td>
-                        <td>{{$list[$i]['Status']}}</td>
-                        <td>{{$list[$i]['Email']}}</td>
-                        <td>{{$list[$i]['Phone']}}</td>
+                        <td>{{$list[$i]['name']}}</td>
+                        <td>{{$list[$i]['address']}}</td>
+                        <td>{{$list[$i]['status']}}</td>
+                        <td>{{$list[$i]['email']}}</td>
+                        <td>{{$list[$i]['phone']}}</td>
                         </tr>
                         @endif
                         @endfor

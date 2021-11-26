@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Footer;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,7 +49,8 @@ class cusLoginController extends Controller
      */
     public function index()
     {
-        return view('Frontend.login.login');
+        $footer = Footer::find(1);
+        return view('Frontend.login.login')->with('footer', $footer);
     }
     /**
      * Get the guard to be used during authentication.

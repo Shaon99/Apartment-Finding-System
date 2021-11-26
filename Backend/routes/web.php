@@ -61,6 +61,8 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::post('Admin/ChangePassword', [AdminController::class, 'storePassword']);
     Route::get('Admin/Block/{ID}', [AdminController::class, 'block'])->name('Admin.Block');
     Route::get('/Admin/BlockedUser', [AdminController::class, 'blockUser'])->name('Admin.BlockedUser');
+    Route::get('/Admin/footer', [AdminController::class, 'footer'])->name('Admin.footer');
+    Route::post('/Admin/footer', [AdminController::class, 'storeFooter']);
 
     Route::get('/ApartmentOwner/All', [ApartmentOwnerController::class, 'show'])->name('ApartmentOwner.All');
     Route::get('ApartmentOwner/Edit/{ID}', [ApartmentOwnerController::class, 'edit'])->name('ApartmentOwner.Edit');
@@ -68,7 +70,7 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('ApartmentOwner/Delete/{ID}', [ApartmentOwnerController::class, 'delete'])->name('ApartmentOwner.Delete');
     Route::get('ApartmentOwner/Details/{ID}', [ApartmentOwnerController::class, 'details'])->name('ApartmentOwner.Details');
     Route::get('ApartmentOwner/Block/{ID}', [ApartmentOwnerController::class, 'block'])->name('ApartmentOwner.Block');
-    Route::get('/ApartmentOwner/BlockedUser', [ApartmentOwnerController::class, 'blockUser'])->name('ApartmentOwner.BlockedUser');  
+    Route::get('/ApartmentOwner/BlockedUser', [ApartmentOwnerController::class, 'blockUser'])->name('ApartmentOwner.BlockedUser');
 
 
     Route::get('/Apartment/All', [ApartmentController::class, 'show'])->name('Apartment.All');
@@ -77,7 +79,6 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('/Apartment/Details/{ID}', [ApartmentController::class, 'details'])->name('Apartment.Details');
 
     Route::get('/Customer/All', [CustomerController::class, 'show'])->name('Customer.All');
-
 });
 
 
@@ -91,36 +92,29 @@ Route::get('/customer/register', [frontloginController::class, 'register'])->nam
 Route::post('/storeregister', [frontloginController::class, 'registerStore'])->name('store.customer');
 
 
- Route::prefix('customer')->middleware('auth:customer')->group(function () {
+Route::prefix('customer')->middleware('auth:customer')->group(function () {
     Route::get('/profile', [profileUserController::class, 'profile'])->name('profile');
 
     Route::post('/update', [profileUserController::class, 'updateProfile'])->name('update.Customer');
 
     Route::get('/logout', [cusLoginController::class, 'logout'])->name('customer-logout');
-
-
-
 });
 
 
 //Seller Route Start&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&______________________________
 Route::prefix('Seller')->group(function () {
 
-Route::get('/login', [sellerLoginController::class, 'index'])->name('seller.login');
-Route::get('/register', [sellerController::class, 'Register'])->name('seller.signup');
-Route::post('/login', [sellerLoginController::class, 'login'])->name('seller_login');
+    Route::get('/login', [sellerLoginController::class, 'index'])->name('seller.login');
+    Route::get('/register', [sellerController::class, 'Register'])->name('seller.signup');
+    Route::post('/login', [sellerLoginController::class, 'login'])->name('seller_login');
 
-Route::post('/store', [sellerController::class, 'registerStore'])->name('store.seller');
+    Route::post('/store', [sellerController::class, 'registerStore'])->name('store.seller');
 
-Route::middleware('auth:seller')->group(function () {
-    Route::get('/dashboard', [sellerController::class, 'dashboard'])->name('seller.dashboard');
-
-
-    Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
-    Route::get('/sell', [homeController::class, 'sell'])->name('sell');
+    Route::middleware('auth:seller')->group(function () {
+        Route::get('/dashboard', [sellerController::class, 'dashboard'])->name('seller.dashboard');
 
 
+        Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
+        Route::get('/sell', [homeController::class, 'sell'])->name('sell');
+    });
 });
-});
-
-

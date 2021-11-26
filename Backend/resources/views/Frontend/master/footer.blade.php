@@ -10,7 +10,7 @@
                                 <i style="font-size:50px;" class="fas fa-home"></i> <a href="/"><h5>Home Solution BD</h5></a>
                             </div>
                         </div>
-                        <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
+                        <p>{{ $footer['About'] }}</p>
                         <div class="footer-address">
                             <ul>
                                 <li>
@@ -18,7 +18,7 @@
                                         <i class="icon-placeholder"></i>
                                     </div>
                                     <div class="footer-address-info">
-                                        <p>Brooklyn, New York, United States</p>
+                                        <p>{{ $footer['Address'] }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -26,7 +26,7 @@
                                         <i class="icon-call"></i>
                                     </div>
                                     <div class="footer-address-info">
-                                        <p><a href="tel:+0123-456789">+0123-456789</a></p>
+                                        <p><a href="tel:{{ $footer['Phone'] }}">{{ $footer['Phone'] }}</a></p>
                                     </div>
                                 </li>
                                 <li>
@@ -34,17 +34,18 @@
                                         <i class="icon-mail"></i>
                                     </div>
                                     <div class="footer-address-info">
-                                        <p><a href="mailto:example@example.com">example@example.com</a></p>
+                                        <p><a href="mailto:{{ $footer['Email'] }}">{{ $footer['Email'] }}</a></p>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="ltn__social-media mt-20">
                             <ul>
-                                <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                                <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="{{ $footer['Facebook'] }}" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ $footer['Twitter'] }}" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ $footer['Linkedin'] }}" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="{{ $footer['Instagram'] }}" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="{{ $footer['Youtube'] }}" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -65,8 +66,7 @@
                         <h4 class="footer-title">Services</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="order-tracking.html">Order tracking</a></li>
-                               
+                                <li><a href="order-tracking.html">Our Services</a></li>                              
                             </ul>
                         </div>
                     </div>
@@ -76,8 +76,7 @@
                         <h4 class="footer-title">Customer Care</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="login.html">Login</a></li>
-                               
+                                <li><a href="/customer/login">Login</a></li>                              
                             </ul>
                         </div>
                     </div>
