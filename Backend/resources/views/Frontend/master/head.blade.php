@@ -1,6 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-
+<?php
+use App\Models\Footer;
+$footer = Footer::find(1);
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -117,11 +120,11 @@
                                             <li><a href="/">Home</a>
 
                                             </li>
-                                            <li><a href="#">About</a>
+                                            <li><a href="/about">About</a>
 
                                             </li>
 
-                                            <li><a href="#">Contact</a></li>
+                                            <li><a href="/contact-us">Contact</a></li>
                                         </ul>
                                     </div>
                                 </nav>

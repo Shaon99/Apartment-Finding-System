@@ -45,6 +45,9 @@ Route::post('/admin/login', [LoginController::class, 'verify']);
 //Logout
 Route::get('/logout', [LogoutController::class, 'index']);
 
+Route::get('/contact', [homeController::class, 'contact']);
+Route::get('/about-us', [homeController::class, 'aboutUs']);
+
 Route::group(['middleware' => 'Admin'], function () {
     //Admin
     Route::get('/Admin/Dashboard', [AdminController::class, 'index'])->name('Admin.Dashboard');

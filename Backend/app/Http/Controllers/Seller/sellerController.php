@@ -37,6 +37,7 @@ class sellerController extends Controller
             $seller->email = $request->email;
             $seller->address = $request->address;
             $seller->city = $request->city;
+            $seller->status = 1;
             if ($request->hasFile('image')) {
                 $extension = $request->image->getClientOriginalExtension();
                 $filename = rand(10000, 99999) . time() . '.' . $extension;

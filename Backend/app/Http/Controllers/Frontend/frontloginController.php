@@ -10,8 +10,6 @@ use Hash;
 
 class frontloginController extends Controller
 {
-   
-
     public function register(){
         $footer = Footer::find(1);
         return view('Frontend.login.register')->with('footer', $footer);
@@ -25,9 +23,7 @@ class frontloginController extends Controller
             'email' => 'required|email|unique:customers',
             'address' => 'required',
             'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required|min:6',
-
-          
+            'password_confirmation' => 'required|min:6',        
         ]);
 
         $customer = new Customer();

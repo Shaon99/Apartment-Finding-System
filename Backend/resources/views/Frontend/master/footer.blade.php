@@ -1,4 +1,8 @@
    <!-- FOOTER AREA START -->
+   <?php
+use App\Models\Footer;
+$footer = Footer::find(1);
+?>
    <footer class="ltn__footer-area  ">
     <div class="footer-top-area  section-bg-2 plr--5">
         <div class="container-fluid">
@@ -55,7 +59,7 @@
                         <h4 class="footer-title">Company</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="/about">About</a></li>
                                 
                             </ul>
                         </div>

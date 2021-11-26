@@ -17,4 +17,13 @@ class homeController extends Controller
     public function sell(){
         return view('Frontend.sell.index');
     }
+
+    public function contact()
+    {
+        return view('Frontend.home.contact');
+    }
+    public function aboutUs()
+    {
+        return view('Frontend.home.about');
+    }
 }
