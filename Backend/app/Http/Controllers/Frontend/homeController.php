@@ -11,15 +11,11 @@ use App\Models\Gallery;
 
 class homeController extends Controller
 {
-   public function index(){
-<<<<<<< HEAD
+    public function index(){
         $footer = Footer::find(1);
         return view('Frontend.home.index')->with('footer', $footer);
-=======
-       $feature=Apartment::with('seller')->where('feature','1')->limit(7)->get();
-      
+        $feature=Apartment::with('seller')->where('feature','1')->limit(7)->get();   
         return view('Frontend.home.index',compact('feature'));
->>>>>>> edd6668393e99840e0c5c244674e2c460206a374
     }
 
 

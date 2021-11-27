@@ -124,11 +124,6 @@ Route::prefix('Seller')->group(function () {
         Route::get('/dashboard', [sellerController::class, 'dashboard'])->name('seller.dashboard');
 
 
-<<<<<<< HEAD
-        Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
-        Route::get('/sell', [homeController::class, 'sell'])->name('sell');
-    });
-=======
     Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
 //add_apartment
     Route::get('/view/apartment/', [sellerApartMentController::class, 'viewApartment'])->name('seller.apartmentView');
@@ -143,5 +138,4 @@ Route::prefix('Seller')->group(function () {
     Route::get('/status/{id}', [sellerApartMentController::class, 'statusUpdate']);
 
 });
->>>>>>> edd6668393e99840e0c5c244674e2c460206a374
 });

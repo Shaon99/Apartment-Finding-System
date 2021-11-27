@@ -123,7 +123,66 @@
             "time": "2021-08-15T20:50:18+00:00"
         },
         {
-<<<<<<< HEAD
+            "name": "devfaysal/laravel-bangladesh-geocode",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devfaysal/laravel-bangladesh-geocode.git",
+                "reference": "806b9ab0256f8a397ec5c83706a20d8e99896ff8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devfaysal/laravel-bangladesh-geocode/zipball/806b9ab0256f8a397ec5c83706a20d8e99896ff8",
+                "reference": "806b9ab0256f8a397ec5c83706a20d8e99896ff8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Devfaysal\\BangladeshGeocode\\BangladeshGeocodeServiceProvider"
+                    ],
+                    "aliases": {
+                        "BangladeshGeocode": "Devfaysal\\BangladeshGeocode\\BangladeshGeocodeFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Devfaysal\\BangladeshGeocode\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Faysal Ahamed",
+                    "email": "devfaysal@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/devfaysal/laravel-bangladesh-geocode",
+            "keywords": [
+                "bangladesh-geocode",
+                "devfaysal"
+            ],
+            "support": {
+                "issues": "https://github.com/devfaysal/laravel-bangladesh-geocode/issues",
+                "source": "https://github.com/devfaysal/laravel-bangladesh-geocode/tree/1.0.3"
+            },
+            "time": "2021-11-18T12:02:40+00:00"
+        },
+        {
             "name": "dflydev/dot-access-data",
             "version": "v3.0.1",
             "source": {
@@ -151,47 +210,11 @@
             "extra": {
                 "branch-alias": {
                     "dev-main": "3.x-dev"
-=======
-            "name": "devfaysal/laravel-bangladesh-geocode",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/devfaysal/laravel-bangladesh-geocode.git",
-                "reference": "c711a8566e818bf06d184aeddec70a908d66fb92"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/devfaysal/laravel-bangladesh-geocode/zipball/c711a8566e818bf06d184aeddec70a908d66fb92",
-                "reference": "c711a8566e818bf06d184aeddec70a908d66fb92",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^8.0",
-                "php": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.0",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Devfaysal\\BangladeshGeocode\\BangladeshGeocodeServiceProvider"
-                    ],
-                    "aliases": {
-                        "BangladeshGeocode": "Devfaysal\\BangladeshGeocode\\BangladeshGeocodeFacade"
-                    }
->>>>>>> edd6668393e99840e0c5c244674e2c460206a374
                 }
             },
             "autoload": {
                 "psr-4": {
-<<<<<<< HEAD
                     "Dflydev\\DotAccessData\\": "src/"
-=======
-                    "Devfaysal\\BangladeshGeocode\\": "src"
->>>>>>> edd6668393e99840e0c5c244674e2c460206a374
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -200,7 +223,6 @@
             ],
             "authors": [
                 {
-<<<<<<< HEAD
                     "name": "Dragonfly Development Inc.",
                     "email": "info@dflydev.com",
                     "homepage": "http://dflydev.com"
@@ -234,23 +256,6 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.1"
             },
             "time": "2021-08-13T13:06:58+00:00"
-=======
-                    "name": "Faysal Ahamed",
-                    "email": "devfaysal@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "homepage": "https://github.com/devfaysal/laravel-bangladesh-geocode",
-            "keywords": [
-                "bangladesh-geocode",
-                "devfaysal"
-            ],
-            "support": {
-                "issues": "https://github.com/devfaysal/laravel-bangladesh-geocode/issues",
-                "source": "https://github.com/devfaysal/laravel-bangladesh-geocode/tree/1.0.2"
-            },
-            "time": "2021-10-14T04:47:06+00:00"
->>>>>>> edd6668393e99840e0c5c244674e2c460206a374
         },
         {
             "name": "doctrine/inflector",
@@ -1708,16 +1713,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "627be7fcde84c71aa0f15097fcf48fd5f2be5287"
+                "reference": "3ca8f158ee21efa4bbd4f74bea5730c9b9261e2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/627be7fcde84c71aa0f15097fcf48fd5f2be5287",
-                "reference": "627be7fcde84c71aa0f15097fcf48fd5f2be5287",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3ca8f158ee21efa4bbd4f74bea5730c9b9261e2d",
+                "reference": "3ca8f158ee21efa4bbd4f74bea5730c9b9261e2d",
                 "shasum": ""
             },
             "require": {
@@ -1790,7 +1795,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/1.1.6"
+                "source": "https://github.com/thephpleague/flysystem/tree/1.1.7"
             },
             "funding": [
                 {
@@ -1798,7 +1803,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-11-21T11:04:36+00:00"
+            "time": "2021-11-25T19:40:58+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -5777,16 +5782,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.17.0",
+            "version": "2.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "28d12b473ffcbe326959385772fd5125c73bc974"
+                "reference": "317f6110c1977b50e06365bbb155fbe5079035ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/28d12b473ffcbe326959385772fd5125c73bc974",
-                "reference": "28d12b473ffcbe326959385772fd5125c73bc974",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/317f6110c1977b50e06365bbb155fbe5079035ec",
+                "reference": "317f6110c1977b50e06365bbb155fbe5079035ec",
                 "shasum": ""
             },
             "require": {
@@ -5851,7 +5856,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-11-24T08:47:21+00:00"
+            "time": "2021-11-25T10:26:30+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -6095,16 +6100,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.12.6",
+            "version": "v1.12.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "31edbfef5c232157244564db4869fd93bc53b8ce"
+                "reference": "10e0494c9befcca039d5626c7f4f91caa45d6394"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/31edbfef5c232157244564db4869fd93bc53b8ce",
-                "reference": "31edbfef5c232157244564db4869fd93bc53b8ce",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/10e0494c9befcca039d5626c7f4f91caa45d6394",
+                "reference": "10e0494c9befcca039d5626c7f4f91caa45d6394",
                 "shasum": ""
             },
             "require": {
@@ -6151,7 +6156,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2021-11-23T17:35:39+00:00"
+            "time": "2021-11-26T17:38:07+00:00"
         },
         {
             "name": "mockery/mockery",
