@@ -16,6 +16,8 @@ use App\Http\Controllers\Frontend\cusLoginController;
 use App\Http\Controllers\Seller\sellerController;
 use App\Http\Controllers\Seller\sellerLoginController;
 use App\Http\Controllers\Seller\sellerApartMentController;
+use App\Http\Controllers\manager\managerController;
+
 
 
 
@@ -39,16 +41,13 @@ use App\Http\Controllers\Seller\sellerApartMentController;
 */
 
 Auth::routes();
-
-//Login
 Route::get('/admin/login', [LoginController::class, 'index']);
 Route::post('/admin/login', [LoginController::class, 'verify']);
 
-//Logout
 Route::get('/logout', [LogoutController::class, 'index']);
 
 Route::group(['middleware' => 'Admin'], function () {
-    //Admin
+   
     Route::get('/Admin/Dashboard', [AdminController::class, 'index'])->name('Admin.Dashboard');
     Route::get('/Admin/Create', [AdminController::class, 'create'])->name('Admin.Create');
     Route::post('/Admin/Create', [AdminController::class, 'storeAdmin']);
@@ -82,9 +81,6 @@ Route::group(['middleware' => 'Admin'], function () {
 });
 
 
-
-// Frontend Route start here %%%%%%%%%%%%%%%%%%%%%%%%%-----------------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 Route::get('/', [homeController::class, 'index'])->name('home');
 Route::get('/customer/login', [cusLoginController::class, 'index'])->name('customer.login');
 Route::post('/login', [cusLoginController::class, 'login'])->name('customer-login');
@@ -94,6 +90,19 @@ Route::get('/interior', [homeController::class, 'Interior'])->name('interior');
 Route::get('/residential/interior', [homeController::class, 'residentialInterior'])->name('residential.interior');
 Route::get('/commercial/interior', [homeController::class, 'commercialInterior'])->name('commercial.interior');
 Route::get('/apartment/details/{id}', [homeController::class, 'detailsApartment'])->name('details.apartment');
+Route::get('/apartment/feature', [homeController::class, 'featureApartment'])->name('featurer.apartment');
+Route::get('/apartment/allproperty', [homeController::class, 'allApartment'])->name('all.apartment');
+Route::get('/apartment/sell', [homeController::class, 'sellApartment'])->name('sell.apartment');
+Route::get('/apartment/rent', [homeController::class, 'rentApartment'])->name('rent.apartment');
+Route::post('/apartment/review/', [homeController::class, 'review'])->name('review');
+Route::post('/apartment/interiorsadd/', [homeController::class, 'interiors'])->name('interioradd');
+
+Route::post('/apartment/commercialsadd/', [homeController::class, 'commercials'])->name('commercialsadd');
+
+Route::get('/search', [homeController::class, 'Search'])->name('search');
+Route::post('/search/result', [homeController::class, 'searchResult']);
+
+
 
 
 
@@ -122,8 +131,7 @@ Route::middleware('auth:seller')->group(function () {
     Route::get('/dashboard', [sellerController::class, 'dashboard'])->name('seller.dashboard');
 
 
-    Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
-//add_apartment
+
     Route::get('/view/apartment/', [sellerApartMentController::class, 'viewApartment'])->name('seller.apartmentView');
 
     Route::get('/add/apartment', [sellerApartMentController::class, 'Apartment'])->name('seller.apartment');
@@ -134,8 +142,37 @@ Route::middleware('auth:seller')->group(function () {
 
     Route::get('/view/apartment/{id}', [sellerApartMentController::class, 'detailsApartment'])->name('seller.viewApartment');
     Route::get('/status/{id}', [sellerApartMentController::class, 'statusUpdate']);
+    
+
+    Route::get('/profile', [sellerController::class, 'profile'])->name('seller.profile');
+    Route::post('/update/profile', [sellerController::class, 'updateProfile'])->name('seller.updateprofile');
+
+
+
+    
+    Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
 
 });
 });
+
+
+//Manager Route Start&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&______________________________
+Route::prefix('manager')->group(function () {
+
+        Route::get('/dashboard', [managerController::class, 'dashboard'])->name('manager.dashboard');
+    
+        Route::get('/apartment', [managerController::class, 'apartment'])->name('manager.apartment');
+        Route::get('/edit/apartment/{id}', [managerController::class, 'apartmentEdit'])->name('manager.apartmentEdit');
+        Route::post('/update/apartment/{id}', [managerController::class, 'updateApartment'])->name('manager.updateApartment');
+        Route::get('/view/apartment/{id}', [managerController::class, 'detailsApartment'])->name('manager.viewApartment');
+        Route::get('/status/{id}', [managerController::class, 'statusUpdate']);
+        Route::delete('/{id}/delete', [managerController::class, 'delete']);
+
+        Route::get('/seller', [managerController::class, 'seller'])->name('manager.seller');
+        Route::get('/sellerstatus/{id}', [managerController::class, 'statusUpdateSeller']);
+
+
+
+    });
 
 

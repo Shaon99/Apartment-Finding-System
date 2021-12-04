@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Seller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Hash;
 
 class sellerLoginController extends Controller
 {
@@ -86,14 +87,18 @@ class sellerLoginController extends Controller
         $user = Seller::where('email', $request->{$this->username()})->first();
 
         
-        if ($user->status != 1) {
+        if ($user && Hash::check($request->password, $user->password) && $user->status != 1) {
 
             session()->flash('activeerr','Your Account have not activated yet. A Confirmation mail will be sent to you!');
         }
 
     
+        if ($request->expectsJson()) {
+            return response()->json($errors, 422);
+        }
         return redirect()->back()
-            ->withInput($request->only($this->username(), 'remember'));
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors($errors);
             
     }
 

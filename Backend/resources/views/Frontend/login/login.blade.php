@@ -71,9 +71,7 @@
                         <div class="btn-wrapper mt-5">
                             <button class="theme-btn-1 btn btn-block" type="submit">SIGN IN</button>
                         </div>
-                        {{-- <div class="go-to-btn mt-20">
-                                <a href="#"><small>FORGOTTEN YOUR PASSWORD?</small></a>
-                            </div> --}}
+                        
                     </form>
                 </div>
             </div>
@@ -85,7 +83,7 @@
                     </div>
                 </div>
                 <h6>Super admin Login? <a href="/admin/login" class="btn btn-warning">CLICK HERE</a></h6>
-            </div>>
+            </div>
         </div>
     </div>
 </div>

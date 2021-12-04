@@ -4,6 +4,7 @@
 
  <!-- SLIDER AREA START (slider-11) -->
  <div class="ltn__slider-area ltn__slider-11  ltn__slider-11-slide-item-count-show--- ltn__slider-11-pagination-count-show--- section-bg-1">
+   
     <div class="ltn__slider-11-inner">
         <div class="ltn__slider-11-active">
             <!-- slide-item -->
@@ -46,91 +47,88 @@
             </div>
         </div>
 
-     <!-- IMAGE SLIDER AREA START (img-slider-3) -->
-     <div class="ltn__img-slider-area mb-90"  style="background:white; padding: 00px 00px 100px 00px;">
-        <div class="container-fluid">
-            <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="img/img-slide/31.jpg" data-rel="lightcase:myCollection">
-                            <img src="{{url('frontend/img/img-slide/31.jpg')}}" alt="Image" >
-                        </a>
+        <div class="ltn__img-slider-area mb-90"  style="background:white; padding: 00px 00px 100px 00px;">
+            <div class="container-fluid">
+                <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
+                    <div class="col-lg-12">
+                        <div class="ltn__img-slide-item-4">
+                            <a href="img/img-slide/31.jpg" data-rel="lightcase:myCollection">
+                                <img src="{{url('frontend/img/img-slide/31.jpg')}}" alt="Image" >
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="img/img-slide/32.jpg" data-rel="lightcase:myCollection">
-                            <img src="img/img-slide/32.jpg" alt="Image">
-                        </a>
+                    <div class="col-lg-12">
+                        <div class="ltn__img-slide-item-4">
+                            <a href="#" data-rel="lightcase:myCollection">
+                                <img src="{{url('frontend/img/img-slide/31.jpg')}}" alt="Image">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="img/img-slide/33.jpg" data-rel="lightcase:myCollection">
-                            <img src="img/img-slide/33.jpg" alt="Image">
-                        </a>
+                    <div class="col-lg-12">
+                        <div class="ltn__img-slide-item-4">
+                            <a href="#" data-rel="lightcase:myCollection">
+                                <img src="{{url('frontend/img/img-slide/31.jpg')}}" alt="Image">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="img/img-slide/34.jpg" data-rel="lightcase:myCollection">
-                            <img src="img/img-slide/34.jpg" alt="Image">
-                        </a>
+                    <div class="col-lg-12">
+                        <div class="ltn__img-slide-item-4">
+                            <a href="#" data-rel="lightcase:myCollection">
+                                <img src="{{url('frontend/img/img-slide/31.jpg')}}" alt="Image">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="img/img-slide/35.jpg" data-rel="lightcase:myCollection">
-                            <img src="img/img-slide/35.jpg" alt="Image">
-                        </a>
+                    <div class="col-lg-12">
+                        <div class="ltn__img-slide-item-4">
+                            <a href="#" data-rel="lightcase:myCollection">
+                                <img src="{{url('frontend/img/img-slide/31.jpg')}}" alt="Image">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- IMAGE SLIDER AREA END -->
     
     <div class="ltn__form-box contact-form-box box-shadow white-bg mt-50 " style="background: #F2F6F7 ;" >
         <h4 class=" text-center " style="font-size: 33px;  padding: 30px 00px 30px 00px;">Send us a message and we will contact you back</h4>
         <center>
         <div class="col-md-8 ">
-            <form id="contact-form" action="https://tunatheme.com/tf/html/quarter-preview/quarter/mail.php" method="post">
+            
+            <form id="contact-form" action="{{route('interioradd')}}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input-item input-item-name ltn__custom-icon">
-                            <input type="text" name="name" placeholder="Enter your name">
+                            <input  required type="text" name="name" placeholder="Enter your name">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-item input-item-email ltn__custom-icon">
-                            <input type="email" name="email" placeholder="Enter email address">
+                            <input  required type="email" name="email" placeholder="Enter email address">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-item">
-                            <select class="nice-select">
-                                <option>Select Service Type</option>
-                                <option>Property Management </option>
-                                <option>Mortgage Service </option>
-                                <option>Consulting Service</option>
-                                <option>Home Buying</option>
-                                <option>Home Selling</option>
-                                <option>Escrow Services</option>
+                            <select required  class="nice-select" name="service">
+                                <option value="Select Service Type">Select Service Type</option>
+                                <option value="Property Management">Property Management </option>
+                                <option value="Mortgage Service">Mortgage Service </option>
+                                
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-item input-item-phone ltn__custom-icon">
-                            <input type="text" name="phone" placeholder="Enter phone number">
+                            <input required  type="text" name="phone" placeholder="Enter phone number">
                         </div>
                     </div>
                 </div>
                 <div class="input-item input-item-textarea ltn__custom-icon">
-                    <textarea name="message" placeholder="Enter message"></textarea>
+                    <textarea required  name="message" placeholder="Enter message"></textarea>
                 </div>
-                <p><label class="input-info-save mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label></p>
                 <div class="btn-wrapper mt-0">
-                    <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">get an free service</button>
+                    <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">get service</button>
                 </div>
                 <p class="form-messege mb-0 mt-20"></p>
             </form>

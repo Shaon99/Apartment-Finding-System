@@ -26,6 +26,7 @@
                                             <th>Sell/Rent</th>
                                             <th>City</th>
                                             <th>Status</th>
+                                            <th>Status Change</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -80,9 +81,8 @@
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
         <script>
-            //Status update ajax
+           
           $(document).ready(function () {
               $(document).on('change','#selectStatus',function () {
                   let status = $(this).val();
