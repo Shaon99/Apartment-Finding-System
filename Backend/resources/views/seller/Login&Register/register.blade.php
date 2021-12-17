@@ -15,7 +15,6 @@
     <link rel="shortcut icon" href="{{asset('/frontend/img/favicon.png')}}" type="image/x-icon" />
 
 </head>
-
 <body>
 	<section class="ftco-section">
 		<div class="container">

@@ -180,26 +180,6 @@
                         <div class="col ltn__header-options ltn__header-options-2 mb-sm-20">
 
 
-                            <div class="ltn__drop-menu user-menu">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="icon-user"></i></a>
-                                        <ul>
-                                            @guest
-                                                <li><a href="/customer/login">Sign in</a></li>
-                                                <li><a href="/customer/register">Register</a></li>
-                                            @else
-                                                <li><a href="/customer/profile">My Account</a></li>
-                                                <li><a href="{{ route('customer-logout') }}">Logout <i
-                                                            class="fas fa-sign-out-alt"></i></a></li>
-
-                                            @endguest
-
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-
                             <div class="mobile-menu-toggle d-xl-none">
                                 <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
                                     <svg viewBox="0 0 800 600">
@@ -272,21 +252,7 @@
 
                         </ul>
                     </div>
-                    <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
-                        <ul>
-                            @guest
-                                <li><a href="/customer/login">Sign in</a></li>
-                                <li><a href="/customer/register">Register</a></li>
-                            @else
-                                <li><a href="/customer/profile">My Account</a></li>
-                                <li><a href="{{ route('customer-logout') }}">Logout <i
-                                            class="fas fa-sign-out-alt"></i></a>
-                                </li>
-
-                            @endguest
-
-                        </ul>
-                    </div>
+                   
                     <div class="ltn__social-media-2">
                         <ul>
                             <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>

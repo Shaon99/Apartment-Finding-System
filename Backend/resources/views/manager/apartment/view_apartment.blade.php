@@ -61,13 +61,18 @@
 
 
                                                 <td>
-                                                    <a href="{{ route('manager.viewApartment',$item->id) }}"> <button class="btn btn-outline-primary">View</button></a>
+                                                    <a href="{{ route('manager.viewApartment',$item->id) }}"> 
+                                                    <button class="btn btn-outline-primary">View</button></a>
 
-                                                    <a href="{{ route('manager.apartmentEdit',$item->id) }}">
-                                                        <button class="btn btn-outline-primary">Edit</button></a>
 
-                                                        <button data-id="{{ $item->id }}"
-                                                            class="btn btn-outline-primary deleteBtn" type="submit">Delete</button>
+
+
+
+                                                    {{-- <a href="{{ route('manager.apartmentEdit',$item->id) }}">
+                                                        <button class="btn btn-outline-primary">Edit</button></a> --}}
+
+                                                        {{-- <button data-id="{{ $item->id }}"
+                                                            class="btn btn-outline-primary deleteBtn" type="submit">Delete</button> --}}
                                                 </td>
                                             @empty
                                                 <td colspan="5" class="text-center">No data Available</td>

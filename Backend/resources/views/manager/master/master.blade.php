@@ -38,30 +38,37 @@
         </button>
        
         <ul class="navbar-nav navbar-nav-right">
-        
           <li class="nav-item d-none d-lg-flex">
-            <a class="nav-link" href="{{route('seller-logout')}}">
+            <a class="nav-link" href="{{route('home')}}">
+              <span class="btn btn-primary">Home</span>
+            </a>
+          </li>  
+          <li class="nav-item d-none d-lg-flex">
+            <a class="nav-link" href="{{route('manager-logout')}}">
               <span class="btn btn-danger">Logout</span>
             </a>
           </li>        
       
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-             
+              @if (Auth::user()->image)
+              <img src="{{ url('uploads/manager_image/' . Auth::user()->image) }}" alt="profile">
+          @else
               <img src="{{ url('seller.jpg') }}" alt="profile">
-              </a>
+          @endif             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                <a href="{{ route('seller.profile') }}" class="dropdown-item">
+                <a href="{{ route('manager.profile') }}" class="dropdown-item">
                     <i class="fas fa-cog text-primary"></i>
                     Profile
                 </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item" href="{{route('manager-logout')}}">
                 <i class="fas fa-power-off text-primary"></i>
                 Logout
               </a>
             </div>
           </li>
+         
          
         </ul>
         
@@ -98,21 +105,24 @@
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image">             
+              <div class="profile-image">
+                @if (Auth::user()->image)
+                <img src="{{ url('uploads/manager_image/' . Auth::user()->image) }}" alt="profile">
+            @else
                 <img src="{{ url('seller.jpg') }}" alt="profile">
-                 </div>
+            @endif              </div>
               <div class="profile-name">
                 <p class="name">
                   Welcome 
                 </p>
                 <p class="designation">
-                 manager name  
-                 </p>
+                  {{Auth::user()->name}}
+                </p>
               </div>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('seller.dashboard')}}">
+            <a class="nav-link" href="{{route('manager.dashboard')}}">
               <i class="fa fa-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>

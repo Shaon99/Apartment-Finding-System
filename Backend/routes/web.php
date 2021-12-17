@@ -16,16 +16,8 @@ use App\Http\Controllers\Frontend\cusLoginController;
 use App\Http\Controllers\Seller\sellerController;
 use App\Http\Controllers\Seller\sellerLoginController;
 use App\Http\Controllers\Seller\sellerApartMentController;
+use App\Http\Controllers\manager\managerLoginController;
 use App\Http\Controllers\manager\managerController;
-
-
-
-
-
-
-
-
-
 
 
 
@@ -82,10 +74,10 @@ Route::group(['middleware' => 'Admin'], function () {
 
 
 Route::get('/', [homeController::class, 'index'])->name('home');
-Route::get('/customer/login', [cusLoginController::class, 'index'])->name('customer.login');
-Route::post('/login', [cusLoginController::class, 'login'])->name('customer-login');
-Route::get('/customer/register', [frontloginController::class, 'register'])->name('register');
-Route::post('/storeregister', [frontloginController::class, 'registerStore'])->name('store.customer');
+// Route::get('/customer/login', [cusLoginController::class, 'index'])->name('customer.login');
+// Route::post('/login', [cusLoginController::class, 'login'])->name('customer-login');
+// Route::get('/customer/register', [frontloginController::class, 'register'])->name('register');
+// Route::post('/storeregister', [frontloginController::class, 'registerStore'])->name('store.customer');
 Route::get('/interior', [homeController::class, 'Interior'])->name('interior');
 Route::get('/residential/interior', [homeController::class, 'residentialInterior'])->name('residential.interior');
 Route::get('/commercial/interior', [homeController::class, 'commercialInterior'])->name('commercial.interior');
@@ -159,7 +151,12 @@ Route::middleware('auth:seller')->group(function () {
 //Manager Route Start&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&______________________________
 Route::prefix('manager')->group(function () {
 
-        Route::get('/dashboard', [managerController::class, 'dashboard'])->name('manager.dashboard');
+    Route::get('/login', [managerLoginController::class, 'index'])->name('manager.login');
+    Route::post('/login', [managerLoginController::class, 'login'])->name('manager_login');
+     
+    Route::middleware('auth:manager')->group(function () {
+
+    Route::get('/dashboard', [managerController::class, 'dashboard'])->name('manager.dashboard');
     
         Route::get('/apartment', [managerController::class, 'apartment'])->name('manager.apartment');
         Route::get('/edit/apartment/{id}', [managerController::class, 'apartmentEdit'])->name('manager.apartmentEdit');
@@ -173,6 +170,15 @@ Route::prefix('manager')->group(function () {
 
 
 
+
+    Route::get('/profile', [managerController::class, 'profile'])->name('manager.profile');
+    Route::post('/update/profile', [managerController::class, 'updateProfile'])->name('manager.updateprofile');
+
+
+
+        Route::get('/logout', [managerLoginController::class, 'logout'])->name('manager-logout');
+
+    });
     });
 
 

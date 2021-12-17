@@ -5,20 +5,23 @@ namespace App\Http\Controllers\manager;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Apartment;
+use App\Models\Manager;
 use App\Models\Seller;
 use App\Models\Gallery;
 use Devfaysal\BangladeshGeocode\Models\District;
-
+use Auth;
 
 class managerController extends Controller
 {
     public function dashboard(){
-        return view('manager.dashboard');
+        $apartment=Apartment::where('city',Auth::user()->city)->count();
+        $seller=Seller::where('city',Auth::user()->city)->count();
+        return view('manager.dashboard',compact('apartment','seller'));
     }
 
 
     public function apartment(){
-        $apartment = Apartment::all();
+        $apartment = Apartment::where('city',Auth::user()->city)->get();
         return view('manager.apartment.view_apartment', compact('apartment'));
     }
 
@@ -152,8 +155,8 @@ public function delete(Apartment $id)
     return response()->json('Apartment successfully Deleted!!!');
 }
 
-public function seller(){
-    $seller=Seller::all();
+public function seller(){  
+    $seller=Seller::where('city',Auth::user()->city)->get();
     return view('manager.seller.index',compact('seller'));
 }
 
@@ -164,6 +167,51 @@ public function statusUpdateSeller(Request $request, Seller $id){
 
     return response()->json('Status Successfully Updated!!!');
 
+}
+
+public function profile(){
+
+    $seller = Manager::find(Auth::id());
+
+    return view('manager.profile.profile',compact('seller'));
+
+}
+
+ 
+private function removeImage($seller)
+{
+    if($seller->image != "" && \File::exists('uploads/manager_image/' . $seller->image)) {
+        @unlink(public_path('uploads/manager_image/' . $seller->image));
+    }
+}
+
+
+public function updateProfile(Request $request)
+{
+  
+
+    $seller = Manager::find(Auth::id());
+
+    $seller->name = $request->name;
+    $seller->email = $request->email;
+    $seller->phone = $request->phone;
+    $seller->city = $request->address;
+
+
+    if ($request->has('password') && !empty($request->password)) {
+        $seller->password = bcrypt($request->password);
+    }
+
+    if ($request->hasFile('image')) {
+        $this->removeImage($seller);
+        $file = $request->file('image');
+        $filename = time() . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('uploads/manager_image'), $filename);
+        $seller->image = $filename;
+    }
+
+    $seller->save();
+    return redirect()->back()->with('message','Manager Profile Updated');
 }
 
 }

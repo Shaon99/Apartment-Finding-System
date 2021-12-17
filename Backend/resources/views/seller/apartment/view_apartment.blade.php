@@ -24,6 +24,7 @@
                                             <th>Apartment Name</th>
                                             <th>Price</th>
                                             <th>Sell/Rent</th>
+                                            <th>Apartment Type</th>
                                             <th>City</th>
                                             <th>Status</th>
                                             <th>Status Change</th>
@@ -43,6 +44,14 @@
                                                     <span
                                                         class="badge badge-primary">{{ $item->rent_sell == '1' ? 'Sell' : '' }}</span>
                                                 </td>
+                                              
+                                                <td class="text-capitalize">
+                                                    <span
+                                                        class="badge badge-danger">{{ $item->type == '0' ? 'Residential' : '' }}</span>
+                                                    <span
+                                                        class="badge badge-warnning">{{ $item->type == '1' ? 'commercial' : '' }}</span>
+                                                </td>
+                                              
                                                 <td>{{ $item->city }}</td>
 
                                                 <td class="text-capitalize">

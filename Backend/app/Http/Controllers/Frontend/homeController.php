@@ -115,16 +115,20 @@ class homeController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'type' => 'required',
+            'atype' => 'required',
 
         ], [
             'name.required' => 'Select a District',
             'type.required' => 'Select a Type',
+            'atype.required' => 'Select a Type',
         ]);
 
         $city=$request->name;
         $type=$request->type;
+        $atype=$request->atype;
 
-        $apartment=Apartment::with('seller')->where('city',$city)->where('rent_sell',$type)->get();
+
+        $apartment=Apartment::with('seller')->where('city',$city)->where('rent_sell',$type)->where('type',$atype)->get();
 
         return view('Frontend.searchappend',compact('apartment'));
 

@@ -26,6 +26,19 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    </style>
+
+
 </head>
 
 <body>
@@ -41,7 +54,11 @@
         </button>
        
         <ul class="navbar-nav navbar-nav-right">
-        
+          <li class="nav-item d-none d-lg-flex">
+            <a class="nav-link" href="{{route('home')}}">
+              <span class="btn btn-primary">Home</span>
+            </a>
+          </li>
           <li class="nav-item d-none d-lg-flex">
             <a class="nav-link" href="{{route('seller-logout')}}">
               <span class="btn btn-danger">Logout</span>

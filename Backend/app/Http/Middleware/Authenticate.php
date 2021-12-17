@@ -24,6 +24,11 @@ class Authenticate extends Middleware
                  return route('seller.login');
          }
      }
+     if($request->is('manager/*')) {
+        if (!Auth::guard('manager')->check()){
+                 return route('manager.login');
+         }
+     }
    
     }
 }

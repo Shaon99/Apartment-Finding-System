@@ -164,7 +164,6 @@
 
 </body>
 
-<!-- Mirrored from tunatheme.com/tf/html/quarter-preview/quarter/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Nov 2021 16:32:42 GMT -->
 </html>
 
 

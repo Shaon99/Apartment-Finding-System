@@ -1,4 +1,4 @@
-@extends('seller.master.master')
+@extends('manager.master.master')
 
 @section('main_content')
 <div class="main-panel">
@@ -14,12 +14,12 @@
         <div class="auth-form-wrapper">
             <div class="mb-2">
                 @if (Auth::user()->image)
-                <img height="100px"width="100px" src="{{ url('uploads/seller_image/' . Auth::user()->image) }}" alt="profile">
+                <img height="100px"width="100px" src="{{ url('uploads/manager_image/' . Auth::user()->image) }}" alt="profile">
             @else
                 <img height="100px"width="100px" src="{{ url('seller.jpg') }}" alt="profile">
             @endif
             </div>
-            <form action="{{route('seller.updateprofile')}}"  method="post" enctype="multipart/form-data">
+            <form action="{{route('manager.updateprofile')}}"  method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputUsername1">Name</label>
@@ -41,9 +41,9 @@
 
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Address</label>
-                    <input type="text" class="form-control" id="address" name="address"
-                        value="{{ old('address', $seller->address) }}" placeholder="Enter Address" required>
+                    <label for="exampleInputEmail1">City</label>
+                    <input type="text" class="form-control text-capitalize" id="address" name="address"
+                        value="{{ old('address', $seller->city) }}" placeholder="Enter Address" required>
 
                 </div>
                 <div class="form-group">
