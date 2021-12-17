@@ -34,8 +34,11 @@ class sellerApartMentController extends Controller
             'select' => 'required',
             'text' => 'required',
             'city' => 'required',
+            'type' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
 
+        ],[
+            'type.required'=>'Slect a Apartment Type',
         ]);
 
         $apartment = new Apartment();
@@ -54,6 +57,8 @@ class sellerApartMentController extends Controller
         $apartment->rent_sell = $request->select;
         $apartment->text = $request->text;
         $apartment->city = $request->city;
+        $apartment->type = $request->type;
+
 
         if ($request->hasFile('image')) {
             $extension = $request->image->getClientOriginalExtension();

@@ -1,15 +1,11 @@
-@extends('seller.master.master')
+@extends('manager.master.master')
 
 @section('main_content')
     <!-- partial -->
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="page-header">
-                <h3 class="page-title">
-                    <a class="btn btn-success btn-rounded" href="{{ route('seller.apartment') }}"><i class="fa fa-plus">
-                        </i>&nbsp ADD Apartment</a>
-
-                </h3>
+          
               
             </div>
             <div class="card">
@@ -22,9 +18,9 @@
                                         <tr>
                                             <th>#ID</th>
                                             <th>Apartment Name</th>
+                                            <th>Seller Name</th>
                                             <th>Price</th>
                                             <th>Sell/Rent</th>
-                                            <th>Apartment Type</th>
                                             <th>City</th>
                                             <th>Status</th>
                                             <th>Status Change</th>
@@ -33,10 +29,11 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($apartment as $item)
-                                            <tr>
+                                            <tr data-id="{{$item->id}}">
 
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->apartment_name }}</td>
+                                                <td>{{ $item->seller->name }}</td>
                                                 <td>{{ $item->price }}</td>
                                                 <td class="text-capitalize">
                                                     <span
@@ -44,14 +41,6 @@
                                                     <span
                                                         class="badge badge-primary">{{ $item->rent_sell == '1' ? 'Sell' : '' }}</span>
                                                 </td>
-                                              
-                                                <td class="text-capitalize">
-                                                    <span
-                                                        class="badge badge-danger">{{ $item->type == '0' ? 'Residential' : '' }}</span>
-                                                    <span
-                                                        class="badge badge-warnning">{{ $item->type == '1' ? 'commercial' : '' }}</span>
-                                                </td>
-                                              
                                                 <td>{{ $item->city }}</td>
 
                                                 <td class="text-capitalize">
@@ -72,10 +61,18 @@
 
 
                                                 <td>
-                                                    <a href="{{ route('seller.viewApartment',$item->id) }}"> <button class="btn btn-outline-primary">View</button></a>
+                                                    <a href="{{ route('manager.viewApartment',$item->id) }}"> 
+                                                    <button class="btn btn-outline-primary">View</button></a>
 
-                                                    <a href="{{ route('seller.apartmentEdit',$item->id) }}">
-                                                        <button class="btn btn-outline-primary">Edit</button></a>
+
+
+
+
+                                                    {{-- <a href="{{ route('manager.apartmentEdit',$item->id) }}">
+                                                        <button class="btn btn-outline-primary">Edit</button></a> --}}
+
+                                                        {{-- <button data-id="{{ $item->id }}"
+                                                            class="btn btn-outline-primary deleteBtn" type="submit">Delete</button> --}}
                                                 </td>
                                             @empty
                                                 <td colspan="5" class="text-center">No data Available</td>
@@ -100,7 +97,7 @@
           
                   $.ajax({
                       type: 'GET',
-                      url: `/Seller/status/${id}`,
+                      url: `/manager/status/${id}`,
                       data: {status: status},
                       success: (data) => {
                         toastr.options = {
@@ -125,6 +122,69 @@
                   })
               });
           });
+
+
+          $(document).ready(function() {
+    $(document).on('click', '.deleteBtn', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        let tableRow = $(this).parent().parent();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success ml-2',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: `/manager/${id}/delete`,
+                    success: (data) => {
+                        $(tableRow).remove();
+                        swalWithBootstrapButtons.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+
+                    },
+                    error: (error) => {
+
+                    }
+
+                })
+
+
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your file is safe :)',
+                    'error'
+                )
+            }
+
+        })
+    });
+
+});
           </script>
 
     @endsection

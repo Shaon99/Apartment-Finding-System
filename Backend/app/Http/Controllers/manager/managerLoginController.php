@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Seller;
+namespace App\Http\Controllers\manager;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Seller;
+use App\Models\Manager;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Hash;
 
-class sellerLoginController extends Controller
+class managerLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ class sellerLoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-     protected $redirectTo = '/Seller/dashboard';
+     protected $redirectTo = '/manager/dashboard';
 
     /**
      * Create a new controller instance.
@@ -49,7 +49,7 @@ class sellerLoginController extends Controller
      */
     public function index()
     {
-        return view('seller.Login&Register.login');
+        return view('manager.login.login');
     }
     /**
      * Get the guard to be used during authentication.
@@ -58,15 +58,15 @@ class sellerLoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('seller');
+        return Auth::guard('manager');
     }
 
-    public function logout(Request $request, Seller $admin)
+    public function logout(Request $request, Manager $admin)
     {
 
-        $this->guard('seller')->logout();
+        $this->guard('manager')->logout();
 
-     return Redirect()->route('seller.login')->with('success', 'You are Logged out');
+     return Redirect()->route('manager.login')->with('success', 'You are Logged out');
     }
 
 
@@ -84,12 +84,12 @@ class sellerLoginController extends Controller
 
         $errors = [$this->username() => trans('auth.failed')];
 
-        $user = Seller::where('email', $request->{$this->username()})->first();
+        $user = Manager::where('email', $request->{$this->username()})->first();
 
         
         if ($user && Hash::check($request->password, $user->password) && $user->status != 1) {
 
-            session()->flash('activeerr','Your Account have not activated yet. A Confirmation mail will be sent to you!');
+            session()->flash('activeerr','Your Account have not activated yet.Contact With Admin');
         }
 
     
@@ -101,9 +101,6 @@ class sellerLoginController extends Controller
             ->withErrors($errors);
             
     }
-
-
-
 
 
     /**

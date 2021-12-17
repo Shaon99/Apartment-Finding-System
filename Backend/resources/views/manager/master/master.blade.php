@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Seller-Dashboard</title>
+  <title>Manager-Dashboard</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('vendors/iconfonts/font-awesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendors/css/vendor.bundle.base.css')}}">
@@ -23,19 +23,6 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  <style>
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-    </style>
-
-
 </head>
 
 <body>
@@ -55,33 +42,33 @@
             <a class="nav-link" href="{{route('home')}}">
               <span class="btn btn-primary">Home</span>
             </a>
-          </li>
+          </li>  
           <li class="nav-item d-none d-lg-flex">
-            <a class="nav-link" href="{{route('seller-logout')}}">
+            <a class="nav-link" href="{{route('manager-logout')}}">
               <span class="btn btn-danger">Logout</span>
             </a>
-          </li>
-        
+          </li>        
       
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               @if (Auth::user()->image)
-              <img src="{{ url('uploads/seller_image/' . Auth::user()->image) }}" alt="profile">
+              <img src="{{ url('uploads/manager_image/' . Auth::user()->image) }}" alt="profile">
           @else
               <img src="{{ url('seller.jpg') }}" alt="profile">
           @endif             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                <a href="{{ route('seller.profile') }}" class="dropdown-item">
+                <a href="{{ route('manager.profile') }}" class="dropdown-item">
                     <i class="fas fa-cog text-primary"></i>
                     Profile
                 </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{route('seller-logout')}}">
+              <a class="dropdown-item" href="{{route('manager-logout')}}">
                 <i class="fas fa-power-off text-primary"></i>
                 Logout
               </a>
             </div>
           </li>
+         
          
         </ul>
         
@@ -120,7 +107,7 @@
             <div class="nav-link">
               <div class="profile-image">
                 @if (Auth::user()->image)
-                <img src="{{ url('uploads/seller_image/' . Auth::user()->image) }}" alt="profile">
+                <img src="{{ url('uploads/manager_image/' . Auth::user()->image) }}" alt="profile">
             @else
                 <img src="{{ url('seller.jpg') }}" alt="profile">
             @endif              </div>
@@ -135,7 +122,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('seller.dashboard')}}">
+            <a class="nav-link" href="{{route('manager.dashboard')}}">
               <i class="fa fa-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -150,13 +137,26 @@
               <ul class="nav flex-column sub-menu"> 
                 <li class="nav-item">
                   
-                  <a class="nav-link" href="{{route('seller.apartment')}}"><i class="fa fa-plus"> </i>&nbsp ADD Apartment</a>
+                  <a class="nav-link" href="{{route('manager.apartment')}}"><i class="fa fa-plus"> </i>&nbsp All Apartment</a>
                 </li>      
-                
+               
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#page-layout1" aria-expanded="false" aria-controls="page-layouts">
+              <i class=""></i>
+              <span class="menu-title">Manage Seller</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="page-layout1">
+              <ul class="nav flex-column sub-menu"> 
                 <li class="nav-item">
                   
-                  <a class="nav-link" href="{{route('seller.apartmentView')}}"><i class="fa fa-eye"> </i>&nbsp View Apartment</a>
-                </li> 
+                  <a class="nav-link" href="{{route('manager.seller')}}"><i class="fa fa-plus"> </i>&nbsp All Seller</a>
+                </li>      
+               
               </ul>
             </div>
           </li>
@@ -196,6 +196,7 @@
   <!-- Custom js for this page-->
   <script src="{{asset('js/dashboard.js')}}"></script>
   <script src="{{asset('js/data-table.js')}}"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- End custom js for this page-->
 

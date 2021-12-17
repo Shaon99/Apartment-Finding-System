@@ -1,9 +1,6 @@
 @extends('seller.master.master')
 
 @section('main_content')
-
-
-
     <div class="container-fluid">
         <div class="content-wrapper">
             <div class="col-12 grid-margin stretch-card">
@@ -138,20 +135,6 @@
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
-
-                                            <div class="col-md-6 form-group">
-                                                <label class="text-capitalize">Apartment Type</label>
-                                                <select name="type" class="form-control form-control-lg"
-                                                    id="exampleFormControlSelect2">
-                                                    <option selected disabled>select</option>
-                                                    <option value="0">Residential</option>
-                                                    <option value="1">Commercial</option>
-                                                </select>
-                                                @error('type')
-                                                    <p class="form-text text-danger">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">Rent/Sell</label>
                                                 <select name="select" class="form-control form-control-lg"

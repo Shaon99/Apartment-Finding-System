@@ -1,62 +1,80 @@
-@extends('seller.master.master')
+@extends('manager.master.master')
 
 @section('main_content')
-
-
-
     <div class="container-fluid">
         <div class="content-wrapper">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="container rounded bg-white ">
+                        <div class="container rounded bg-white mb-3">
 
                             <div class="row">
-                                <form action="{{ route('seller.storeApartment') }}" method="POST"
+                                <form action="{{ route('manager.updateApartment',$apartment->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="col-md-12 border-right">
 
                                         <div class="row ">
 
-                                            <div class="col-md-6"><label class="labels text-capitalize">Feature
+                                            <div class="col-md-6 mb-2"><label class="labels text-capitalize">Feature
                                                     Picture</label><br>
-                                                <input type="file" onchange="showPreview(event);" name="image"
-                                                    class="btn btn-primary btn-sm profile-button  mt-2 text-uppercase" />
-                                                <img id="file-id-preview" class="mt-2" width="150px" src="">
 
+                                                <img id="file-id-preview" class="mt-5" width="150px" src="" />
+                                                <input id="uploadFile" type="file" onchange="showPreview(event);" name="image"
+                                                    class="btn btn-primary btn-sm profile-button  mt-2 text-uppercase" />
                                                 @error('image')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
 
 
-                                            <div class="col-md-6  gallery"><label class="labels text-capitalize">Multiple
-                                                    Picture</label><br>
 
-                                                <input type="file" name="image_file[]" id="gallery-photo-add"
+                                            <div class="col-md-6 mb-2"><label class="labels text-capitalize">Multiple
+                                                    Picture</label><br>
+                                                <img id="multiple_image_preview" class="mt-5" width="150px" src="" />
+                                                <input type="file" name="image_file[]"
                                                     class="btn btn-primary btn-sm profile-button  mt-2 text-uppercase"
                                                     multiple />
-                                                @error('image_file[]')
+                                                    @error('image_file[]')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
 
                                             </div>
 
+                                            <div class="col-md-6"><label class="labels text-capitalize">Old Feature
+                                                    Picture</label><br>
+                                                <img id="" class="mt-1" width="100px"
+                                                    src="{{ url('uploads/apartment_image/' . $apartment->image) }}" />
+                                            </div>
 
-                                            <div class="col-md-6 form-group mt-4">
+                                            <div class="col-md-6"><label class="labels text-capitalize">Old Multiple
+                                                    Picture</label><br>
+                                                @foreach ($gallery as $data)
+
+                                                    <img class="mt-1" width="100px"
+                                                        src="{{ url('uploads/galleries/' . $data->image_file) }}" />
+
+                                                @endforeach
+
+
+                                            </div>
+
+
+
+                                            <div class="col-md-6 form-group mt-2">
                                                 <label class="text-capitalize ">Apartment Name</label>
                                                 <input type="text" name="name" class="form-control text-capitalize"
-                                                    value="{{ old('name') }}" placeholder="Enter apartment name">
+                                                    value="{{ $apartment->apartment_name }}"
+                                                    placeholder="Enter apartment name">
                                                 @error('name')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
 
-                                            <div class="col-md-6 form-group mt-4">
+                                            <div class="col-md-6 form-group mt-2">
                                                 <label class="text-capitalize ">Apartment address</label>
                                                 <input type="text" name="address" class="form-control text-capitalize"
-                                                    value="{{ old('address') }}" placeholder="Enter property address">
+                                                    value="{{ $apartment->address }}" placeholder="Enter property address">
                                                 @error('address')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -64,7 +82,7 @@
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize ">Apartment size</label>
                                                 <input type="text" name="flat_size" class="form-control text-capitalize"
-                                                    value="{{ old('flat_size') }}" placeholder="Enter flat size">
+                                                value="{{ $apartment->flat_size }}" placeholder="Enter flat size">
                                                 @error('flat_size')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -72,7 +90,7 @@
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">contact</label>
                                                 <input type="number" name="contact" class="form-control text-capitalize"
-                                                    value="{{ old('contact') }}" placeholder="Enter phone number">
+                                                value="{{ $apartment->contact }}" placeholder="Enter phone number">
                                                 @error('contact')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -83,7 +101,7 @@
                                                     id="exampleFormControlSelect2">
                                                     <option selected disabled>select</option>
                                                     @foreach ($district as $item)
-                                                        <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                                    <option {{$item->name == $item->name? 'selected': ''}} value="{{ $item->name }}">{{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('city')
@@ -93,7 +111,7 @@
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">Rent/price</label>
                                                 <input type="text" name="price" class="form-control text-capitalize"
-                                                    value="{{ old('price') }}" placeholder="Enter rent amount">
+                                                value="{{ $apartment->price }}" placeholder="Enter rent amount">
                                                 @error('price')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -101,7 +119,7 @@
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">Bed</label>
                                                 <input type="text" name="bed" class="form-control text-capitalize"
-                                                    value="{{ old('bed') }}" placeholder="Enter bed">
+                                                value="{{ $apartment->bed }}" placeholder="Enter bed">
                                                 @error('bed')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -109,7 +127,7 @@
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">drawing</label>
                                                 <input type="text" name="drawing" class="form-control text-capitalize"
-                                                    value="{{ old('drawing') }}" placeholder="Enter drawing">
+                                                value="{{ $apartment->drawing }}" placeholder="Enter drawing">
                                                 @error('drawing')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -117,7 +135,7 @@
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">dining</label>
                                                 <input type="text" name="dining" class="form-control text-capitalize"
-                                                    value="{{ old('dining') }}" placeholder="Enter dining">
+                                                value="{{ $apartment->dining }}" placeholder="Enter dining">
                                                 @error('dining')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -125,7 +143,7 @@
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">kitchen</label>
                                                 <input type="text" name="kitchen" class="form-control text-capitalize"
-                                                    value="{{ old('kitchen') }}" placeholder="Enter kitchen">
+                                                value="{{ $apartment->kitchen }}" placeholder="Enter kitchen">
                                                 @error('kitchen')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -133,33 +151,18 @@
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">washroom</label>
                                                 <input type="text" name="washroom" class="form-control text-capitalize"
-                                                    value="{{ old('washroom') }}" placeholder="Enter washroom">
+                                                value="{{ $apartment->washroom }}" placeholder="Enter washroom">
                                                 @error('washroom')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
-
-                                            <div class="col-md-6 form-group">
-                                                <label class="text-capitalize">Apartment Type</label>
-                                                <select name="type" class="form-control form-control-lg"
-                                                    id="exampleFormControlSelect2">
-                                                    <option selected disabled>select</option>
-                                                    <option value="0">Residential</option>
-                                                    <option value="1">Commercial</option>
-                                                </select>
-                                                @error('type')
-                                                    <p class="form-text text-danger">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-
                                             <div class="col-md-6 form-group">
                                                 <label class="text-capitalize">Rent/Sell</label>
                                                 <select name="select" class="form-control form-control-lg"
                                                     id="exampleFormControlSelect2">
                                                     <option selected disabled>select</option>
-                                                    <option value="0">Rent</option>
-                                                    <option value="1">Sell</option>
-
+                                                    <option {{$apartment->rent_sell == 0? 'selected': ''}} value="0">Rent</option>
+                                                    <option {{$apartment->rent_sell == 1? 'selected': ''}} value="1">Sell</option>
                                                 </select>
                                                 @error('select')
                                                     <p class="form-text text-danger">{{ $message }}</p>
@@ -169,8 +172,8 @@
 
                                             <div class="col-md-12"><label
                                                     class="labels from-control text-capitalize mt-2">Description</label><textarea
-                                                    name="text" class="form-control text-capitalize" id="" cols="50"
-                                                    rows="12"></textarea>
+                                                    name="text" class="form-control text-capitalize" id="" cols="50" 
+                                                    rows="12">{{ $apartment->text }}</textarea>
                                                 @error('text')
                                                     <p class="form-text text-danger">{{ $message }}</p>
                                                 @enderror
@@ -195,9 +198,9 @@
         </div>
 
 
-
         <script>
-            //single_image_preview
+
+           // single image preview------------------
 
             document.getElementById("file-id-preview").style.visibility = "hidden";
 
@@ -211,28 +214,19 @@
                 }
             }
 
-
             // multiple image preview---------------------------
-            $(function() {
-                // Multiple images preview in browser
-                var imagesPreview = function(input, placeToInsertImagePreview) {
-                    if (input.files) {
-                        var filesAmount = input.files.length;
-                        for (i = 0; i < filesAmount; i++) {
-                            var reader = new FileReader();
-                            reader.onload = function(event) {
-                                $($.parseHTML('<img class="ml-2 mt-2" Height="90px;" width="150px">')).attr(
-                                    'src', event.target.result).appendTo(placeToInsertImagePreview);
-                            }
-                            reader.readAsDataURL(input.files[i]);
-                        }
-                    }
-                };
 
-                $('#gallery-photo-add').on('change', function() {
-                    imagesPreview(this, '.gallery');
-                });
-            });
+        $("#uploadFile").change(function(){        
+           $('#multiple_image_preview').html("");        
+           var total_file=document.getElementById("uploadFile").files.length;        
+           for(var i=0;i<total_file;i++)        
+           {   
+            $('#multiple_image_preview').append("imgsrc='"+URL.createObjectURL(event.target.files[i])+"'>");        
+           }
+        
+        });
+              
+
         </script>
 
     @endsection

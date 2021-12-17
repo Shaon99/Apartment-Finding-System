@@ -15,7 +15,6 @@
 	<link rel="stylesheet" href="{{ asset('loginAssets/css/style.css') }}">
 
 </head>
-
 <body>
 	<section class="ftco-section">
 		<div class="container">
