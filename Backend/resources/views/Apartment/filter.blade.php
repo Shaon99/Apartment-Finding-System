@@ -62,11 +62,12 @@
                 <button class="btn btn-inverse-dark btn-fw">Search</button> <br><br>
                 <p>
                     <a class="btn btn-outline-success" href="/Apartment/All">All</a>
-                    <a class="btn btn-outline-info" href="/Apartment/recent">Recent</a>
-                    <a class="btn btn-outline-info" href="/Apartment/last_week">Last Week</a>
-                    <a class="btn btn-outline-info" href="/Apartment/last_month">Last Month</a>
+                    <a class="btn btn-outline-success" href="/Apartment/recent">Recent</a>
+                    <a class="btn btn-outline-success" href="/Apartment/last_week">Last Week</a>
+                    <a class="btn btn-outline-success" href="/Apartment/last_month">Last Month</a>
                     <a class="btn btn-inverse-primary" href="/Admin/BlockedApartment">All Blocked Apartment</a>
                 </p>
+                @if(count($list) != 0)
                 <table class="table table-striped table-bordered">
                     <tr style="text-align: center">
                         <th>Apartment ID</th>
@@ -78,29 +79,35 @@
                         <th>Details</th>
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr style="text-align: center">
-                        @if($list[$i]['status'] == '0')
-                        <td>{{$list[$i]['id']}}</td>
-                        <td>{{$list[$i]['apartment_name']}}</td>
-                        <td> <a class="btn btn-inverse-warning" href="{{ route('Apartment.Details', [$list[$i]['id']]) }}">Details</a></td>
-                        <td> <a class="btn btn-inverse-success" href="{{ route('Apartment.Block', [$list[$i]['id']]) }}">Unlock</a></td>
+                        @if($list[$i]->status == '1')
+                        <td>{{$list[$i]->id}}</td>
+                        <td>{{$list[$i]->apartment_name}}</td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Apartment.Details', [$list[$i]->id]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Apartment.Block', [$list[$i]->id]) }}">Block</a></td>
                         <td style="width:300px">
                             <div>
-                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]['image']}}">
-                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]['image']}}">
+                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]->image}}">
+                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]->image}}">
                             </div>
                             <div>
-                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]['image']}}">
-                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]['image']}}">
+                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]->image}}">
+                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]->image}}">
                             </div>
                         </td>
-                        <td>{{$list[$i]['city']}}</td>
+                        <td>{{$list[$i]->city}}</td>
                         <td style="text-align: left">
-                            <p style="color: black; font-size:30px">Rent : {{$list[$i]['price']}} Tk. </p>
-                            Home Address : <p style="color: blue; font-size:20px"> {{$list[$i]['address']}}</p>
+                            <p style="color: black; font-size:30px">Rent : {{$list[$i]->price}} Tk. </p>
+                            Home Address : <p style="color: blue; font-size:20px"> {{$list[$i]->address}}</p>
                         </td>
                         </tr>
                         @endif
                         @endfor
+                        @endif
+                        @if(count($list) == 0)
+                        <h6 style="padding:10px; background-color:#ffffff; text-align:center; padding-left:1190px;"></h6>
+                        <h3 style="padding:10px; background-color:#ffffff; text-align:center; color:#110000">No results found..!!</h3>
+                        @endif
+                </table>
                 </table>
             </form>
         </div>

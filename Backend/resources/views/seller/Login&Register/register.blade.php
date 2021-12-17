@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-	<title>HomeSolutionBD-Seller</title>
-	
+	<title>Register</title>
+	{{-- @csrf --}}
+	{{-- {{csrf_field()}} --}}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,7 +13,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="{{ asset('loginAssets/css/style.css') }}">
-    <link rel="shortcut icon" href="{{asset('/frontend/img/favicon.png')}}" type="image/x-icon" />
 
 </head>
 

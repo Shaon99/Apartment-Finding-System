@@ -61,9 +61,10 @@
                 <input class="form-control" type="text" placeholder="enter customer ID"><br>
                 <button class="btn btn-inverse-dark btn-fw">Search</button> <br><br>
                 <p>
-                    <a class="btn btn-outline-info" href="/Customer/recent">Recent</a>
-                    <a class="btn btn-outline-info" href="/Customer/last_week">Last Week</a>
-                    <a class="btn btn-outline-info" href="/Customer/last_month">Last Month</a>
+                    <a class="btn btn-outline-success" href="/Customer/All">All</a>
+                    <a class="btn btn-outline-success" href="/Customer/recent">Recent</a>
+                    <a class="btn btn-outline-success" href="/Customer/last_week">Last Week</a>
+                    <a class="btn btn-outline-success" href="/Customer/last_month">Last Month</a>
                     <a class="btn btn-primary" href="/Customer/BlockedUser">All Blocked User</a>
                 </p>
                 <table class="table table-striped table-bordered">
@@ -80,20 +81,24 @@
                         <th>Contact no.</th>
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr>
-                        @if($list[$i]['status'] == 'Open')
-                        <td>{{$list[$i]['id']}}</td>
-                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]['id']]) }}">Edit</a></td>
-                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]['id']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]['id']]) }}">Details</a></td>
-                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]['id']]) }}">@if($list[$i]['status'] == "Open") Block @else Unblock @endif</a></td>
-                        <td>{{$list[$i]['name']}}</td>
-                        <td>{{$list[$i]['address']}}</td>
-                        <td>{{$list[$i]['status']}}</td>
-                        <td>{{$list[$i]['email']}}</td>
-                        <td>{{$list[$i]['phone']}}</td>
+                        @if($list[$i]->status == 'Open')
+                        <td>{{$list[$i]->id}}</td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]->id]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]->id]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]->id]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]->id]) }}">@if($list[$i]->status == "Open") Block @else Unblock @endif</a></td>
+                        <td>{{$list[$i]->name}}</td>
+                        <td>{{$list[$i]->address}}</td>
+                        <td>{{$list[$i]->status}}</td>
+                        <td>{{$list[$i]->email}}</td>
+                        <td>{{$list[$i]->phone}}</td>
                         </tr>
                         @endif
                         @endfor
+                        @if(count($list) == 0)
+                        <h6 style="padding:10px; background-color:#ffffff; text-align:center; padding-left:1190px;"></h6>
+                        <h3 style="padding:10px; background-color:#ffffff; text-align:center; color:#110000">No results found..!!</h3>
+                        @endif
                 </table>
             </form>
         </div>

@@ -24,12 +24,9 @@ class UpdateOwnerRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_name' => 'required|max:30|min:5|unique:apartment_owner,Username|bail',
-            'first_name' => 'required|alpha|bail',
-            'last_name' => 'required|alpha|bail',
-            'gender' => 'required',
+            'name' => 'required',
             'address' => 'required',
-            'email' => 'required|min:10|max:50|email:rfc,dns|unique:apartment_owner,Email|bail',
+            'email' => 'required|min:10|max:50|email:rfc,dns|bail',
             'phone' => 'required|min:11|max:15|bail'
         ];
     }

@@ -5,20 +5,13 @@ namespace App\Http\Controllers\Seller;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seller;
-use App\Models\Apartment;
-use App\Models\Gallery;
 use Hash;
-use Auth;
-use Devfaysal\BangladeshGeocode\Models\District;
-
-
 
 class sellerController extends Controller
 {
   
 
-    public function Register(){        
-
+    public function Register(){
         return view('seller.Login&Register.register');
 
     }
@@ -64,6 +57,4 @@ class sellerController extends Controller
     public function dashboard(){
         return view('seller.dashboard.dashboard');
     }
-
-    
 }

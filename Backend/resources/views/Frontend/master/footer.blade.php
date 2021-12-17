@@ -103,6 +103,7 @@ $footer = Footer::find(1);
                 </div>
             </div>
         </div>
+        <p style="text-align:center; background-color:#002e2e">Super admin Login? <a href="/admin/login" class="header-top-btn">CLICK HERE</a></p>
     </div>
     <div class="ltn__copyright-area ltn__copyright-2 section-bg-7  plr--5">
         <div class="container-fluid ltn__border-top-2">
@@ -115,8 +116,7 @@ $footer = Footer::find(1);
                 <div class="col-md-6 col-12 align-self-center">
                     <div class="ltn__copyright-menu text-end">
                         <ul>
-                            <li><a href="#">Terms & Conditions</a></li>
-                          
+                            <li><a href="#">Terms & Conditions</a></li>                       
                         </ul>
                     </div>
                 </div>

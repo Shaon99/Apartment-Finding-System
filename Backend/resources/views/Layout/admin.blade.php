@@ -433,8 +433,7 @@
             </a>
             <div class="collapse" id="ui-advanced">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/ApartmentOwner/All">All Owner</a></li>
-                <li class="nav-item"> <a class="nav-link" href=" ">+ Register new</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/ApartmentOwner/All">All Seller</a></li>
               </ul>
             </div>
           </li>

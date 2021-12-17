@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-	<title>HomeSolutionBD-Seller</title>
-	
+	<title>Login</title>
+	{{-- @csrf --}}
+	{{-- {{csrf_field()}} --}}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,7 +13,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="{{ asset('loginAssets/css/style.css') }}">
-    <link rel="shortcut icon" href="{{asset('/frontend/img/favicon.png')}}" type="image/x-icon" />
 
 </head>
 
@@ -36,15 +36,6 @@
 									</p>
 								</div>
 							</div>
-							@if(session()->has('activeerr'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-
-                                    <strong>{{session('activeerr')}}</strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
 							@if ($message = Session::get('success'))
 							<div class="alert alert-success alert-block">
 								<button type="button" class="close" data-dismiss="alert">×</button>

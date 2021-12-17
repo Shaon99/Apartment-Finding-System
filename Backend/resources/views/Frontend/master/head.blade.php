@@ -13,7 +13,7 @@ $footer = Footer::find(1);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.png in the root directory -->
-    <link rel="shortcut icon" href="{{asset('/frontend/img/favicon.png')}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="frontend/img/favicon.png" type="image/x-icon" />
     <!-- Font Icons css -->
     <link rel="stylesheet" href="{{asset('/frontend/css/font-icons.css')}}">
     <!-- plugins css -->
@@ -197,7 +197,6 @@ $footer = Footer::find(1);
                             <span class="mini-cart-quantity">1 x $65.00</span>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <div class="mini-cart-item clearfix">
                         <div class="mini-cart-img">
                             <a href="#"><img src="img/product/2.png" alt="Image"></a>
@@ -207,33 +206,6 @@ $footer = Footer::find(1);
                             <h6><a href="#">3 Rooms Manhattan</a></h6>
                             <span class="mini-cart-quantity">1 x $85.00</span>
                         </div>
-=======
-                </div>
-                <div class="col header-menu-column">
-                    <div class="header-menu d-none d-xl-block">
-                        <nav>
-                            <div class="ltn__main-menu">
-                                <ul>
-                                    <li><a href="/">Home</a>
-                                        
-                                    </li>
-                                    <li><a href="#">About</a>
-                                       
-                                    </li>
-                                    
-                                    <li class="menu-icon"><a href="#">Services</a>
-                                        <ul>
-                                            <li><a href="{{route('interior')}}">Interior</a></li>
-                                         
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                                
-                            </div>
-                            
-                        </nav>
->>>>>>> edd6668393e99840e0c5c244674e2c460206a374
                     </div>
                     <div class="mini-cart-item clearfix">
                         <div class="mini-cart-img">

@@ -15,8 +15,6 @@ use App\Http\Controllers\Frontend\profileUserController;
 use App\Http\Controllers\Frontend\cusLoginController;
 use App\Http\Controllers\Seller\sellerController;
 use App\Http\Controllers\Seller\sellerLoginController;
-use App\Http\Controllers\Seller\sellerApartMentController;
-
 
 
 
@@ -68,6 +66,9 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('/Admin/BlockedUser', [AdminController::class, 'blockUser'])->name('Admin.BlockedUser');
     Route::get('/Admin/footer', [AdminController::class, 'footer'])->name('Admin.footer');
     Route::post('/Admin/footer', [AdminController::class, 'storeFooter']);
+    Route::get('/Admin/recent', [AdminController::class, 'recent']);
+    Route::get('/Admin/last_week', [AdminController::class, 'last_week']);
+    Route::get('/Admin/last_month', [AdminController::class, 'last_month']);
 
     Route::get('/ApartmentOwner/All', [ApartmentOwnerController::class, 'show'])->name('ApartmentOwner.All');
     Route::get('ApartmentOwner/Edit/{ID}', [ApartmentOwnerController::class, 'edit'])->name('ApartmentOwner.Edit');
@@ -76,14 +77,24 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('ApartmentOwner/Details/{ID}', [ApartmentOwnerController::class, 'details'])->name('ApartmentOwner.Details');
     Route::get('ApartmentOwner/Block/{ID}', [ApartmentOwnerController::class, 'block'])->name('ApartmentOwner.Block');
     Route::get('/ApartmentOwner/BlockedUser', [ApartmentOwnerController::class, 'blockUser'])->name('ApartmentOwner.BlockedUser');
+    Route::get('/ApartmentOwner/recent', [ApartmentOwnerController::class, 'recent']);
+    Route::get('/ApartmentOwner/last_week', [ApartmentOwnerController::class, 'last_week']);
+    Route::get('/ApartmentOwner/last_month', [ApartmentOwnerController::class, 'last_month']);
+    Route::get('/ApartmentOwner/BlockedUser', [ApartmentOwnerController::class, 'blockUser']);
 
-
+    Route::get('/Apartment/recent', [ApartmentController::class, 'recent']);
+    Route::get('/Apartment/last_week', [ApartmentController::class, 'last_week']);
+    Route::get('/Apartment/last_month', [ApartmentController::class, 'last_month']);
     Route::get('/Apartment/All', [ApartmentController::class, 'show'])->name('Apartment.All');
     Route::get('/Admin/BlockedApartment', [ApartmentController::class, 'blockAll'])->name('Apartment.blockAll');
     Route::get('/Admin/Apartment/Blocked/{ID}', [ApartmentController::class, 'block'])->name('Apartment.Block');
     Route::get('/Apartment/Details/{ID}', [ApartmentController::class, 'details'])->name('Apartment.Details');
 
     Route::get('/Customer/All', [CustomerController::class, 'show'])->name('Customer.All');
+    Route::get('/Customer/recent', [CustomerController::class, 'recent']);
+    Route::get('/Customer/last_week', [CustomerController::class, 'last_week']);
+    Route::get('/Customer/last_month', [CustomerController::class, 'last_month']);
+    Route::get('/Customer/BlockedUser', [CustomerController::class, 'blockUser']);
 });
 
 
@@ -95,11 +106,6 @@ Route::get('/customer/login', [cusLoginController::class, 'index'])->name('custo
 Route::post('/login', [cusLoginController::class, 'login'])->name('customer-login');
 Route::get('/customer/register', [frontloginController::class, 'register'])->name('register');
 Route::post('/storeregister', [frontloginController::class, 'registerStore'])->name('store.customer');
-Route::get('/interior', [homeController::class, 'Interior'])->name('interior');
-Route::get('/residential/interior', [homeController::class, 'residentialInterior'])->name('residential.interior');
-Route::get('/commercial/interior', [homeController::class, 'commercialInterior'])->name('commercial.interior');
-Route::get('/apartment/details/{id}', [homeController::class, 'detailsApartment'])->name('details.apartment');
-
 
 
 Route::prefix('customer')->middleware('auth:customer')->group(function () {
@@ -124,18 +130,7 @@ Route::prefix('Seller')->group(function () {
         Route::get('/dashboard', [sellerController::class, 'dashboard'])->name('seller.dashboard');
 
 
-    Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
-//add_apartment
-    Route::get('/view/apartment/', [sellerApartMentController::class, 'viewApartment'])->name('seller.apartmentView');
-
-    Route::get('/add/apartment', [sellerApartMentController::class, 'Apartment'])->name('seller.apartment');
-    Route::post('/store/apartment', [sellerApartMentController::class, 'storeApartment'])->name('seller.storeApartment');
-    Route::get('/edit/apartment/{id}', [sellerApartMentController::class, 'apartmentEdit'])->name('seller.apartmentEdit');
-
-    Route::post('/update/apartment/{id}', [sellerApartMentController::class, 'updateApartment'])->name('seller.updateApartment');
-
-    Route::get('/view/apartment/{id}', [sellerApartMentController::class, 'detailsApartment'])->name('seller.viewApartment');
-    Route::get('/status/{id}', [sellerApartMentController::class, 'statusUpdate']);
-
-});
+        Route::get('/logout', [sellerLoginController::class, 'logout'])->name('seller-logout');
+        Route::get('/sell', [homeController::class, 'sell'])->name('sell');
+    });
 });

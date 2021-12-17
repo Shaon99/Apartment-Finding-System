@@ -258,4 +258,29 @@ class AdminController extends Controller
         $req->session()->flash('congratulations', 'Congratulations! information updated successfully!...');
         return view('Footer.index')->with('footer', $footer);
     }
+
+    public function recent()
+    {
+        $adminList = DB::table('admin')
+            ->orderBy('Updated_at', 'desc')
+            ->orderBy('Created_at', 'desc')
+            ->get();
+        return view('Admin.filterList')->with('list', $adminList);
+    }
+
+    public function last_week()
+    {
+        $adminList = DB::table('admin')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 7 days')), date("Y-m-d")])
+            ->orderBy('Created_at', 'desc')
+            ->get();
+        return view('Admin.filterList')->with('list', $adminList);
+    }
+
+    public function last_month()
+    {
+        $adminList = DB::table('admin')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])
+            ->orderBy('Created_at', 'desc')
+            ->get();
+        return view('Admin.filterList')->with('list', $adminList);
+    }
 }

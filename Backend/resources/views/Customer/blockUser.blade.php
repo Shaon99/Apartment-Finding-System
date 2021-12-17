@@ -15,7 +15,7 @@
                                         <i class="icon-sm fa fa-user mr-2"></i>
                                         New registered Customer
                                     </p>
-                                    <h2> {{ DB::table('customers')->where('created_at', date("Y-m-d"))->count() }}</h2>
+                                    <h2> {{ DB::table('customers')->where('Created_at', date("Y-m-d"))->count() }}</h2>
                                     <label class="badge badge-outline-success badge-pill">2.7% increase</label>
                                 </div>
                                 <div class="statistics-item">
@@ -23,7 +23,7 @@
                                         <i class="icon-sm fas fa-hourglass-half mr-2"></i>
                                         Last week
                                     </p>
-                                    <h2> {{ DB::table('customers')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
+                                    <h2> {{ DB::table('customers')->whereBetween('Created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
                                     <label class="badge badge-outline-danger badge-pill">30% decrease</label>
                                 </div>
                                 <div class="statistics-item">
@@ -31,7 +31,7 @@
                                         <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
                                         Last month
                                     </p>
-                                    <h2> {{ DB::table('customers')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
+                                    <h2> {{ DB::table('customers')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
                                     <label class="badge badge-outline-success badge-pill">12% increase</label>
                                 </div>
                                 <div class="statistics-item">
@@ -39,7 +39,7 @@
                                         <i class="icon-sm fas fa-check-circle mr-2"></i>
                                         Blocked customers
                                     </p>
-                                    <h2> {{ DB::table('customers')->where('status', 'Blocked')->count() }} </h2>
+                                    <h2> {{ DB::table('customers')->where('Status', 'Blocked')->count() }} </h2>
                                     <label class="badge badge-outline-success badge-pill">57% increase</label>
                                 </div>
                                 <div class="statistics-item">
@@ -64,7 +64,7 @@
                     <a class="btn btn-outline-info" href="/Customer/recent">Recent</a>
                     <a class="btn btn-outline-info" href="/Customer/last_week">Last Week</a>
                     <a class="btn btn-outline-info" href="/Customer/last_month">Last Month</a>
-                    <a class="btn btn-primary" href="/Customer/BlockedUser">All Blocked User</a>
+                    <a class="btn btn-primary" href="/Customer/All">All regular Customer</a>
                 </p>
                 <table class="table table-striped table-bordered">
                     <tr>
@@ -80,7 +80,7 @@
                         <th>Contact no.</th>
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr>
-                        @if($list[$i]['status'] == 'Open')
+                        @if($list[$i]['status'] == 'Blocked')
                         <td>{{$list[$i]['id']}}</td>
                         <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]['id']]) }}">Edit</a></td>
                         <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]['id']]) }}">Delete</a></td>
