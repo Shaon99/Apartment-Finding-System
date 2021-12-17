@@ -61,11 +61,13 @@
                 <input class="form-control" type="text" placeholder="enter owner ID"><br>
                 <button class="btn btn-inverse-dark btn-fw">Search</button> <br><br>
                 <p>
-                    <a class="btn btn-outline-info" href="/ApartmentOwner/recent">Recent</a>
-                    <a class="btn btn-outline-info" href="/ApartmentOwner/last_week">Last Week</a>
-                    <a class="btn btn-outline-info" href="/ApartmentOwner/last_month">Last Month</a>
+                    <a class="btn btn-outline-success" href="/ApartmentOwner/All">All</a>
+                    <a class="btn btn-outline-success" href="/ApartmentOwner/recent">Recent</a>
+                    <a class="btn btn-outline-success" href="/ApartmentOwner/last_week">Last Week</a>
+                    <a class="btn btn-outline-success" href="/ApartmentOwner/last_month">Last Month</a>
                     <a class="btn btn-primary" href="/ApartmentOwner/BlockedUser">All Blocked User</a>
                 </p>
+                @if(count($list) != 0)
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>User ID</th>
@@ -75,26 +77,33 @@
                         <th></th>
                         <th>Profile picture</th>
                         <th>Full name</th>
-                        <th>Status</th>
+                        <th>City</th>
                         <th>E-mail</th>
                         <th>Contact no.</th>
+                        <th>Address</th>
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr>
-                        @if($list[$i]['status'] == '1')
-                        <td>{{$list[$i]['id']}}</td>
-                        <td> <a class="btn btn-inverse-success" href="{{ route('ApartmentOwner.Edit', [$list[$i]['id']]) }}">Edit</a></td>
-                        <td> <a class="btn btn-inverse-warning" href="{{ route('ApartmentOwner.Delete', [$list[$i]['id']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-inverse-primary" href="{{ route('ApartmentOwner.Details', [$list[$i]['id']]) }}">Details</a></td>
-                        <td> <a class="btn btn-inverse-danger" href="{{ route('ApartmentOwner.Block', [$list[$i]['id']]) }}">@if($list[$i]['status'] == "1") Block @else Unblock @endif</a></td>
-                        <td><img class="img-rounded-circle" src="{{asset('/uploads/seller_image')}}/{{$list[$i]['image']}}" width="100px" height="100px">
+                        @if($list[$i]->status == '1')
+                        <td>{{$list[$i]->id}}</td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('ApartmentOwner.Edit', [$list[$i]->id]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('ApartmentOwner.Delete', [$list[$i]->id]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('ApartmentOwner.Details', [$list[$i]->id]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('ApartmentOwner.Block', [$list[$i]->id]) }}">@if($list[$i]->status == "1") Block @else Unblock @endif</a></td>
+                        <td><img class="img-rounded-circle" src="{{asset('/uploads/seller_image')}}/{{$list[$i]->image}}" width="100px" height="100px">
                         </td>
-                        <td>{{$list[$i]['name']}}</td>
-                        <td>{{$list[$i]['status']}}</td>
-                        <td>{{$list[$i]['email']}}</td>
-                        <td>{{$list[$i]['phone']}}</td>
+                        <td>{{$list[$i]->name}}</td>
+                        <td>{{$list[$i]->city}}</td>
+                        <td>{{$list[$i]->email}}</td>
+                        <td>{{$list[$i]->phone}}</td>
+                        <td>{{$list[$i]->address}}</td>
                         </tr>
                         @endif
                         @endfor
+                        @endif
+                        @if(count($list) == 0)
+                        <h6 style="padding:10px; background-color:#ffffff; text-align:center; padding-left:1190px;"></h6>
+                        <h3 style="padding:10px; background-color:#ffffff; text-align:center; color:#110000">No results found..!!</h3>
+                        @endif
                 </table>
             </form>
         </div>

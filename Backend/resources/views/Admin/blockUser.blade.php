@@ -29,10 +29,10 @@
                     @for($i=0; $i < count($list); $i++) <tr>
                         @if($list[$i]['Status'] == 'Blocked')
                         <td>{{$list[$i]['ID']}}</td>
-                        <td> <a class="btn btn-success" href="{{ route('Admin.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
-                        <td> <a class="btn btn-warning" href="{{ route('Admin.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-primary" href="{{ route('Admin.Details', [$list[$i]['ID']]) }}">Details</a></td>
-                        <td> <a class="btn btn-danger" href="{{ route('Admin.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]['ID']]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
                         <td><img class="img-rounded-circle" src="{{asset('/upload')}}/{{$list[$i]['Picture']}}" width="100px" height="100px"></td>
                         <td>{{$list[$i]['First_name']}}</td>
                         <td>{{$list[$i]['Last_name']}}</td>

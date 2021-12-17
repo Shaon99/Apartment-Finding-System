@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApartmentOwner extends Model
 {
-    protected $table = 'apartment_owner';
+    protected $table = 'sellers';
     public $timestamps = false;
-    protected $primaryKey = 'ID';
+    protected $primaryKey = 'id';
 }

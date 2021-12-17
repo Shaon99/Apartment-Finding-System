@@ -18,7 +18,7 @@
                   <i class="icon-sm fa fa-user mr-2"></i>
                   New registered apartment
                 </p>
-                <h2> {{ DB::table('Apartment')->where('Created_at', date("Y-m-d"))->count() }}</h2>
+                <h2> {{ DB::table('apartments')->where('created_at', date("Y-m-d"))->count() }}</h2>
                 <label class="badge badge-outline-success badge-pill">2.7% increase</label>
               </div>
               <div class="statistics-item">
@@ -26,7 +26,7 @@
                   <i class="icon-sm fas fa-hourglass-half mr-2"></i>
                   Last week
                 </p>
-                <h2> {{ DB::table('Apartment')->whereBetween('Created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
+                <h2> {{ DB::table('apartments')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
                 <label class="badge badge-outline-danger badge-pill">30% decrease</label>
               </div>
               <div class="statistics-item">
@@ -34,7 +34,7 @@
                   <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
                   Last month
                 </p>
-                <h2> {{ DB::table('Apartment')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
+                <h2> {{ DB::table('apartments')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
                 <label class="badge badge-outline-success badge-pill">12% increase</label>
               </div>
               <div class="statistics-item">
@@ -42,7 +42,7 @@
                   <i class="icon-sm fas fa-check-circle mr-2"></i>
                   Blocked apartment
                 </p>
-                <h2> {{ DB::table('Apartment')->where('Status', 'Blocked')->count() }} </h2>
+                <h2> {{ DB::table('apartments')->where('status', '0')->count() }} </h2>
                 <label class="badge badge-outline-success badge-pill">57% increase</label>
               </div>
               <div class="statistics-item">
@@ -50,7 +50,7 @@
                   <i class="icon-sm fas fa-chart-line mr-2"></i>
                   Total number of apartment
                 </p>
-                <h2> {{ DB::table('Apartment')->count() }} </h2>
+                <h2> {{ DB::table('apartments')->count() }} </h2>
                 <label class="badge badge-outline-success badge-pill">10% increase</label>
               </div>
             </div>

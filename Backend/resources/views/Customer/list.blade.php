@@ -15,40 +15,40 @@
                                         <i class="icon-sm fa fa-user mr-2"></i>
                                         New registered Customer
                                     </p>
-                                    <h2> {{ DB::table('customer')->where('Created_at', date("Y-m-d"))->count() }}</h2>
-                                    <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+                                    <h2> {{ DB::table('customers')->where('created_at', date("Y-m-d"))->count() }}</h2>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
                                         <i class="icon-sm fas fa-hourglass-half mr-2"></i>
                                         Last week
                                     </p>
-                                    <h2> {{ DB::table('customer')->whereBetween('Created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
-                                    <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+                                    <h2> {{ DB::table('customers')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
+                                    <label class="badge badge-outline-danger badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
                                         <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
                                         Last month
                                     </p>
-                                    <h2> {{ DB::table('customer')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">12% increase</label>
+                                    <h2> {{ DB::table('customers')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
                                         <i class="icon-sm fas fa-check-circle mr-2"></i>
-                                        Blocked Customer
+                                        Blocked customers
                                     </p>
-                                    <h2> {{ DB::table('customer')->where('Status', 'Blocked')->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">57% increase</label>
+                                    <h2> {{ DB::table('customers')->where('status', 'Blocked')->count() }} </h2>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
                                         <i class="icon-sm fas fa-chart-line mr-2"></i>
-                                        Total number of Customer
+                                        Total number of customers
                                     </p>
-                                    <h2> {{ DB::table('customer')->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">10% increase</label>
+                                    <h2> {{ DB::table('customers')->count() }} </h2>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                             </div>
                         </div>
@@ -59,8 +59,13 @@
                 @csrf
                 <p style="color: red; font-size: 15px;">{{ session('msg') }}</p>
                 <input class="form-control" type="text" placeholder="enter customer ID"><br>
-                <button>Search</button> <br>
-                <p style="padding-left:1050px"><a class="btn btn-primary" href="/Admin/BlockedUser">All Blocked User</a></p>
+                <button class="btn btn-inverse-dark btn-fw">Search</button> <br><br>
+                <p>
+                    <a class="btn btn-outline-info" href="/Customer/recent">Recent</a>
+                    <a class="btn btn-outline-info" href="/Customer/last_week">Last Week</a>
+                    <a class="btn btn-outline-info" href="/Customer/last_month">Last Month</a>
+                    <a class="btn btn-primary" href="/Customer/BlockedUser">All Blocked User</a>
+                </p>
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>User ID</th>
@@ -68,7 +73,6 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th>Profile picture</th>
                         <th>First name</th>
                         <th>Last name</th>
                         <th>Status</th>
@@ -76,18 +80,17 @@
                         <th>Contact no.</th>
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr>
-                        @if($list[$i]['Status'] == 'Open')
-                        <td>{{$list[$i]['ID']}}</td>
-                        <td> <a class="btn btn-success" href="{{ route('Admin.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
-                        <td> <a class="btn btn-warning" href="{{ route('Admin.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-primary" href="{{ route('Admin.Details', [$list[$i]['ID']]) }}">Details</a></td>
-                        <td> <a class="btn btn-danger" href="{{ route('Admin.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
-                        <td><img class="img-rounded-circle" src="{{asset('/upload')}}/{{$list[$i]['Picture']}}" width="100px" height="100px"></td>
-                        <td>{{$list[$i]['First_name']}}</td>
-                        <td>{{$list[$i]['Last_name']}}</td>
-                        <td>{{$list[$i]['Status']}}</td>
-                        <td>{{$list[$i]['Email']}}</td>
-                        <td>{{$list[$i]['Phone']}}</td>
+                        @if($list[$i]['status'] == 'Open')
+                        <td>{{$list[$i]['id']}}</td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('Customer.Edit', [$list[$i]['id']]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Customer.Delete', [$list[$i]['id']]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]['id']]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Customer.Block', [$list[$i]['id']]) }}">@if($list[$i]['status'] == "Open") Block @else Unblock @endif</a></td>
+                        <td>{{$list[$i]['name']}}</td>
+                        <td>{{$list[$i]['address']}}</td>
+                        <td>{{$list[$i]['status']}}</td>
+                        <td>{{$list[$i]['email']}}</td>
+                        <td>{{$list[$i]['phone']}}</td>
                         </tr>
                         @endif
                         @endfor

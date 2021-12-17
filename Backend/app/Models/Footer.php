@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Apartment extends Model
+class Footer extends Model
 {
-    protected $table = 'apartments';
+    protected $table = 'footer';
     public $timestamps = false;
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'ID';
 }

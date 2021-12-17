@@ -38,7 +38,6 @@ class NewAdminRequest extends FormRequest
             'phone' => 'required|min:11|max:15|bail'
         ];
     }
-
     public function messages(){
         return [
             'profileImage.required' => 'Please insert an image',

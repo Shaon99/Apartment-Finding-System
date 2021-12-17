@@ -4,102 +4,168 @@
 
 <div class="container-fluid">
     <div class="content-wrapper">
-        <h2 style="text-align: center; background-color: #ffffff">Details for, {{ $details[0]->apartment_ID }} :</h2>
-        <center>
-            <table class="table table-striped table-bordered">
-                <tr>
-                    <div>
-                        <td style="width:300px; height:300px; text-align:center; vertical-align:middle">
-                            <div>
-                                <img style="border-radius: 1px; width: 280px; height:250px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[0]->Picture1}}">
-                                <img style="border-radius: 1px; width: 280px; height:250px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[0]->Picture2}}">
-                                <img style="border-radius: 1px; width: 280px; height:250px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[0]->Picture3}}">
-                                <img style="border-radius: 1px; width: 280px; height:250px; padding-bottom:3px" src="{{asset('/upload')}}/{{$details[0]->Picture4}}">
+        <div class="page-header">
+
+
+        </div>
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container rounded bg-white mb-3">
+
+                        <div class="row">
+
+                            <div class="col-md-12 border-right">
+
+
+
+                                <div class="row ">
+
+
+                                    <div class="col-md-6"><label class="labels text-capitalize">Feature
+                                            Picture</label><br>
+                                        <img id="" class="mt-1" width="210px" src="{{ url('uploads/apartment_image/' . $apartment->image) }}" />
+                                    </div>
+
+                                    <div class="col-md-6"><label class="labels text-capitalize">Gallery
+                                            Picture</label><br>
+                                        @foreach ($gallery as $data)
+
+                                        <img class="mt-1" width="210px" src="{{ url('uploads/galleries/' . $data->image_file) }}" />
+
+                                        @endforeach
+
+
+                                    </div>
+
+
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">Apartment Name</label>
+
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->apartment_name }}
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">Apartment Address</label>
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->address }}
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">Contact</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->contact }}
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">Apartment size</label>
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->flat_size }}
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">City</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->city }}
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">rent/price</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->price }}
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">Bed</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->bed }}
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">drawing</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->drawing }}
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">dining</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->dining }}
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">kitchen</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->kitchen }}
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">washroom</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->washroom }}
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">rent/sell</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->rent_sell }}
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label class="text-capitalize ">Description</label>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <h5 class="text-capitalize">
+                                            {{ $apartment->text }}
+                                        </h5>
+                                    </div>
+
+                                </div>
                             </div>
-                        </td>
+
+                        </div>
                     </div>
-                </tr>
-            </table>
-            <p style="color: black; font-size:35px; text-align:center">Apartment Details </p>
-            <table class="table table-striped table-bordered">
-                <tr>
-                    <td>Rent :</td>
-                    <td>{{ $details[0]->Rent }}</td>
-                </tr>
-                <tr>
-                    <td>Building Location :</td>
-                    <td>{{ $details[0]->Apartment_Address}}</td>
-                </tr>
-                <tr>
-                    <td>Number Of Kitchen :</td>
-                    <td>{{ $details[0]->Kitchen}} </td>
-                </tr>
-                <tr>
-                    <td>Number of Dining_space</td>
-                    <td>{{ $details[0]->Dining_space }} </td>
-                </tr>
-                <tr>
-                    <td>Number Of Bathroom : </td>
-                    <td>{{ $details[0]->Bathroom }} </td>
-                </tr>
-                <tr>
-                    <td>Number Of Total room</td>
-                    <td>{{ $details[0]->Total_room}} </td>
-                </tr>
-                <tr>
-                    <td>Elevator in the Building : </td>
-                    <td> {{ $details[0]->Lift}} </td>
-                </tr>
-                <tr>
-                    <td>Details</td>
-                    <td>{{ $details[0]->Details}} </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p style="color: black; font-size:35px; text-align:center">Owner's details</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Full name :</td>
-                    <td>
-                        <p>{{ $details[0]->First_name }} {{ $details[0]->Last_name }}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Username :</td>
-                    <td>{{ $details[0]->Username }}</td>
-                </tr>
-                <tr>
-                    <td>Status :</td>
-                    <td>{{ $details[0]->Status }}</td>
-                </tr>
-                <tr>
-                    <td>E-mail :</td>
-                    <td>{{ $details[0]->Email }}</td>
-                </tr>
-                <tr>
-                    <td>Home Address :</td>
-                    <td>{{ $details[0]->Address}}</td>
-                </tr>
-                <tr>
-                    <td>Inserted at :</td>
-                    <td>{{ $details[0]->Created_at }}</td>
-                </tr>
-                <tr>
-                    <td>Last Updated :</td>
-                    <td>{{ $details[0]->Updated_at }}</td>
-                </tr>
-                <tr>
-                    <td>Contact no. :</td>
-                    <td>{{ $details[0]->Phone}}</td>
-                </tr>
-                <tr>
-                    <td>Gender :</td>
-                    <td>{{ $details[0]->Gender}}</td>
-                </tr>
-            </table>
-        </center>
+                </div>
+            </div>
+
+        </div>
     </div>
+</div>
+
+
+</div>
 </div>
 
 @endsection

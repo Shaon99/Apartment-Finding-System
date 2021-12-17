@@ -16,7 +16,7 @@
                                         New registered apartment
                                     </p>
                                     <h2> {{ DB::table('apartments')->where('created_at', date("Y-m-d"))->count() }}</h2>
-                                    <label class="badge badge-outline-success badge-pill"></label>
+                                    <label class="badge badge-outline-success badge-pill">2.7% increase</label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -24,7 +24,7 @@
                                         Last week
                                     </p>
                                     <h2> {{ DB::table('apartments')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
-                                    <label class="badge badge-outline-danger badge-pill"></label>
+                                    <label class="badge badge-outline-danger badge-pill">30% decrease</label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -32,7 +32,7 @@
                                         Last month
                                     </p>
                                     <h2> {{ DB::table('apartments')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill"></label>
+                                    <label class="badge badge-outline-success badge-pill">12% increase</label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -40,7 +40,7 @@
                                         Blocked apartment
                                     </p>
                                     <h2> {{ DB::table('apartments')->where('status', '0')->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill"></label>
+                                    <label class="badge badge-outline-success badge-pill">57% increase</label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -48,7 +48,7 @@
                                         Total number of apartment
                                     </p>
                                     <h2> {{ DB::table('apartments')->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill"></label>
+                                    <label class="badge badge-outline-success badge-pill">10% increase</label>
                                 </div>
                             </div>
                         </div>
@@ -61,11 +61,13 @@
                 <input class="form-control" type="text" placeholder="enter apartment ID"><br>
                 <button class="btn btn-inverse-dark btn-fw">Search</button> <br><br>
                 <p>
-                    <a class="btn btn-outline-info" href="/Apartment/recent">Recent</a>
-                    <a class="btn btn-outline-info" href="/Apartment/last_week">Last Week</a>
-                    <a class="btn btn-outline-info" href="/Apartment/last_month">Last Month</a>
+                    <a class="btn btn-outline-success" href="/Apartment/All">All</a>
+                    <a class="btn btn-outline-success" href="/Apartment/recent">Recent</a>
+                    <a class="btn btn-outline-success" href="/Apartment/last_week">Last Week</a>
+                    <a class="btn btn-outline-success" href="/Apartment/last_month">Last Month</a>
                     <a class="btn btn-inverse-primary" href="/Admin/BlockedApartment">All Blocked Apartment</a>
                 </p>
+                @if(count($list) != 0)
                 <table class="table table-striped table-bordered">
                     <tr style="text-align: center">
                         <th>Apartment ID</th>
@@ -77,29 +79,35 @@
                         <th>Details</th>
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr style="text-align: center">
-                        @if($list[$i]['status'] == '1')
-                        <td>{{$list[$i]['id']}}</td>
-                        <td>{{$list[$i]['apartment_name']}}</td>
-                        <td> <a class="btn btn-inverse-warning" href="{{ route('Apartment.Details', [$list[$i]['id']]) }}">Details</a></td>
-                        <td> <a class="btn btn-inverse-danger" href="{{ route('Apartment.Block', [$list[$i]['id']]) }}">Block</a></td>
+                        @if($list[$i]->status == '1')
+                        <td>{{$list[$i]->id}}</td>
+                        <td>{{$list[$i]->apartment_name}}</td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Apartment.Details', [$list[$i]->id]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Apartment.Block', [$list[$i]->id]) }}">Block</a></td>
                         <td style="width:300px">
                             <div>
-                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads/apartment_image')}}/{{$list[$i]['image']}}">
-                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads/apartment_image')}}/{{$list[$i]['image']}}">
+                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]->image}}">
+                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]->image}}">
                             </div>
                             <div>
-                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads/apartment_image')}}/{{$list[$i]['image']}}">
-                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads/apartment_image')}}/{{$list[$i]['image']}}">
+                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]->image}}">
+                                <img style="border-radius: 1px; width: 125px; height:100px; padding-bottom:3px" src="{{asset('/uploads')}}/{{$list[$i]->image}}">
                             </div>
                         </td>
-                        <td>{{$list[$i]['city']}}</td>
+                        <td>{{$list[$i]->city}}</td>
                         <td style="text-align: left">
-                            <p style="color: black; font-size:30px">Rent : {{$list[$i]['price']}} Tk. </p>
-                            Home Address : <p style="color: blue; font-size:20px"> {{$list[$i]['address']}}</p>
+                            <p style="color: black; font-size:30px">Rent : {{$list[$i]->price}} Tk. </p>
+                            Home Address : <p style="color: blue; font-size:20px"> {{$list[$i]->address}}</p>
                         </td>
                         </tr>
                         @endif
                         @endfor
+                        @endif
+                        @if(count($list) == 0)
+                        <h6 style="padding:10px; background-color:#ffffff; text-align:center; padding-left:1190px;"></h6>
+                        <h3 style="padding:10px; background-color:#ffffff; text-align:center; color:#110000">No results found..!!</h3>
+                        @endif
+                </table>
                 </table>
             </form>
         </div>

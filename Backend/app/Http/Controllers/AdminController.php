@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Footer;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\NewAdminRequest;
+use App\Http\Requests\FooterRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Http\Requests\ChangePasswordRequest;
 
@@ -176,5 +179,110 @@ class AdminController extends Controller
             $req->session()->flash('picture', 'Please upload a picture...');
             return redirect()->route('Admin.Create');
         }
+    }
+    public function search(Request $req)
+    {
+        if ($req->ajax()) {
+            $data = Admin::where('ID', 'like', $req->search . '%')
+                ->orwhere('First_name', 'like', $req->search . '%')
+                ->orwhere('Username', 'like', $req->search . '%')
+                ->orwhere('Email', 'like', $req->search . '%')
+                ->orwhere('Address', 'like', $req->search . '%')
+                ->orwhere('Joining_date', 'like', $req->search . '%')
+                ->orwhere('Gender', 'like', $req->search . '%')
+                ->get();
+            $output = '';
+            if (count($data) > 0) {
+                $output = '
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>User ID</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Profile picture</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Status</th>
+                            <th>Salary</th>
+                            <th>E-mail</th>
+                            <th>Contact no.</th>
+                        </tr>
+                            ';
+                foreach ($data as $list) {
+                    $output .= '
+                        <tr>
+                        <td>' . $list->ID . '</td>
+                        <td> <a class="btn btn-inverse-success" href="/Admin/Edit/' . $list->ID . '">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="/Admin/Delete/' . $list->ID . '">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="/Admin/Details/' . $list->ID . '">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="/Admin/Block/' . $list->ID . '">Block</a></td>
+                        <td><img cl->mg-rounded-circle" src="../../public/' . $list->Picture . '" width="100px" height="100px"></td>
+                        <td>' . $list->First_name . '</td>
+                        <td>' . $list->Last_name . '</td>
+                        <td>' . $list->Status . '</td>
+                        <td>' . $list->Salary . '</td>
+                        <td>' . $list->Email . '</td>
+                        <td>' . $list->Phone . '</td>
+                    ->
+                    ';
+                }
+                $output .= '</table>';
+            } else {
+                $output .= 'No results found!!';
+            }
+        }
+    }
+    public function footer()
+    {
+        $footer = Footer::find(1);
+        return view('Footer.index')->with('footer', $footer);
+    }
+    public function storeFooter(FooterRequest $req)
+    {
+        $footer = Footer::find(1);
+
+        $footer->About = $req->about;
+        $footer->Address = $req->address;
+        $footer->Phone = $req->phone;
+        $footer->Email = $req->email;
+        $footer->Facebook = $req->facebook;
+        $footer->Twitter = $req->twitter;
+        $footer->Linkedin = $req->linkedin;
+        $footer->Youtube = $req->youtube;
+        $footer->updated_at = date('Y-m-d H:i:s', time());
+
+        $footer->save();
+
+        $req->session()->flash('congratulations', 'Congratulations! information updated successfully!...');
+        return view('Footer.index')->with('footer', $footer);
+    }
+
+    public function recent()
+    {
+        $adminList = DB::table('admin')
+            ->orderBy('Updated_at', 'desc')
+            ->orderBy('Created_at', 'desc')
+            ->get();
+        return view('Admin.filterList')->with('list', $adminList);
+    }
+
+    public function last_week()
+    {
+        $adminList = DB::table('admin')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 7 days')), date("Y-m-d")])
+            ->orderBy('Created_at', 'desc')
+            ->orderBy('Updated_at', 'desc')
+            ->get();
+        return view('Admin.filterList')->with('list', $adminList);
+    }
+
+    public function last_month()
+    {
+        $adminList = DB::table('admin')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])
+            ->orderBy('Created_at', 'desc')
+            ->orderBy('Updated_at', 'desc')
+            ->get();
+        return view('Admin.filterList')->with('list', $adminList);
     }
 }

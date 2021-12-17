@@ -23,7 +23,7 @@ class AdminMiddleware
         else
         {
             $request->session()->flash('msg','Invalid req ... at first logged in as an Admin!');
-            return redirect('/login');
+            return redirect('/admin/login');
         }
     }
 }

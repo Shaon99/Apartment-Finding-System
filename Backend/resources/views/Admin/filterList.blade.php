@@ -62,11 +62,13 @@
                 <button class="btn btn-inverse-dark btn-fw" onclick="">Search</button> <br><br>
                 <div id="search_list"></div>
                 <p>
-                    <a class="btn btn-outline-info" href="/Admin/recent">Recent</a>
-                    <a class="btn btn-outline-info" href="/Admin/last_week">Last Week</a>
-                    <a class="btn btn-outline-info" href="/Admin/last_month">Last Month</a>
+                    <a class="btn btn-outline-success" href="/Admin/All">All</a>
+                    <a class="btn btn-outline-success" href="/Admin/recent">Recent</a>
+                    <a class="btn btn-outline-success" href="/Admin/last_week">Last Week</a>
+                    <a class="btn btn-outline-success" href="/Admin/last_month">Last Month</a>
                     <a class="btn btn-primary" href="/Admin/BlockedUser">All Blocked User</a>
                 </p>
+                @if(count($list) > 0)
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>User ID</th>
@@ -83,23 +85,28 @@
                         <th>Contact no.</th>
                     </tr>
                     @for($i=0; $i < count($list); $i++) <tr>
-                        @if($list[$i]['Status'] == 'Open')
-                        <td>{{$list[$i]['ID']}}</td>
-                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]['ID']]) }}">Edit</a></td>
-                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]['ID']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]['ID']]) }}">Details</a></td>
-                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]['ID']]) }}">@if($list[$i]['Status'] == "Open") Block @else Unblock @endif</a></td>
-                        <td><img class="img-rounded-circle" src="{{asset('/upload')}}/{{$list[$i]['Picture']}}" width="100px" height="100px"></td>
-                        <td>{{$list[$i]['First_name']}}</td>
-                        <td>{{$list[$i]['Last_name']}}</td>
-                        <td>{{$list[$i]['Status']}}</td>
-                        <td>{{$list[$i]['Salary']}}</td>
-                        <td>{{$list[$i]['Email']}}</td>
-                        <td>{{$list[$i]['Phone']}}</td>
+                        @if($list[$i]->Status == 'Open')
+                        <td>{{ $list[$i]->ID }}</td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]->ID]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]->ID]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]->ID]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]->ID]) }}">@if($list[$i]->Status == "Open") Block @else Unblock @endif</a></td>
+                        <td><img class="img-rounded-circle" src="{{asset('/upload')}}/{{$list[$i]->Picture}}" width="100px" height="100px"></td>
+                        <td>{{$list[$i]->First_name}}</td>
+                        <td>{{$list[$i]->Last_name}}</td>
+                        <td>{{$list[$i]->Status}}</td>
+                        <td>{{$list[$i]->Salary}}</td>
+                        <td>{{$list[$i]->Email}}</td>
+                        <td>{{$list[$i]->Phone}}</td>
                         </tr>
                         @endif
                         @endfor
                 </table>
+                @endif
+                @if(count($list) == 0)
+                <h6 style="padding:10px; background-color:#ffffff; text-align:center; padding-left:1190px;"></h6>
+                <h3 style="padding:10px; background-color:#ffffff; text-align:center; color:#110000">No results found..!!</h3>
+                @endif
             </form>
         </div>
     </div>
