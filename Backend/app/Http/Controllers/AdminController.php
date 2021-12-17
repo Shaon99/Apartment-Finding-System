@@ -272,6 +272,7 @@ class AdminController extends Controller
     {
         $adminList = DB::table('admin')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 7 days')), date("Y-m-d")])
             ->orderBy('Created_at', 'desc')
+            ->orderBy('Updated_at', 'desc')
             ->get();
         return view('Admin.filterList')->with('list', $adminList);
     }
@@ -280,6 +281,7 @@ class AdminController extends Controller
     {
         $adminList = DB::table('admin')->whereBetween('Created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])
             ->orderBy('Created_at', 'desc')
+            ->orderBy('Updated_at', 'desc')
             ->get();
         return view('Admin.filterList')->with('list', $adminList);
     }

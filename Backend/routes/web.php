@@ -70,18 +70,20 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('/Admin/last_week', [AdminController::class, 'last_week']);
     Route::get('/Admin/last_month', [AdminController::class, 'last_month']);
 
+    //Apartment Owner or Seller
     Route::get('/ApartmentOwner/All', [ApartmentOwnerController::class, 'show'])->name('ApartmentOwner.All');
     Route::get('ApartmentOwner/Edit/{ID}', [ApartmentOwnerController::class, 'edit'])->name('ApartmentOwner.Edit');
     Route::post('ApartmentOwner/Edit/{ID}', [ApartmentOwnerController::class, 'update']);
     Route::get('ApartmentOwner/Delete/{ID}', [ApartmentOwnerController::class, 'delete'])->name('ApartmentOwner.Delete');
     Route::get('ApartmentOwner/Details/{ID}', [ApartmentOwnerController::class, 'details'])->name('ApartmentOwner.Details');
     Route::get('ApartmentOwner/Block/{ID}', [ApartmentOwnerController::class, 'block'])->name('ApartmentOwner.Block');
-    Route::get('/ApartmentOwner/BlockedUser', [ApartmentOwnerController::class, 'blockUser'])->name('ApartmentOwner.BlockedUser');
+    Route::get('/ApartmentOwner/BlockedUser', [ApartmentOwnerController::class, 'blockUser'])->name('Owner.BlockedUser');
     Route::get('/ApartmentOwner/recent', [ApartmentOwnerController::class, 'recent']);
     Route::get('/ApartmentOwner/last_week', [ApartmentOwnerController::class, 'last_week']);
     Route::get('/ApartmentOwner/last_month', [ApartmentOwnerController::class, 'last_month']);
     Route::get('/ApartmentOwner/BlockedUser', [ApartmentOwnerController::class, 'blockUser']);
 
+    //Apartments
     Route::get('/Apartment/recent', [ApartmentController::class, 'recent']);
     Route::get('/Apartment/last_week', [ApartmentController::class, 'last_week']);
     Route::get('/Apartment/last_month', [ApartmentController::class, 'last_month']);
@@ -90,11 +92,21 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('/Admin/Apartment/Blocked/{ID}', [ApartmentController::class, 'block'])->name('Apartment.Block');
     Route::get('/Apartment/Details/{ID}', [ApartmentController::class, 'details'])->name('Apartment.Details');
 
+    //Customer
     Route::get('/Customer/All', [CustomerController::class, 'show'])->name('Customer.All');
+    Route::get('Customer/Edit/{ID}', [CustomerController::class, 'edit'])->name('Customer.Edit');
+    Route::post('Customer/Edit/{ID}', [CustomerController::class, 'update']);
+    Route::get('Customer/Block/{ID}', [CustomerController::class, 'block'])->name('Customer.Block');
+    Route::get('Customer/Delete/{ID}', [CustomerController::class, 'delete'])->name('Customer.Delete');
     Route::get('/Customer/recent', [CustomerController::class, 'recent']);
     Route::get('/Customer/last_week', [CustomerController::class, 'last_week']);
     Route::get('/Customer/last_month', [CustomerController::class, 'last_month']);
     Route::get('/Customer/BlockedUser', [CustomerController::class, 'blockUser']);
+
+    //Managers
+    Route::get('/Manager/Create', [ManagerController::class, 'create'])->name('Manager.Create');
+    Route::post('/Manager/Create', [ManagerController::class, 'storeManager']);
+    Route::get('/Manager/All', [ManagerController::class, 'show'])->name('Manager.All');
 });
 
 

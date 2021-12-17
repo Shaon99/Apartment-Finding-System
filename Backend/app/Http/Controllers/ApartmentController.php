@@ -9,7 +9,7 @@ use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Devfaysal\BangladeshGeocode\Models\District;
+//use Devfaysal\BangladeshGeocode\Models\District;
 
 class ApartmentController extends Controller
 {
@@ -23,12 +23,14 @@ class ApartmentController extends Controller
         $apartment = Apartment::find($ID);
         if ($apartment->status == "1") {
             $apartment->status = "0";
+            $apartment->updated_at = date('Y-m-d H:i:s', time());
             $apartment->save();
             $req->session()->flash('msg', 'This apartment has been blocked successfully!!...');
             return redirect()->route('Apartment.blockAll');
         }
         if ($apartment->status == "0") {
             $apartment->status = "1";
+            $apartment->updated_at = date('Y-m-d H:i:s', time());
             $apartment->save();
             $req->session()->flash('msg', 'This apartment has been Unblocked successfully!!...');
             return redirect()->route('Apartment.All');
@@ -43,10 +45,10 @@ class ApartmentController extends Controller
 
     public function details($ID)
     {
-        $apartment = Apartment::with('seller')->find($ID);
-        $gallery = Gallery::where('apartment_id', $apartment->id)->get();
-        $Review = Review::where('product_id', $ID)->get();
-        return view('Apartment.details', compact('apartment', 'gallery', 'Review'));
+        $apartment = Apartment::find($ID);
+        //$district = District::all();
+        $gallery = Gallery::where('apartment_id', $ID)->get();
+        return view('Apartment.details', compact('apartment', 'gallery'));
     }
 
     public function recent()

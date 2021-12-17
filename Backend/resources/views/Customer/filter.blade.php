@@ -16,7 +16,7 @@
                                         New registered Customer
                                     </p>
                                     <h2> {{ DB::table('customers')->where('created_at', date("Y-m-d"))->count() }}</h2>
-                                    <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -24,7 +24,7 @@
                                         Last week
                                     </p>
                                     <h2> {{ DB::table('customers')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
-                                    <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+                                    <label class="badge badge-outline-danger badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -32,7 +32,7 @@
                                         Last month
                                     </p>
                                     <h2> {{ DB::table('customers')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">12% increase</label>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -40,7 +40,7 @@
                                         Blocked customers
                                     </p>
                                     <h2> {{ DB::table('customers')->where('status', 'Blocked')->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">57% increase</label>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -48,7 +48,7 @@
                                         Total number of customers
                                     </p>
                                     <h2> {{ DB::table('customers')->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">10% increase</label>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                             </div>
                         </div>
@@ -67,6 +67,7 @@
                     <a class="btn btn-outline-success" href="/Customer/last_month">Last Month</a>
                     <a class="btn btn-primary" href="/Customer/BlockedUser">All Blocked User</a>
                 </p>
+                @if(count($list) != 0)
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>User ID</th>
@@ -74,8 +75,8 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th>First name</th>
-                        <th>Last name</th>
+                        <th>Full name</th>
+                        <th>Home Address</th>
                         <th>Status</th>
                         <th>E-mail</th>
                         <th>Contact no.</th>
@@ -83,10 +84,10 @@
                     @for($i=0; $i < count($list); $i++) <tr>
                         @if($list[$i]->status == 'Open')
                         <td>{{$list[$i]->id}}</td>
-                        <td> <a class="btn btn-inverse-success" href="{{ route('Admin.Edit', [$list[$i]->id]) }}">Edit</a></td>
-                        <td> <a class="btn btn-inverse-warning" href="{{ route('Admin.Delete', [$list[$i]->id]) }}">Delete</a></td>
+                        <td> <a class="btn btn-inverse-success" href="{{ route('Customer.Edit', [$list[$i]->id]) }}">Edit</a></td>
+                        <td> <a class="btn btn-inverse-warning" href="{{ route('Customer.Delete', [$list[$i]->id]) }}">Delete</a></td>
                         <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]->id]) }}">Details</a></td>
-                        <td> <a class="btn btn-inverse-danger" href="{{ route('Admin.Block', [$list[$i]->id]) }}">@if($list[$i]->status == "Open") Block @else Unblock @endif</a></td>
+                        <td> <a class="btn btn-inverse-danger" href="{{ route('Customer.Block', [$list[$i]->id]) }}">@if($list[$i]->status == "Open") Block @else Unblock @endif</a></td>
                         <td>{{$list[$i]->name}}</td>
                         <td>{{$list[$i]->address}}</td>
                         <td>{{$list[$i]->status}}</td>
@@ -95,6 +96,7 @@
                         </tr>
                         @endif
                         @endfor
+                        @endif
                         @if(count($list) == 0)
                         <h6 style="padding:10px; background-color:#ffffff; text-align:center; padding-left:1190px;"></h6>
                         <h3 style="padding:10px; background-color:#ffffff; text-align:center; color:#110000">No results found..!!</h3>

@@ -42,14 +42,16 @@ class ApartmentOwnerController extends Controller
     public function block($ID, Request $req)
     {
         $owner = ApartmentOwner::find($ID);
-        if ($owner->Status == "Open") {
-            $owner->Status = "Blocked";
+        if ($owner->status == "1") {
+            $owner->status = "0";
+            $owner->Updated_at = date('Y-m-d H:i:s', time());
             $owner->save();
             $req->session()->flash('msg', 'This user has been blocked successfully!!...');
-            return redirect()->route('ApartmentOwner.BlockedUser');
+            return redirect()->route('ApartmentOwner.All');
         }
-        if ($owner->Status == "Blocked") {
-            $owner->Status = "Open";
+        if ($owner->status == "0") {
+            $owner->status = "1";
+            $owner->Updated_at = date('Y-m-d H:i:s', time());
             $owner->save();
             $req->session()->flash('msg', 'This user has been Unblocked successfully!!...');
             return redirect()->route('ApartmentOwner.All');
@@ -64,15 +66,15 @@ class ApartmentOwnerController extends Controller
 
     public function details($ID)
     {
-        $details = DB::select('SELECT * FROM apartment a, apartment_owner o WHERE o.ID = a.Owner_ID AND a.Owner_ID = ?', [$ID]);
+        $details = DB::select('SELECT * FROM apartments a, sellers o WHERE o.id = a.user_id AND o.id= ?', [$ID]);
         return view('ApartmentOwner.details')->with('details', $details);
     }
 
     public function delete($ID, Request $req)
     {
-        $a_ID = DB::select('SELECT a.apartment_ID FROM apartment a, apartment_owner o WHERE o.ID = a.Owner_ID AND a.Owner_ID = ?', [$ID]);
+        $a_ID = DB::select('SELECT * FROM apartments a, sellers o WHERE o.id = a.user_id AND o.id= ?', [$ID]);
         if (ApartmentOwner::destroy($ID)) {
-            if (Apartment::destroy($a_ID[0]->apartment_ID)) {
+            if (Apartment::destroy($a_ID[0]->id)) {
                 $req->session()->flash('msg', 'Congratulations! Deleted Successfully!!...');
                 return redirect()->route('ApartmentOwner.All');
             } else {
@@ -97,6 +99,7 @@ class ApartmentOwnerController extends Controller
     {
         $OwnerList = DB::table('sellers')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 7 days')), date("Y-m-d")])
         ->orderBy('created_at', 'desc')
+        ->orderBy('updated_at', 'desc')
         ->get();
         return view('ApartmentOwner.filter')->with('list', $OwnerList);
     }
@@ -105,6 +108,7 @@ class ApartmentOwnerController extends Controller
     {
         $OwnerList = DB::table('sellers')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])
         ->orderBy('created_at', 'desc')
+        ->orderBy('updated_at', 'desc')
         ->get();
         return view('ApartmentOwner.filter')->with('list', $OwnerList);
     }

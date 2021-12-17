@@ -16,7 +16,7 @@
                                         New registered Seller
                                     </p>
                                     <h2> {{ DB::table('sellers')->where('created_at', date("Y-m-d"))->count() }}</h2>
-                                    <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -24,7 +24,7 @@
                                         Last week
                                     </p>
                                     <h2> {{ DB::table('sellers')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
-                                    <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+                                    <label class="badge badge-outline-danger badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -32,7 +32,7 @@
                                         Last month
                                     </p>
                                     <h2> {{ DB::table('sellers')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">12% increase</label>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -40,7 +40,7 @@
                                         Blocked Seller
                                     </p>
                                     <h2> {{ DB::table('sellers')->where('status', '0')->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">57% increase</label>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                                 <div class="statistics-item">
                                     <p>
@@ -48,7 +48,7 @@
                                         Total number of Seller
                                     </p>
                                     <h2> {{ DB::table('sellers')->count() }} </h2>
-                                    <label class="badge badge-outline-success badge-pill">10% increase</label>
+                                    <label class="badge badge-outline-success badge-pill"></label>
                                 </div>
                             </div>
                         </div>
