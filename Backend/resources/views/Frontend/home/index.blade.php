@@ -138,7 +138,7 @@
                 </li>
                 <li><a href="#">Pages</a>
                     <ul class="sub-menu">
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="/about-us">About</a></li>
                         <li><a href="service.html">Services</a></li>
                         <li><a href="service-details.html">Service Details</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
@@ -151,11 +151,11 @@
                         <li><a href="add-listing.html">Add Listing</a></li>
                         <li><a href="locations.html">Google Map Locations</a></li>
                         <li><a href="404.html">404</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/contact">Contact</a></li>
                         <li><a href="coming-soon.html">Coming Soon</a></li>
                     </ul>
                 </li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
         <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
