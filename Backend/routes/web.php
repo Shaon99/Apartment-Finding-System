@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\ApartmentOwnerController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 
@@ -95,9 +96,18 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('/Customer/BlockedUser', [CustomerController::class, 'blockUser']);
 
     //Managers
-    Route::get('/Manager/Create', [ManagerController::class, 'create'])->name('Manager.Create');
-    Route::post('/Manager/Create', [ManagerController::class, 'storeManager']);
-    Route::get('/Manager/All', [ManagerController::class, 'show'])->name('Manager.All');
+    Route::get('/Manager/Create', [AreaController::class, 'create'])->name('Managers.Create');
+    Route::post('/Manager/Create', [AreaController::class, 'storeManager']);
+    Route::get('/Manager/All', [AreaController::class, 'show'])->name('Managers.All');
+    Route::get('Manager/Edit/{ID}', [AreaController::class, 'edit'])->name('Managers.Edit');
+    Route::get('Manager/Delete/{ID}', [AreaController::class, 'delete'])->name('Managers.Delete');
+    Route::get('Manager/Details/{ID}', [AreaController::class, 'details'])->name('Managers.Details');
+    Route::get('Manager/Block/{ID}', [AreaController::class, 'block'])->name('Managers.Block');
+    Route::post('Manager/Edit/{ID}', [AreaController::class, 'update']);
+    Route::get('/Manager/recent', [AreaController::class, 'recent']);
+    Route::get('/Manager/last_week', [AreaController::class, 'last_week']);
+    Route::get('/Manager/last_month', [AreaController::class, 'last_month']);
+    Route::get('/Manager/BlockedUser', [AreaController::class, 'blockUser']);
 
 });
 
