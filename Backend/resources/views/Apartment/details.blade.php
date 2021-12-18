@@ -20,6 +20,7 @@
 
 
                                 <div class="row ">
+                                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/Apartment/All">Back to list</a></p>
 
 
                                     <div class="col-md-6"><label class="labels text-capitalize">Feature

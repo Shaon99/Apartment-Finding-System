@@ -89,27 +89,27 @@ class ApartmentOwnerController extends Controller
     public function recent()
     {
         $OwnerList = DB::table('sellers')
-        ->orderBy('updated_at', 'desc')
-        ->orderBy('created_at', 'desc')
-        ->get();
+            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('ApartmentOwner.filter')->with('list', $OwnerList);
     }
 
     public function last_week()
     {
         $OwnerList = DB::table('sellers')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 7 days')), date("Y-m-d")])
-        ->orderBy('created_at', 'desc')
-        ->orderBy('updated_at', 'desc')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->orderBy('updated_at', 'desc')
+            ->get();
         return view('ApartmentOwner.filter')->with('list', $OwnerList);
     }
 
     public function last_month()
     {
         $OwnerList = DB::table('sellers')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])
-        ->orderBy('created_at', 'desc')
-        ->orderBy('updated_at', 'desc')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->orderBy('updated_at', 'desc')
+            ->get();
         return view('ApartmentOwner.filter')->with('list', $OwnerList);
     }
 }

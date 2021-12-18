@@ -54,27 +54,25 @@ class ApartmentController extends Controller
     public function recent()
     {
         $apartmentList = DB::table('apartments')
-                        ->orderBy('updated_at', 'desc')
-                        ->orderBy('created_at', 'desc')
-                        ->get();
+            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('Apartment.filter')->with('list', $apartmentList);
     }
 
     public function last_week()
     {
         $apartmentList = DB::table('apartments')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])
-                            ->orderBy('updated_at', 'desc')
-                            ->orderBy('created_at', 'desc')
-                            ->get();
+            ->orderBy('updated_at', 'desc')
+            ->get();
         return view('Apartment.filter')->with('list', $apartmentList);
     }
 
     public function last_month()
     {
         $apartmentList = DB::table('apartments')->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date("Y-m-d")])
-                                ->orderBy('updated_at', 'desc')
-                                ->orderBy('created_at', 'desc')
-                                ->get();
+            ->orderBy('updated_at', 'desc')
+            ->get();
         return view('Apartment.filter')->with('list', $apartmentList);
     }
 }

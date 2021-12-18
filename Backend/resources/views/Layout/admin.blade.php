@@ -48,24 +48,8 @@
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item d-none d-lg-flex">
             <a class="nav-link" href="/logout">
-              <span class="btn btn-danger">Logout</span>
+              <span class="btn btn-inverse-danger btn-fw">Logout</span>
             </a>
-          </li>
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('/upload')}}/<?php echo session('Picture') ?>" alt="profile" />
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="fas fa-cog text-primary"></i>
-                Settings
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">
-                <i class="fas fa-power-off text-primary"></i>
-                Logout
-              </a>
-            </div>
           </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">

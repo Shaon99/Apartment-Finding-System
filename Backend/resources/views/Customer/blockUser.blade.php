@@ -84,7 +84,7 @@
                         <td>{{$list[$i]['id']}}</td>
                         <td> <a class="btn btn-inverse-success" href="{{ route('Customer.Edit', [$list[$i]['id']]) }}">Edit</a></td>
                         <td> <a class="btn btn-inverse-warning" href="{{ route('Customer.Delete', [$list[$i]['id']]) }}">Delete</a></td>
-                        <td> <a class="btn btn-inverse-primary" href="{{ route('Admin.Details', [$list[$i]['id']]) }}">Details</a></td>
+                        <td> <a class="btn btn-inverse-primary" href="{{ route('Customer.Details', [$list[$i]['id']]) }}">Details</a></td>
                         <td> <a class="btn btn-inverse-danger" href="{{ route('Customer.Block', [$list[$i]['id']]) }}">@if($list[$i]['status'] == "Open") Block @else Unblock @endif</a></td>
                         <td>{{$list[$i]['name']}}</td>
                         <td>{{$list[$i]['address']}}</td>

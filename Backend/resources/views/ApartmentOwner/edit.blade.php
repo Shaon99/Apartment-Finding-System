@@ -8,7 +8,8 @@
                 <div class="card-body">
                     <h4 class="card-title">Edit owner Information</h4>
                     <p class="card-description">
-                        owner Information for, {{ $owner['id'] }}
+                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/ApartmentOwner/All">Back to list</a></p>
+                    owner Information for, {{ $owner['id'] }}
                     </p>
                     <div>
                         <p style="color: red; font-size: 15px;">{{ session('congratulations') }}</p>

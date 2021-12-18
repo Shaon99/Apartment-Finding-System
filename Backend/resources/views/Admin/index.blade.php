@@ -19,7 +19,7 @@
                   New registered apartment
                 </p>
                 <h2> {{ DB::table('apartments')->where('created_at', date("Y-m-d"))->count() }}</h2>
-                <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+                <label class="badge badge-outline-success badge-pill"></label>
               </div>
               <div class="statistics-item">
                 <p>
@@ -27,7 +27,7 @@
                   Last week
                 </p>
                 <h2> {{ DB::table('apartments')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date("Y-m-d")])->count() }} </h2>
-                <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+                <label class="badge badge-outline-danger badge-pill"></label>
               </div>
               <div class="statistics-item">
                 <p>
@@ -35,7 +35,7 @@
                   Last month
                 </p>
                 <h2> {{ DB::table('apartments')->whereBetween('created_at', [date('Y-m-d', strtotime(date("Y-m-d") . ' - 30 days')), date("Y-m-d")])->count() }} </h2>
-                <label class="badge badge-outline-success badge-pill">12% increase</label>
+                <label class="badge badge-outline-success badge-pill"></label>
               </div>
               <div class="statistics-item">
                 <p>
@@ -43,7 +43,7 @@
                   Blocked apartment
                 </p>
                 <h2> {{ DB::table('apartments')->where('status', '0')->count() }} </h2>
-                <label class="badge badge-outline-success badge-pill">57% increase</label>
+                <label class="badge badge-outline-success badge-pill"></label>
               </div>
               <div class="statistics-item">
                 <p>
@@ -51,35 +51,9 @@
                   Total number of apartment
                 </p>
                 <h2> {{ DB::table('apartments')->count() }} </h2>
-                <label class="badge badge-outline-success badge-pill">10% increase</label>
+                <label class="badge badge-outline-success badge-pill"></label>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">
-              <i class="fas fa-gift"></i>
-              Orders
-            </h4>
-            <canvas id="orders-chart"></canvas>
-            <div id="orders-chart-legend" class="orders-chart-legend"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">
-              <i class="fas fa-chart-line"></i>
-              Sales
-            </h4>
-            <h2 class="mb-5">56000 <span class="text-muted h4 font-weight-normal">Sales</span></h2>
-            <canvas id="sales-chart"></canvas>
           </div>
         </div>
       </div>

@@ -4,13 +4,14 @@
 
 <div class="container-fluid">
     <div class="content-wrapper">
-        <h2 style="text-align: center; background-color: #ffffff">Details for, {{$details[0]->id }} :</h2>
+        <h2 style="text-align: center; background-color: #ffffff">Details for, {{$details[0]->id }},{{ $details[0]->name }}</h2>
+        <p style="padding-left:1050px"><a class="btn btn-primary" href="/ApartmentOwner/All">Back to list</a></p>
         <center>
             <table class="table table-striped table-bordered">
                 <tr>
                     <div>
                         <td style="width:300px; height:300px; text-align:center; vertical-align:middle">
-                            <img src="{{asset('/upload/seller_image')}}/{{ $details[0]->image }}" style="border-radius:50%; width:100%; height:100%">
+                            <img src="{{asset('/uploads/seller_image')}}/{{ $details[0]->image }}" style="border-radius:50%; width:100%; height:100%">
                         </td>
                         <td>
                             <p style="color: black; font-size:50px">{{ $details[0]->name }}</p>

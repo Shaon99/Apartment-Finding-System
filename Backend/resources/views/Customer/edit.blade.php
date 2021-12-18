@@ -6,6 +6,7 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/Customer/All">Back to list</a></p>
                     <h4 class="card-title">Edit customer Information</h4>
                     <p class="card-description">
                         customer Information for, {{ $customer['id'] }}
