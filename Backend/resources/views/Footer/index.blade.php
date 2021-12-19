@@ -6,7 +6,7 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/Admin/All">Back to list</a></p>
+                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/Admin/Dashboard">Back to home</a></p>
                     <h4 class="card-title">Update footer</h4>
                     <p class="card-description">
                         Update footer

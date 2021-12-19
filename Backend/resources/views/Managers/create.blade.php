@@ -6,7 +6,7 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/Admin/All">Back to list</a></p>
+                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/Manager/All">Back to list</a></p>
                     <h4 class="card-title">Register new Manager</h4>
                     <p class="card-description">
                         Register new Manager

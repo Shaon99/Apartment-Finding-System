@@ -76,6 +76,7 @@ Route::group(['middleware' => 'Admin'], function () {
 
     //Apartments
     Route::get('/Apartment/recent', [ApartmentController::class, 'recent']);
+    Route::get('/Apartment/search/{id}', [ApartmentController::class, 'search']);
     Route::get('/Apartment/last_week', [ApartmentController::class, 'last_week']);
     Route::get('/Apartment/last_month', [ApartmentController::class, 'last_month']);
     Route::get('/Apartment/All', [ApartmentController::class, 'show'])->name('Apartment.All');

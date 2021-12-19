@@ -105,4 +105,42 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $(document).on('change', '#selectStatus', function() {
+            let status = $(this).val();
+            let id = $(this).attr('data-id');
+            let selectUpdate = $(this).parent().prev();
+
+            $.ajax({
+                type: 'GET',
+                url: `/Seller/status/${id}`,
+                data: {
+                    status: status
+                },
+                success: (data) => {
+                    toastr.options = {
+                        "timeOut": "2000",
+                        "closeButton": true,
+                    };
+                    toastr['info']('Status Successfully Updated!!!');
+
+                    if (status == '0') {
+                        $(selectUpdate).html(`
+                                      <span class="badge bg-danger text-white">Deactive</span>
+                                  `)
+                    } else if (status == '1') {
+                        $(selectUpdate).html(`
+                                      <span class="badge bg-success text-white">Active</span>
+                                  `)
+                    }
+                },
+                error: (error) => {
+                    console.log(error);
+                }
+            })
+        });
+    });
+</script>
+
 @endsection

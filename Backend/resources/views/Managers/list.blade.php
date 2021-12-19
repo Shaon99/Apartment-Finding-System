@@ -78,6 +78,7 @@
                         <th>Full name</th>
                         <th>Status</th>
                         <th>Salary</th>
+                        <th>City name</th>
                         <th>E-mail</th>
                         <th>Contact no.</th>
                     </tr>
@@ -92,6 +93,7 @@
                         <td>{{$list[$i]['name']}}</td>
                         <td>{{$list[$i]['status']}}</td>
                         <td>{{$list[$i]['salary']}}</td>
+                        <td>{{$list[$i]['city']}}</td>
                         <td>{{$list[$i]['email']}}</td>
                         <td>{{$list[$i]['phone']}}</td>
                         </tr>

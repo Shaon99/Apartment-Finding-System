@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Managers;
 use App\Models\Districts;
 use App\Http\Requests\NewManagersRequest;
+use App\Http\Requests\UpdateManagersRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -131,25 +132,30 @@ class AreaController extends Controller
         return view('Managers.edit', compact('city', 'manager'));
 
     }
-    public function update($ID, UpdateAdminRequest $req)
+    public function update($ID, UpdateManagersRequest $req)
     {
-        $admin = Admin::find($ID);
+        $manager = Managers::find($ID);
 
-        $admin->Username = $req->user_name;
-        $admin->First_name = $req->first_name;
-        $admin->Last_name = $req->last_name;
-        $admin->Address = $req->address;
-        $admin->Email = $req->email;
-        $admin->Phone = $req->phone;
-        $admin->Gender = $req->gender;
-        $admin->DOB = $req->birth;
-        $admin->Joining_date = $req->joining;
-        $admin->Salary = $req->salary;
-        $admin->Updated_at = date('Y-m-d H:i:s', time());
+        $manager->name = $req->name;
+        $manager->address = $req->address;
+        $manager->email = $req->email;
+        $manager->phone = $req->phone;
+        $manager->gender = $req->gender;
+        $manager->birth = $req->birth;
+        $manager->city = $req->city;
+        $manager->Joining = $req->joining;
+        $manager->salary = $req->salary;
+        $manager->updated_at = date('Y-m-d H:i:s', time());
 
-        $admin->save();
+        $manager->save();
 
         $req->session()->flash('congratulations', 'Congratulations! information updated successfully!...');
-        return view('Admin.Edit')->with('admin', $admin);
+        $city = Districts::all();
+        return view('Managers.edit', compact('city', 'manager'));
+    }
+    public function details($ID, Request $req)
+    {
+        $manager = Managers::find($ID);
+        return view('Managers.details')->with('manager', $manager);
     }
 }

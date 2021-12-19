@@ -6,23 +6,16 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/Admin/All">Back to list</a></p>
-                    <h4 class="card-title">Register new Manager</h4>
+                    <p style="padding-left:1050px"><a class="btn btn-primary" href="/Manager/All">Back to list</a></p>
+                    <h4 class="card-title">Edit Manager Information</h4>
                     <p class="card-description">
-                        Register new Manager
+                        Edit Manager Information
                     </p>
                     <div>
                         <p style="color: red; font-size: 15px;">{{ session('congratulations') }}</p>
                     </div>
                     <form method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
-                            <label>Profile Picture</label>
-                            <input type="file" name="profileImage" class="" value="{{ $manager['picture'] }}">
-                            <div>
-                                <p style="color: red; font-size: 15px;">{{ $errors->first('profileImage') }}</p>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label for="exampleInputName1">First Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" value="{{ $manager['name'] }}">
@@ -40,18 +33,17 @@
                         <div class="form-group">
                             <label for="gender">Gender</label>
                             <select class="form-control" name="gender" id="gender">
-                                <option disabled>Please select your Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value=" Male" @if($manager['gender']=='Male' ) selected @endif>Male</option>
+                                <option value="Female" @if($manager['gender']=='Female' ) selected @endif>Female</option>
                             </select>
                             <div>
                                 <p style="color: red; font-size: 15px;">{{ $errors->first('gender') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="city">Gender</label>
+                            <label for="city">City Name</label>
                             <select class="form-control" name="city" id="city">
-                                @for($i=0; $i < count($city); $i++) <option value="{{$city[$i]['name']}}">{{$city[$i]['bn_name']}}</option>
+                                @for($i=0; $i < count($city); $i++) <option value="{{$city[$i]['name']}}" @if($manager['city']==$city[$i]['name'] ) selected @endif>{{$city[$i]['bn_name']}}</option>
                                     @endfor
                             </select>
                             <div>
