@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="city">Gender</label>
+                            <label for="city">City</label>
                             <select class="form-control" name="city" id="city">
                                 @for($i=0; $i < count($city); $i++)
                                 <option value="{{$city[$i]['name']}}">{{$city[$i]['bn_name']}}</option>
