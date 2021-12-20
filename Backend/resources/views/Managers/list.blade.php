@@ -67,7 +67,7 @@
                     <a class="btn btn-outline-info" href="/Manager/last_month">Last Month</a>
                     <a class="btn btn-primary" href="/Manager/BlockedUser">All Blocked Manager</a>
                 </p>
-                <table class="table table-striped table-bordered">
+                <table  id="order-listing" class="table table-striped table-bordered">
                     <tr>
                         <th>User ID</th>
                         <th></th>

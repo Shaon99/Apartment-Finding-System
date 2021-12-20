@@ -28,8 +28,8 @@ class AdminController extends Controller
 
     public function show()
     {
-        $adminList = Admin::all();
-        return view('Admin.list')->with('list', $adminList);
+        $list = Admin::all();
+        return view('Admin.list',compact('list'));
     }
     public function edit($ID)
     {
